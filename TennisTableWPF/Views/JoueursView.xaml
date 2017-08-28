@@ -1,0 +1,70 @@
+﻿<UserControl x:Class="TennisTableWPF.Views.JoueursView"
+             xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:TennisTableWPF.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" Width="443.697">
+    <Grid>
+        <ListBox x:Name="ListeJoueurs" ItemsSource="{Binding Joueurs}" HorizontalAlignment="Left" Height="280" Margin="10,10,0,0" VerticalAlignment="Top" Width="188">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock>
+                        <TextBlock.Text>
+                            <MultiBinding StringFormat="{}{0} {1} ({2})">
+                                <Binding Path="Nom" />
+                                <Binding Path="Prenom" />
+                                <Binding Path="Classement" />
+                            </MultiBinding>
+                        </TextBlock.Text>
+                    </TextBlock>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <Grid Margin="199,12,8,10">
+            <TextBox x:Name="IDJoueur" Text="{Binding Joueurs.JoueurId, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="136" Margin="101,3,0,0"/>
+            <Label x:Name="IDJoueurLabel"  Content="ID du joueur :" HorizontalAlignment="Left" VerticalAlignment="Top" Width="101" Foreground="Black" FontFamily="Arctic" RenderTransformOrigin="0.582,1.026" Margin="0,3,0,0" Height="23" FontSize="10"/>
+            <TextBox x:Name="LicenseJoueur" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="136" Margin="101,31,0,0"/>
+            <Label x:Name="LicenseJoueurLabel" Content="N° de license :" HorizontalAlignment="Left" Margin="0,31,0,0" VerticalAlignment="Top" Width="101" Foreground="Black" FontFamily="Arctic" FontSize="10"/>
+            <TextBox x:Name="NomJoueur" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="136" Margin="101,59,0,0"/>
+            <Label x:Name="NomJoueurLabel" Content="Nom :" HorizontalAlignment="Left" Margin="0,59,0,0" VerticalAlignment="Top" Width="101" Foreground="Black" FontFamily="Arctic" FontSize="10"/>
+            <TextBox x:Name="PrenomJoueur" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="136" Margin="101,87,0,0"/>
+            <Label x:Name="PrenomJoueurLabel" Content="Prénom :" HorizontalAlignment="Left" Margin="0,87,0,0" VerticalAlignment="Top" Width="101" Foreground="Black" FontFamily="Arctic" FontSize="10"/>
+            <TextBox x:Name="LicenseJoueur_Copy3" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="136" Margin="101,115,0,0"/>
+            <Label x:Name="LicenseLabel_Copy3" Content="Classement :" HorizontalAlignment="Left" Margin="0,115,0,0" VerticalAlignment="Top" Width="101" Foreground="Black" FontFamily="Arctic" FontSize="10"/>
+            <Button x:Name="CreateJoueur" Style="{StaticResource MyButton}" HorizontalAlignment="Left" Margin="7,230,0,0" VerticalAlignment="Top" Width="40" Height="38" BorderBrush="{x:Null}" Foreground="{x:Null}" ToolTip="Ajouter un nouveau joueur" ToolTipService.ShowDuration="10000" >
+                <Button.Background>
+                    <ImageBrush ImageSource="../Resources/Create.png" Stretch="Uniform"/>
+                </Button.Background>
+            </Button>
+            <Button x:Name="EditJoueur" Style="{StaticResource MyButton}" HorizontalAlignment="Left" Margin="52,230,0,0" VerticalAlignment="Top" Width="40" Height="38" BorderBrush="{x:Null}" Foreground="{x:Null}" ToolTip="Éditer le joueur sélectionné" ToolTipService.ShowDuration="10000" >
+                <Button.Background>
+                    <ImageBrush ImageSource="../Resources/Edit.png" Stretch="Uniform"/>
+                </Button.Background>
+            </Button>
+            <Button x:Name="DeleteJoueur" Style="{StaticResource MyButton}" HorizontalAlignment="Left" Margin="97,230,0,0" VerticalAlignment="Top" Width="40" Height="38" BorderBrush="{x:Null}" Foreground="{x:Null}" ToolTip="Supprimer le joueur sélectionné" ToolTipService.ShowDuration="10000" RenderTransformOrigin="2.019,0.507" >
+                <Button.Background>
+                    <ImageBrush ImageSource="../Resources/Delete.png" Stretch="Uniform"/>
+                </Button.Background>
+            </Button>
+            <Button x:Name="SaveJoueur" Style="{StaticResource MyButton}" HorizontalAlignment="Left" Margin="142,230,0,0" VerticalAlignment="Top" Width="40" Height="38" BorderBrush="{x:Null}" Foreground="{x:Null}" ToolTip="Sauver les données du joueur sélectionné" ToolTipService.ShowDuration="10000" >
+                <Button.Background>
+                    <ImageBrush ImageSource="../Resources/Save.png" Stretch="Uniform"/>
+                </Button.Background>
+            </Button>
+            <Button x:Name="CancelJoueur" Style="{StaticResource MyButton}" HorizontalAlignment="Left" Margin="187,230,0,0" VerticalAlignment="Top" Width="40" Height="38" BorderBrush="{x:Null}" Foreground="{x:Null}" ToolTip="Annuler les changements faits sur le joueur sélectionné" ToolTipService.ShowDuration="10000" >
+                <Button.Background>
+                    <ImageBrush ImageSource="../Resources/Cancel.png" Stretch="Uniform"/>
+                </Button.Background>
+            </Button>
+            <TextBox x:Name="LicenseJoueur_Copy4" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="136" Margin="101,143,0,0"/>
+            <Label x:Name="LicenseLabel_Copy4" Content="Mail :" HorizontalAlignment="Left" Margin="0,143,0,0" VerticalAlignment="Top" Width="101" Foreground="Black" FontFamily="Arctic" FontSize="10"/>
+            <TextBox x:Name="LicenseJoueur_Copy5" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="136" Margin="101,171,0,0"/>
+            <Label x:Name="LicenseLabel_Copy5" Content="Sexe :" HorizontalAlignment="Left" Margin="0,171,0,0" VerticalAlignment="Top" Width="101" Foreground="Black" FontFamily="Arctic" FontSize="10"/>
+            <TextBox x:Name="LicenseJoueur_Copy6" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="136" Margin="101,199,0,0"/>
+            <Label x:Name="LicenseLabel_Copy6" Content="Club :" HorizontalAlignment="Left" Margin="0,199,0,0" VerticalAlignment="Top" Width="101" Foreground="Black" FontFamily="Arctic" FontSize="10"/>
+        </Grid>
+    </Grid>
+</UserControl>

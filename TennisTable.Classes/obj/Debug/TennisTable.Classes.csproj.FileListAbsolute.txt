@@ -1,0 +1,8 @@
+E:\Documents\Google Drive\HEL\programmation[3eme]\TennisTableWPF\TennisTable.Classes\bin\Debug\TennisTable.Classes.dll
+E:\Documents\Google Drive\HEL\programmation[3eme]\TennisTableWPF\TennisTable.Classes\bin\Debug\TennisTable.Classes.pdb
+E:\Documents\Google Drive\HEL\programmation[3eme]\TennisTableWPF\TennisTable.Classes\obj\Debug\TennisTable.Classes.dll
+E:\Documents\Google Drive\HEL\programmation[3eme]\TennisTableWPF\TennisTable.Classes\obj\Debug\TennisTable.Classes.pdb
+D:\Documents\Desktop\TennisTableWPF\TennisTable.Classes\bin\Debug\TennisTable.Classes.dll
+D:\Documents\Desktop\TennisTableWPF\TennisTable.Classes\bin\Debug\TennisTable.Classes.pdb
+D:\Documents\Desktop\TennisTableWPF\TennisTable.Classes\obj\Debug\TennisTable.Classes.dll
+D:\Documents\Desktop\TennisTableWPF\TennisTable.Classes\obj\Debug\TennisTable.Classes.pdb
