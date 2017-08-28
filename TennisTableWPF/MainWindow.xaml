@@ -8,9 +8,11 @@
         xmlns:local1="clr-namespace:TennisTableWPF.Views"
         mc:Ignorable="d"
         Title="MainWindow" Height="700.254" Width="1428.195">
+    <Controls:MetroWindow.Background>
+        <ImageBrush ImageSource="Resources/background.jpg"/>
+    </Controls:MetroWindow.Background>
     <Grid>
-        <local1:JoueursView Width="474" Height="319" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="936,10,0,0"/>
-        <Grid HorizontalAlignment="Left" Height="659" VerticalAlignment="Top" Width="305"/>
+        <local1:JoueursView Margin="787,202,55,141"/>
     </Grid>
 
 </Controls:MetroWindow>

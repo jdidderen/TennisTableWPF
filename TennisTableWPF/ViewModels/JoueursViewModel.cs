@@ -15,6 +15,9 @@ namespace TennisTableWPF.ViewModels
 {
     class JoueursViewModel
     {
+        public ClassementsViewModel J_Classements { get; set; }
+        public ClubsViewModel J_Clubs { get; set; }
+        public SexesViewModel J_Sexes { get; set; }
         private ObservableCollection<C_Joueurs> _joueurs;
         public ObservableCollection<C_Joueurs> Joueurs
         {
@@ -27,11 +30,17 @@ namespace TennisTableWPF.ViewModels
                 return _joueurs;
             }
         }
-        private string Connexion = "Data Source=JEREMY-TOUR;Initial Catalog=TennisTableASP;Integrated Security=True;Connect Timeout=15;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+
+        public JoueursViewModel()
+        {
+            this.J_Classements = new ClassementsViewModel();
+            this.J_Clubs = new ClubsViewModel();
+            this.J_Sexes = new SexesViewModel();
+        }
 
         public void ListeJoueurs()
         {
-            _joueurs = new ObservableCollection<C_Joueurs>(new G_Joueurs(Connexion).Lire("JoueurId"));
+            _joueurs = new ObservableCollection<C_Joueurs>(new G_Joueurs().Lire("JoueurId"));
         }
     }
 }

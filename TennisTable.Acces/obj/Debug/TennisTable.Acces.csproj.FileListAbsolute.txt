@@ -12,3 +12,10 @@ D:\Documents\Desktop\TennisTableWPF\TennisTable.Acces\bin\Debug\TennisTable.Clas
 D:\Documents\Desktop\TennisTableWPF\TennisTable.Acces\obj\Debug\TennisTable.Acces.csprojResolveAssemblyReference.cache
 D:\Documents\Desktop\TennisTableWPF\TennisTable.Acces\obj\Debug\TennisTable.Acces.dll
 D:\Documents\Desktop\TennisTableWPF\TennisTable.Acces\obj\Debug\TennisTable.Acces.pdb
+d:\documents\documents\visual studio 2017\Projects\TennisTableWPF\TennisTable.Acces\obj\Debug\TennisTable.Acces.csprojResolveAssemblyReference.cache
+d:\documents\documents\visual studio 2017\Projects\TennisTableWPF\TennisTable.Acces\obj\Debug\TennisTable.Acces.dll
+d:\documents\documents\visual studio 2017\Projects\TennisTableWPF\TennisTable.Acces\obj\Debug\TennisTable.Acces.pdb
+d:\documents\documents\visual studio 2017\Projects\TennisTableWPF\TennisTable.Acces\bin\Debug\TennisTable.Acces.dll
+d:\documents\documents\visual studio 2017\Projects\TennisTableWPF\TennisTable.Acces\bin\Debug\TennisTable.Acces.pdb
+d:\documents\documents\visual studio 2017\Projects\TennisTableWPF\TennisTable.Acces\bin\Debug\TennisTable.Classes.dll
+d:\documents\documents\visual studio 2017\Projects\TennisTableWPF\TennisTable.Acces\bin\Debug\TennisTable.Classes.pdb

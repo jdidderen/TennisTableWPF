@@ -13,7 +13,7 @@ namespace TennisTable.Gestion
   #endregion
   #region Constructeurs
   public G_Base()
-  { ChaineConnexion = ""; }
+  { ChaineConnexion = "Data Source=JEREMY-TOUR;Initial Catalog=TennisTableASP;Integrated Security=True;Connect Timeout=15;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False"; }
   public G_Base(string sChaineConnexion)
   { ChaineConnexion = sChaineConnexion; }
   #endregion
