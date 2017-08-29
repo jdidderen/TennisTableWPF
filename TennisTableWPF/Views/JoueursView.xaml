@@ -10,7 +10,7 @@
         <Grid.Background>
             <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.AppWorkspaceColorKey}}"/>
         </Grid.Background>
-        <ListBox x:Name="ListeJoueurs" ItemsSource="{Binding Joueurs}" Margin="10,10,241,4">
+        <ListBox x:Name="ListeJoueurs" SelectedItem="{Binding JoueurSelected,Mode=TwoWay}" ItemsSource="{Binding Joueurs}" Margin="10,10,241,4">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <TextBlock>
@@ -35,29 +35,24 @@
         <Label x:Name="PrenomJoueurLabel" Content="Prénom :" HorizontalAlignment="Left" Margin="180,92,0,0" VerticalAlignment="Top" Width="100" Foreground="Black" FontFamily="Arctic" FontSize="10"/>
         <ComboBox x:Name="ClassementJoueur" ItemsSource="{Binding J_Classements.Classements}" SelectedValue="{Binding SelectedItem.Classement,ElementName=ListeJoueurs}" SelectedValuePath="ClassementId" DisplayMemberPath="Classement" HorizontalAlignment="Left" Height="21" VerticalAlignment="Top" Width="136" Margin="260,120,0,0" />
         <Label x:Name="ClassementJoueurLabel" Content="Classement :" HorizontalAlignment="Left" Margin="180,120,0,0" VerticalAlignment="Top" Width="100" Foreground="Black" FontFamily="Arctic" FontSize="10"/>
-        <Button x:Name="CreateJoueur" Style="{StaticResource MyButton}" HorizontalAlignment="Left" Margin="182,235,0,0" VerticalAlignment="Top" Width="40" Height="38" BorderBrush="{x:Null}" Foreground="{x:Null}" ToolTip="Ajouter un nouveau joueur" ToolTipService.ShowDuration="10000" >
+        <Button x:Name="CreateJoueur" ToolTipService.ShowOnDisabled="true" Command="{Binding CreerJoueurCommand}" Style="{StaticResource MyButton}" HorizontalAlignment="Left" Margin="202,235,0,0" VerticalAlignment="Top" Width="40" Height="38" BorderBrush="{x:Null}" Foreground="{x:Null}" ToolTip="{Binding CreerJoueurMessage}" ToolTipService.ShowDuration="10000" >
             <Button.Background>
                 <ImageBrush ImageSource="../Resources/Create.png" Stretch="Uniform"/>
             </Button.Background>
         </Button>
-        <Button x:Name="EditJoueur" Style="{StaticResource MyButton}" HorizontalAlignment="Left" Margin="228,235,0,0" VerticalAlignment="Top" Width="40" Height="38" BorderBrush="{x:Null}" Foreground="{x:Null}" ToolTip="Éditer le joueur sélectionné" ToolTipService.ShowDuration="10000" >
+        <Button x:Name="EditJoueur" Style="{StaticResource MyButton}" Margin="248,235,114,0" VerticalAlignment="Top" Height="38" BorderBrush="{x:Null}" Foreground="{x:Null}" ToolTip="Éditer le joueur sélectionné" ToolTipService.ShowDuration="10000" RenderTransformOrigin="1.4,0.447" >
             <Button.Background>
                 <ImageBrush ImageSource="../Resources/Edit.png" Stretch="Uniform"/>
             </Button.Background>
         </Button>
-        <Button x:Name="DeleteJoueur" Style="{StaticResource MyButton}" HorizontalAlignment="Left" Margin="272,235,0,0" VerticalAlignment="Top" Width="40" Height="38" BorderBrush="{x:Null}" Foreground="{x:Null}" ToolTip="Supprimer le joueur sélectionné" ToolTipService.ShowDuration="10000" RenderTransformOrigin="2.019,0.507" >
+        <Button x:Name="DeleteJoueur" Style="{StaticResource MyButton}" HorizontalAlignment="Left" Margin="292,235,0,0" VerticalAlignment="Top" Width="40" Height="38" BorderBrush="{x:Null}" Foreground="{x:Null}" ToolTip="Supprimer le joueur sélectionné" ToolTipService.ShowDuration="10000" RenderTransformOrigin="2.019,0.507" >
             <Button.Background>
                 <ImageBrush ImageSource="../Resources/Delete.png" Stretch="Uniform"/>
             </Button.Background>
         </Button>
-        <Button x:Name="SaveJoueur" Style="{StaticResource MyButton}" HorizontalAlignment="Left" Margin="318,235,0,0" VerticalAlignment="Top" Width="40" Height="38" BorderBrush="{x:Null}" Foreground="{x:Null}" ToolTip="Sauver les données du joueur sélectionné" ToolTipService.ShowDuration="10000" >
+        <Button x:Name="SaveJoueur" Style="{StaticResource MyButton}" HorizontalAlignment="Left" Margin="338,235,0,0" VerticalAlignment="Top" Width="40" Height="38" BorderBrush="{x:Null}" Foreground="{x:Null}" ToolTip="Sauver les données du joueur sélectionné" ToolTipService.ShowDuration="10000" >
             <Button.Background>
                 <ImageBrush ImageSource="../Resources/Save.png" Stretch="Uniform"/>
-            </Button.Background>
-        </Button>
-        <Button x:Name="CancelJoueur" Style="{StaticResource MyButton}" HorizontalAlignment="Left" Margin="362,235,0,0" VerticalAlignment="Top" Width="40" Height="38" BorderBrush="{x:Null}" Foreground="{x:Null}" ToolTip="Annuler les changements faits sur le joueur sélectionné" ToolTipService.ShowDuration="10000" RenderTransformOrigin="0.212,0.487" >
-            <Button.Background>
-                <ImageBrush ImageSource="../Resources/Cancel.png" Stretch="Uniform"/>
             </Button.Background>
         </Button>
         <TextBox x:Name="MailJoueur" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="{Binding SelectedItem.Mail, ElementName=ListeJoueurs}" VerticalAlignment="Top" Width="136" Margin="260,148,0,0"/>
