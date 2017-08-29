@@ -83,3 +83,4 @@ D:\Documents\Documents\Visual Studio 2017\Projects\TennisTableWPF\TennisTableWPF
 D:\Documents\Documents\Visual Studio 2017\Projects\TennisTableWPF\TennisTableWPF\obj\Debug\App.baml
 d:\documents\documents\visual studio 2017\Projects\TennisTableWPF\TennisTableWPF\bin\Debug\Resources\background.jpg
 d:\documents\documents\visual studio 2017\Projects\TennisTableWPF\TennisTableWPF\obj\Debug\TennisTableWPF_Content.g.cs
+d:\documents\documents\visual studio 2017\Projects\TennisTableWPF\TennisTableWPF\bin\Debug\MaterialDesignColors.pdb

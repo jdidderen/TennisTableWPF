@@ -5,6 +5,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:TennisTableWPF.Views"
+             xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
              mc:Ignorable="d" Width="401.697" Height="274.5">
     <Grid Margin="0" Opacity="0.9">
         <Grid.Background>
@@ -24,42 +25,47 @@
                     </TextBlock>
                 </DataTemplate>
             </ListBox.ItemTemplate>
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="SelectionChanged">
+                    <i:InvokeCommandAction Command="{Binding JoueursSelectedCommand}" />
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
         </ListBox>
-        <TextBox x:Name="IDJoueur" Text="{Binding SelectedItem.JoueurId, ElementName=ListeJoueurs}" IsReadOnly="True" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="136" Margin="260,8,0,0"/>
-        <Label x:Name="IDJoueurLabel"  Content="ID du joueur :" HorizontalAlignment="Left" VerticalAlignment="Top" Width="100" Foreground="Black" FontFamily="Arctic" RenderTransformOrigin="0.582,1.026" Margin="180,8,0,0" Height="23" FontSize="10"/>
-        <TextBox x:Name="LicenseJoueur" Text="{Binding SelectedItem.License, ElementName=ListeJoueurs}" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="136" Margin="260,36,0,0"/>
+        <TextBox x:Name="IDJoueur" IsEnabled="{Binding TextBoxStatus}" Text="{Binding SelectedItem.JoueurId, ElementName=ListeJoueurs}" IsReadOnly="True" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="136" Margin="260,8,0,0"/>
+        <Label x:Name="IDJoueurLabel"   Content="ID du joueur :" HorizontalAlignment="Left" VerticalAlignment="Top" Width="100" Foreground="Black" FontFamily="Arctic" RenderTransformOrigin="0.582,1.026" Margin="180,8,0,0" Height="23" FontSize="10"/>
+        <TextBox x:Name="LicenseJoueur" IsEnabled="{Binding TextBoxStatus}" Text="{Binding SelectedItem.License, ElementName=ListeJoueurs}" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="136" Margin="260,36,0,0"/>
         <Label x:Name="LicenseJoueurLabel" Content="N° de license :" HorizontalAlignment="Left" Margin="180,36,0,0" VerticalAlignment="Top" Width="100" Foreground="Black" FontFamily="Arctic" FontSize="10"/>
-        <TextBox x:Name="NomJoueur" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="{Binding SelectedItem.Nom, ElementName=ListeJoueurs}" VerticalAlignment="Top" Width="136" Margin="260,64,0,0"/>
+        <TextBox x:Name="NomJoueur" IsEnabled="{Binding TextBoxStatus}" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="{Binding SelectedItem.Nom, ElementName=ListeJoueurs}" VerticalAlignment="Top" Width="136" Margin="260,64,0,0"/>
         <Label x:Name="NomJoueurLabel" Content="Nom :" HorizontalAlignment="Left" Margin="180,64,0,0" VerticalAlignment="Top" Width="100" Foreground="Black" FontFamily="Arctic" FontSize="10"/>
-        <TextBox x:Name="PrenomJoueur" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="{Binding SelectedItem.Prenom, ElementName=ListeJoueurs}" VerticalAlignment="Top" Width="136" Margin="260,92,0,0"/>
+        <TextBox x:Name="PrenomJoueur" IsEnabled="{Binding TextBoxStatus}" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="{Binding SelectedItem.Prenom, ElementName=ListeJoueurs}" VerticalAlignment="Top" Width="136" Margin="260,92,0,0"/>
         <Label x:Name="PrenomJoueurLabel" Content="Prénom :" HorizontalAlignment="Left" Margin="180,92,0,0" VerticalAlignment="Top" Width="100" Foreground="Black" FontFamily="Arctic" FontSize="10"/>
-        <ComboBox x:Name="ClassementJoueur" ItemsSource="{Binding J_Classements.Classements}" SelectedValue="{Binding SelectedItem.Classement,ElementName=ListeJoueurs}" SelectedValuePath="ClassementId" DisplayMemberPath="Classement" HorizontalAlignment="Left" Height="21" VerticalAlignment="Top" Width="136" Margin="260,120,0,0" />
+        <ComboBox x:Name="ClassementJoueur" IsEnabled="{Binding TextBoxStatus}" ItemsSource="{Binding J_Classements.Classements}" SelectedValue="{Binding SelectedItem.Classement,ElementName=ListeJoueurs}" SelectedValuePath="ClassementId" DisplayMemberPath="Classement" HorizontalAlignment="Left" Height="21" VerticalAlignment="Top" Width="136" Margin="260,120,0,0" />
         <Label x:Name="ClassementJoueurLabel" Content="Classement :" HorizontalAlignment="Left" Margin="180,120,0,0" VerticalAlignment="Top" Width="100" Foreground="Black" FontFamily="Arctic" FontSize="10"/>
-        <Button x:Name="CreateJoueur" ToolTipService.ShowOnDisabled="true" Command="{Binding CreerJoueurCommand}" Style="{StaticResource MyButton}" HorizontalAlignment="Left" Margin="202,235,0,0" VerticalAlignment="Top" Width="40" Height="38" BorderBrush="{x:Null}" Foreground="{x:Null}" ToolTip="{Binding CreerJoueurMessage}" ToolTipService.ShowDuration="10000" >
+        <Button x:Name="CreateJoueur" Command="{Binding CreerJoueurCommand}" Style="{StaticResource MyButton}" HorizontalAlignment="Left" Margin="202,235,0,0" VerticalAlignment="Top" Width="40" Height="38" BorderBrush="{x:Null}" Foreground="{x:Null}" ToolTip="{Binding Path=CreerJoueurMessage}" ToolTipService.ShowDuration="10000" ToolTipService.ShowOnDisabled="true" >
             <Button.Background>
                 <ImageBrush ImageSource="../Resources/Create.png" Stretch="Uniform"/>
             </Button.Background>
         </Button>
-        <Button x:Name="EditJoueur" Style="{StaticResource MyButton}" Margin="248,235,114,0" VerticalAlignment="Top" Height="38" BorderBrush="{x:Null}" Foreground="{x:Null}" ToolTip="Éditer le joueur sélectionné" ToolTipService.ShowDuration="10000" RenderTransformOrigin="1.4,0.447" >
+        <Button x:Name="EditJoueur" Style="{StaticResource MyButton}" Margin="248,235,114,0" VerticalAlignment="Top" Height="38" BorderBrush="{x:Null}" Foreground="{x:Null}" ToolTip="Éditer le joueur sélectionné" ToolTipService.ShowDuration="10000" RenderTransformOrigin="1.4,0.447" ToolTipService.ShowOnDisabled="true" >
             <Button.Background>
                 <ImageBrush ImageSource="../Resources/Edit.png" Stretch="Uniform"/>
             </Button.Background>
         </Button>
-        <Button x:Name="DeleteJoueur" Style="{StaticResource MyButton}" HorizontalAlignment="Left" Margin="292,235,0,0" VerticalAlignment="Top" Width="40" Height="38" BorderBrush="{x:Null}" Foreground="{x:Null}" ToolTip="Supprimer le joueur sélectionné" ToolTipService.ShowDuration="10000" RenderTransformOrigin="2.019,0.507" >
+        <Button x:Name="DeleteJoueur" Style="{StaticResource MyButton}" HorizontalAlignment="Left" Margin="292,235,0,0" VerticalAlignment="Top" Width="40" Height="38" BorderBrush="{x:Null}" Foreground="{x:Null}" ToolTip="Supprimer le joueur sélectionné" ToolTipService.ShowDuration="10000" RenderTransformOrigin="2.019,0.507" ToolTipService.ShowOnDisabled="true" >
             <Button.Background>
                 <ImageBrush ImageSource="../Resources/Delete.png" Stretch="Uniform"/>
             </Button.Background>
         </Button>
-        <Button x:Name="SaveJoueur" Style="{StaticResource MyButton}" HorizontalAlignment="Left" Margin="338,235,0,0" VerticalAlignment="Top" Width="40" Height="38" BorderBrush="{x:Null}" Foreground="{x:Null}" ToolTip="Sauver les données du joueur sélectionné" ToolTipService.ShowDuration="10000" >
+        <Button x:Name="SaveJoueur" Style="{StaticResource MyButton}" Command="{Binding SauverJoueurCommand}" HorizontalAlignment="Left" Margin="338,235,0,0" VerticalAlignment="Top" Width="40" Height="38" BorderBrush="{x:Null}" Foreground="{x:Null}" ToolTip="{Binding Path=SauverJoueurMessage}" ToolTipService.ShowDuration="10000" ToolTipService.ShowOnDisabled="true" >
             <Button.Background>
                 <ImageBrush ImageSource="../Resources/Save.png" Stretch="Uniform"/>
             </Button.Background>
         </Button>
-        <TextBox x:Name="MailJoueur" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="{Binding SelectedItem.Mail, ElementName=ListeJoueurs}" VerticalAlignment="Top" Width="136" Margin="260,148,0,0"/>
+        <TextBox x:Name="MailJoueur" IsEnabled="{Binding TextBoxStatus}" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="{Binding SelectedItem.Mail, ElementName=ListeJoueurs}" VerticalAlignment="Top" Width="136" Margin="260,148,0,0"/>
         <Label x:Name="MailJoueurLabel" Content="Mail :" HorizontalAlignment="Left" Margin="180,148,0,0" VerticalAlignment="Top" Width="100" Foreground="Black" FontFamily="Arctic" FontSize="10"/>
-        <ComboBox x:Name="SexeJoueur" HorizontalAlignment="Left" Height="23" ItemsSource="{Binding J_Sexes.Sexes}" SelectedValue="{Binding SelectedItem.Sexe,ElementName=ListeJoueurs}" SelectedValuePath="SexeId" DisplayMemberPath="Denomination" VerticalAlignment="Top" Width="136" Margin="260,176,0,0"/>
+        <ComboBox x:Name="SexeJoueur" IsEnabled="{Binding TextBoxStatus}" HorizontalAlignment="Left" Height="23" ItemsSource="{Binding J_Sexes.Sexes}" SelectedValue="{Binding SelectedItem.Sexe,ElementName=ListeJoueurs}" SelectedValuePath="SexeId" DisplayMemberPath="Denomination" VerticalAlignment="Top" Width="136" Margin="260,176,0,0"/>
         <Label x:Name="SexeLabel" Content="Sexe :" HorizontalAlignment="Left" Margin="180,178,0,0" VerticalAlignment="Top" Width="100" Foreground="Black" FontFamily="Arctic" FontSize="10"/>
-        <ComboBox x:Name="ClubJoueur" HorizontalAlignment="Left" Height="23" ItemsSource="{Binding J_Clubs.Clubs}" SelectedValue="{Binding SelectedItem.Club,ElementName=ListeJoueurs}" SelectedValuePath="ClubId" DisplayMemberPath="Nom" VerticalAlignment="Top" Width="136" Margin="260,204,0,0"/>
+        <ComboBox x:Name="ClubJoueur" IsEnabled="{Binding TextBoxStatus}" HorizontalAlignment="Left" Height="23" ItemsSource="{Binding J_Clubs.Clubs}" SelectedValue="{Binding SelectedItem.Club,ElementName=ListeJoueurs}" SelectedValuePath="ClubId" DisplayMemberPath="Nom" VerticalAlignment="Top" Width="136" Margin="260,204,0,0"/>
         <Label x:Name="ClubLabel" Content="Club :" HorizontalAlignment="Left" Margin="180,204,0,0" VerticalAlignment="Top" Width="100" Foreground="Black" FontFamily="Arctic" FontSize="10"/>
     </Grid>
 </UserControl>

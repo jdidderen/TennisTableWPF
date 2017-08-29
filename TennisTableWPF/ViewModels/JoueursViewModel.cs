@@ -25,48 +25,74 @@ namespace TennisTableWPF.ViewModels
         }
         #endregion
         #region ToolTip Messages
-        public string CreerJoueurMessage { get; set; }
-        public string SupprimerJoueurMessage { get; set; }
-        public string ModifierJoueurMessage { get; set; }
-        public string EditerJoueurMessage { get; set; }
+        private string creerJoueurMessage;
+        public string CreerJoueurMessage { get => creerJoueurMessage; set { creerJoueurMessage = value; OnPropertyChanged("CreerJoueurMessage"); } }
+        private string supprimerJoueurMessage;
+        public string SupprimerJoueurMessage { get => supprimerJoueurMessage; set { supprimerJoueurMessage = value; OnPropertyChanged("SupprimerJoueurMessage"); } }
+        private string sauverJoueurMessage;
+        public string SauverJoueurMessage { get => sauverJoueurMessage; set { sauverJoueurMessage = value; OnPropertyChanged("SauverJoueurMessage"); } }
+        private string editerJoueurMessage;
+        public string EditerJoueurMessage { get => editerJoueurMessage; set { editerJoueurMessage = value; OnPropertyChanged("EditerJoueurMessage"); } }
+        #endregion
+        #region Controls Status
+        private bool textBoxStatus;
+        public bool TextBoxStatus { get => textBoxStatus; set { textBoxStatus = value; OnPropertyChanged("TextBoxStatus"); } }
+        private bool sauverButtonStatus;
+        public bool SauverButtonStatus { get => sauverButtonStatus; set { sauverButtonStatus = value; OnPropertyChanged("SauverButtonStatus"); } }
+        private bool supprimerButtonStatus;
+        public bool SupprimerButtonStatus { get => supprimerButtonStatus; set { supprimerButtonStatus = value; OnPropertyChanged("SupprimerButtonStatus"); } }
+        private bool editerButtonStatus;
+        public bool EditerButtonStatus { get => editerButtonStatus; set { editerButtonStatus = value; OnPropertyChanged("EditerButtonStatus"); } }
         #endregion
         #region Commandes
-        private ICommand _creerJoueurCommand;
+        private ICommand creerJoueurCommand;
         public ICommand CreerJoueurCommand
         {
             get
             {
-                if (_creerJoueurCommand == null)
+                if (creerJoueurCommand == null)
                 {
-                    _creerJoueurCommand = new RelayCommands(param => this.CreerJoueurCommand_Execute(param), param => this.CreerJoueurCommand_CanExecute(param));
+                    creerJoueurCommand = new RelayCommands(param => this.CreerJoueurCommand_Execute(param), param => this.CreerJoueurCommand_CanExecute(param));
                 }
-                return _creerJoueurCommand;
+                return creerJoueurCommand;
             }
         }
-        private ICommand _sauverJoueurCommand;
+        private ICommand sauverJoueurCommand;
         public ICommand SauverJoueurCommand
         {
             get
             {
-                if (_sauverJoueurCommand == null)
+                if (sauverJoueurCommand == null)
                 {
-                    _sauverJoueurCommand = new RelayCommands(param => this.SauverJoueurCommand_Execute(param), param => this.SauverJoueurCommand_CanExecute(param));
+                    sauverJoueurCommand = new RelayCommands(param => this.SauverJoueurCommand_Execute(param), param => this.SauverJoueurCommand_CanExecute(param));
                 }
-                return _sauverJoueurCommand;
+                return sauverJoueurCommand;
+            }
+        }
+        private ICommand joueursSelectedCommand;
+        public ICommand JoueursSelectedCommand
+        {
+            get
+            {
+                if (joueursSelectedCommand == null)
+                {
+                    joueursSelectedCommand = new RelayCommands(param => this.JoueursSelectedCommand_Execute(param), param => this.JoueursSelectedCommand_CanExecute(param));
+                }
+                return joueursSelectedCommand;
             }
         }
         #endregion
         #region ObservableCollections
-        private ObservableCollection<C_Joueurs> _joueurs;
+        private ObservableCollection<C_Joueurs> joueurs;
         public ObservableCollection<C_Joueurs> Joueurs
         {
             get
             {
-                if (_joueurs == null)
+                if (joueurs == null)
                 {
                     ListeJoueurs();
                 }
-                return _joueurs;
+                return joueurs;
             }
         }
         #endregion
@@ -74,13 +100,14 @@ namespace TennisTableWPF.ViewModels
         public ClassementsViewModel J_Classements { get; set; }
         public ClubsViewModel J_Clubs { get; set; }
         public SexesViewModel J_Sexes { get; set; }
-        private C_Joueurs _joueurSelected;
+        public G_Joueurs GJoueurs;
+        private C_Joueurs joueurSelected;
         public C_Joueurs JoueurSelected
         {
-            get { return _joueurSelected; }
+            get { return joueurSelected; }
             set
             {
-                _joueurSelected = value;
+                joueurSelected = value;
                 OnPropertyChanged("JoueurSelected");
             }
         }
@@ -91,6 +118,11 @@ namespace TennisTableWPF.ViewModels
             this.J_Classements = new ClassementsViewModel();
             this.J_Clubs = new ClubsViewModel();
             this.J_Sexes = new SexesViewModel();
+            this.GJoueurs = new G_Joueurs();
+            this.TextBoxStatus = false;
+            this.SauverButtonStatus = false;
+            this.EditerButtonStatus = false;
+            this.SupprimerButtonStatus = false;
         }
         #endregion
         #region Méthodes - Commandes
@@ -106,19 +138,54 @@ namespace TennisTableWPF.ViewModels
         }
         private bool SauverJoueurCommand_CanExecute(object param)
         {
-            CreerJoueurMessage = "Ajouter un nouveau joueur";
-            return true;
+            if(JoueurSelected == null)
+            {
+                SauverJoueurMessage = "Sauver les données du joueur sélectionné - Aucun joueur sélectionné";
+            }
+            else if(EditerButtonStatus == false)
+            {
+                SauverJoueurMessage = "Sauver les données du joueur sélectionné - L'édition n'a pas été activée";
+            }
+            else
+            {
+                if(JoueurSelected.Nom == null && JoueurSelected.Prenom == null && String.IsNullOrWhiteSpace(JoueurSelected.License.ToString()) && String.IsNullOrWhiteSpace(JoueurSelected.Classement.ToString()) && JoueurSelected.Mail == null && String.IsNullOrWhiteSpace(JoueurSelected.Sexe.ToString()) && String.IsNullOrWhiteSpace(JoueurSelected.Club.ToString()))
+                {
+                    SauverJoueurMessage = "Sauver les données du joueur sélectionné";
+                    return false;
+                }
+                SauverJoueurMessage = "Sauver les données du joueur sélectionné";
+                return true;
+            }
+            return false;
         }
         private void SauverJoueurCommand_Execute(object param)
         {
-            Joueurs.Add(new C_Joueurs());
-            JoueurSelected = Joueurs[Joueurs.Count() - 1];
+            GJoueurs.Modifier(JoueurSelected.JoueurId, JoueurSelected.License, JoueurSelected.Nom, JoueurSelected.Prenom, JoueurSelected.Classement, JoueurSelected.Mail, JoueurSelected.Sexe, JoueurSelected.Club);
+        }
+        private bool JoueursSelectedCommand_CanExecute(object param)
+        {
+            return true;
+        }
+        private void JoueursSelectedCommand_Execute(object param)
+        {
+            if(JoueurSelected != null)
+            {
+                this.TextBoxStatus = false;
+                this.SauverButtonStatus = false;
+                this.EditerButtonStatus = true;
+            }
+            else
+            {
+                this.TextBoxStatus = false;
+                this.SauverButtonStatus = false;
+                this.EditerButtonStatus = false;
+            }
         }
         #endregion
         #region Méthodes - Données
         public void ListeJoueurs()
         {
-            _joueurs = new ObservableCollection<C_Joueurs>(new G_Joueurs().Lire("JoueurId"));
+            joueurs = new ObservableCollection<C_Joueurs>(GJoueurs.Lire("JoueurId"));
         }
         #endregion
     }
