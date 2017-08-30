@@ -12,12 +12,13 @@ using TennisTable.Acces;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
 using System.ComponentModel;
+using TennisTableWPF.Services;
 
 namespace TennisTableWPF.ViewModels
 {
     class JoueursViewModel : INotifyPropertyChanged
     {
-        #region PropertyChanged
+        #region Interface
         public event PropertyChangedEventHandler PropertyChanged;
         protected virtual void OnPropertyChanged(string propertyName)
         {
@@ -102,6 +103,7 @@ namespace TennisTableWPF.ViewModels
         public SexesViewModel J_Sexes { get; set; }
         public G_Joueurs GJoueurs;
         private C_Joueurs joueurSelected;
+        private IDialogService _dialogservice;
         public C_Joueurs JoueurSelected
         {
             get { return joueurSelected; }
@@ -113,8 +115,9 @@ namespace TennisTableWPF.ViewModels
         }
         #endregion
         #region Constructeur
-        public JoueursViewModel()
+        public JoueursViewModel(IDialogService dialogservice)
         {
+            _dialogservice = dialogservice;
             this.J_Classements = new ClassementsViewModel();
             this.J_Clubs = new ClubsViewModel();
             this.J_Sexes = new SexesViewModel();
@@ -138,21 +141,20 @@ namespace TennisTableWPF.ViewModels
         }
         private bool SauverJoueurCommand_CanExecute(object param)
         {
-            if(JoueurSelected == null)
+            if (JoueurSelected == null)
             {
                 SauverJoueurMessage = "Sauver les données du joueur sélectionné - Aucun joueur sélectionné";
             }
-            else if(EditerButtonStatus == false)
+            else if (EditerButtonStatus == false)
             {
                 SauverJoueurMessage = "Sauver les données du joueur sélectionné - L'édition n'a pas été activée";
             }
+            else if (JoueurSelected.Nom == null && JoueurSelected.Prenom == null && JoueurSelected.License == 0 && JoueurSelected.Classement == 0 && JoueurSelected.Mail == null && JoueurSelected.Sexe == 0)
+            {
+                SauverJoueurMessage = "Sauver les données du joueur sélectionné - Certains champs obligatoires sont vides";
+            }
             else
             {
-                if(JoueurSelected.Nom == null && JoueurSelected.Prenom == null && String.IsNullOrWhiteSpace(JoueurSelected.License.ToString()) && String.IsNullOrWhiteSpace(JoueurSelected.Classement.ToString()) && JoueurSelected.Mail == null && String.IsNullOrWhiteSpace(JoueurSelected.Sexe.ToString()) && String.IsNullOrWhiteSpace(JoueurSelected.Club.ToString()))
-                {
-                    SauverJoueurMessage = "Sauver les données du joueur sélectionné";
-                    return false;
-                }
                 SauverJoueurMessage = "Sauver les données du joueur sélectionné";
                 return true;
             }
@@ -168,9 +170,9 @@ namespace TennisTableWPF.ViewModels
         }
         private void JoueursSelectedCommand_Execute(object param)
         {
-            if(JoueurSelected != null)
+            if (JoueurSelected != null)
             {
-                this.TextBoxStatus = false;
+                this.TextBoxStatus = true;
                 this.SauverButtonStatus = false;
                 this.EditerButtonStatus = true;
             }

@@ -10,3 +10,4 @@ d:\documents\documents\visual studio 2017\Projects\TennisTableWPF\TennisTable.Cl
 d:\documents\documents\visual studio 2017\Projects\TennisTableWPF\TennisTable.Classes\obj\Debug\TennisTable.Classes.pdb
 d:\documents\documents\visual studio 2017\Projects\TennisTableWPF\TennisTable.Classes\bin\Debug\TennisTable.Classes.dll
 d:\documents\documents\visual studio 2017\Projects\TennisTableWPF\TennisTable.Classes\bin\Debug\TennisTable.Classes.pdb
+d:\documents\documents\visual studio 2017\Projects\TennisTableWPF\TennisTable.Classes\obj\Debug\TennisTable.Classes.csprojResolveAssemblyReference.cache

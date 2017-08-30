@@ -12,8 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using TennisTableWPF.Services;
 using TennisTableWPF.ViewModels;
-
 namespace TennisTableWPF.Views
 {
     /// <summary>
@@ -21,10 +21,12 @@ namespace TennisTableWPF.Views
     /// </summary>
     public partial class JoueursView : UserControl
     {
+        private IDialogService _dialogservice;
         public JoueursView()
         {
             InitializeComponent();
-            DataContext = new JoueursViewModel();
+            _dialogservice = new DialogService();
+            DataContext = new JoueursViewModel(_dialogservice);
         }
     }
 }

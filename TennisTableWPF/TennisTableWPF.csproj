@@ -83,8 +83,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Services\IMessageBoxService.cs" />
-    <Compile Include="Services\MessageBoxService.cs" />
+    <Compile Include="Services\IDialogService.cs" />
+    <Compile Include="Services\DialogService.cs" />
     <Compile Include="Services\RelayCommand.cs" />
     <Compile Include="ViewModels\ClassementsViewModel.cs" />
     <Compile Include="ViewModels\ClubsViewModel.cs" />
