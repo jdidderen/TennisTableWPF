@@ -46,12 +46,12 @@
                 <ImageBrush ImageSource="../Resources/Create.png" Stretch="Uniform"/>
             </Button.Background>
         </Button>
-        <Button x:Name="EditJoueur" Style="{StaticResource MyButton}" Margin="248,235,114,0" VerticalAlignment="Top" Height="38" BorderBrush="{x:Null}" Foreground="{x:Null}" ToolTip="Éditer le joueur sélectionné" ToolTipService.ShowDuration="10000" RenderTransformOrigin="1.4,0.447" ToolTipService.ShowOnDisabled="true" >
+        <Button x:Name="EditJoueur" Style="{StaticResource MyButton}" Command="{Binding ModifierJoueurCommand}" Margin="248,235,114,0" VerticalAlignment="Top" Height="38" BorderBrush="{x:Null}" Foreground="{x:Null}" ToolTip="Éditer le joueur sélectionné" ToolTipService.ShowDuration="10000" RenderTransformOrigin="1.4,0.447" ToolTipService.ShowOnDisabled="true" >
             <Button.Background>
                 <ImageBrush ImageSource="../Resources/Edit.png" Stretch="Uniform"/>
             </Button.Background>
         </Button>
-        <Button x:Name="DeleteJoueur" Style="{StaticResource MyButton}" HorizontalAlignment="Left" Margin="292,235,0,0" VerticalAlignment="Top" Width="40" Height="38" BorderBrush="{x:Null}" Foreground="{x:Null}" ToolTip="Supprimer le joueur sélectionné" ToolTipService.ShowDuration="10000" RenderTransformOrigin="2.019,0.507" ToolTipService.ShowOnDisabled="true" >
+        <Button x:Name="DeleteJoueur" Command="{Binding SupprimerJoueurCommand}" Style="{StaticResource MyButton}" HorizontalAlignment="Left" Margin="292,235,0,0" VerticalAlignment="Top" Width="40" Height="38" BorderBrush="{x:Null}" Foreground="{x:Null}" ToolTip="Supprimer le joueur sélectionné" ToolTipService.ShowDuration="10000" RenderTransformOrigin="2.019,0.507" ToolTipService.ShowOnDisabled="true" >
             <Button.Background>
                 <ImageBrush ImageSource="../Resources/Delete.png" Stretch="Uniform"/>
             </Button.Background>
