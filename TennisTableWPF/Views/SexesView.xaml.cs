@@ -11,8 +11,6 @@ namespace TennisTableWPF.Views
         public SexesView()
         {
             InitializeComponent();
-            IDialogService dialogservice = new DialogService();
-            DataContext = new SexesViewModel(dialogservice);
         }
     }
 }

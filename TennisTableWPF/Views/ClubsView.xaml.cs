@@ -11,8 +11,6 @@ namespace TennisTableWPF.Views
         public ClubsView()
         {
             InitializeComponent();
-            IDialogService dialogservice = new DialogService();
-            DataContext = new ClubsViewModel(dialogservice);
         }
     }
 }

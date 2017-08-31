@@ -74,6 +74,7 @@
     <Compile Include="Services\IDialogService.cs" />
     <Compile Include="Services\DialogService.cs" />
     <Compile Include="Services\RelayCommand.cs" />
+    <Compile Include="Services\ViewModelLocator.cs" />
     <Compile Include="ViewModels\ClassementsViewModel.cs" />
     <Compile Include="ViewModels\ClubsViewModel.cs" />
     <Compile Include="ViewModels\JoueursViewModel.cs" />

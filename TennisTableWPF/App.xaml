@@ -1,12 +1,14 @@
 ﻿<Application x:Class="TennisTableWPF.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:services="clr-namespace:TennisTableWPF.Services"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Skin.xaml" />
             </ResourceDictionary.MergedDictionaries>
+            <services:ViewModelLocator x:Key="Locator" />
         </ResourceDictionary>
     </Application.Resources>
 </Application>

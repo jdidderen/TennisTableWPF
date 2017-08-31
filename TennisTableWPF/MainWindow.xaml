@@ -10,11 +10,43 @@
     <controls:MetroWindow.Background>
         <ImageBrush ImageSource="Resources/background.jpg"/>
     </controls:MetroWindow.Background>
-    <Grid>
-        <local1:JoueursView Margin="787,202,55,141"/>
-        <local1:ClubsView Margin="443,244,575,183"/>
-        <local1:SexesView Margin="10,369,1008,183"/>
-    </Grid>
-
+    <DockPanel>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Expander Padding="0"
+                      Margin="4"
+                      BorderBrush="DarkGray"
+                      ExpandDirection="Right"
+                      Grid.Row="0"
+                      Grid.Column="0"
+                      IsExpanded="True" Background="#CC119EDA">
+                <Expander.Header>
+                    <TextBlock Text="Menu"
+                               FontSize="14"
+                               FontWeight="Bold">
+                        <TextBlock.LayoutTransform>
+                            <RotateTransform Angle="90" />
+                        </TextBlock.LayoutTransform>
+                    </TextBlock>
+                </Expander.Header>
+                <Expander.Content>
+                    <Grid HorizontalAlignment="Stretch" Background="#D8808080" Width="168" >
+                        <Button x:Name="ShowJoueursButton" Content="Afficher les joueurs" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="148" RenderTransformOrigin="0.716,0.5"/>
+                    </Grid>
+                </Expander.Content>
+            </Expander>
+            <TabControl Margin="1,4,4,4"
+                        Grid.Row="0"
+                        BorderBrush="DarkGray"
+                        Grid.Column="1"
+                        IsSynchronizedWithCurrentItem="True" Background="#D8808080"/>
+        </Grid>
+    </DockPanel>
 </controls:MetroWindow>
 

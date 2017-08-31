@@ -8,7 +8,7 @@ using TennisTableWPF.Services;
 
 namespace TennisTableWPF.ViewModels
 {
-    class ClubsViewModel : INotifyPropertyChanged
+    public class ClubsViewModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
         protected virtual void OnPropertyChanged(string propertyName)

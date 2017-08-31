@@ -4,7 +4,7 @@ using System.Collections.ObjectModel;
 
 namespace TennisTableWPF.ViewModels
 {
-    class ClassementsViewModel
+    public class ClassementsViewModel
     {
         private ObservableCollection<CClassements> _classements;
         public ObservableCollection<CClassements> Classements

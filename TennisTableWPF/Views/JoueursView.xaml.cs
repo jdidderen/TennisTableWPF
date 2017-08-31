@@ -10,8 +10,6 @@ namespace TennisTableWPF.Views
         public JoueursView()
         {
             InitializeComponent();
-            IDialogService dialogservice = new DialogService();
-            DataContext = new JoueursViewModel(dialogservice);
         }
     }
 }
