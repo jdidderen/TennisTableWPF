@@ -1,65 +1,55 @@
-#region Ressources extérieures
-using System;
-using System.Collections.Generic;
-using System.Text;
-#endregion
-
 namespace TennisTable.Classes
 {
  /// <summary>
  /// Classe de définition des données
  /// </summary>
- public class C_SchemasRencontres
+ public class CSchemasRencontres
  {
-  #region Données membres
-  private int _SrId;
-  private int _JoueurVisite;
-  private int _JoueurVisiteur;
-  private int _Ordre;
-  private string _Type;
-  #endregion
-  #region Constructeurs
-  public C_SchemasRencontres()
+     private int _srId;
+  private int _joueurVisite;
+  private int _joueurVisiteur;
+  private int _ordre;
+  private string _type;
+
+     public CSchemasRencontres()
   { }
-  public C_SchemasRencontres(int JoueurVisite_, int JoueurVisiteur_, int Ordre_, string Type_)
+  public CSchemasRencontres(int joueurVisite, int joueurVisiteur, int ordre, string type)
   {
-   JoueurVisite = JoueurVisite_;
-   JoueurVisiteur = JoueurVisiteur_;
-   Ordre = Ordre_;
-   Type = Type_;
+   JoueurVisite = joueurVisite;
+   JoueurVisiteur = joueurVisiteur;
+   Ordre = ordre;
+   Type = type;
   }
-  public C_SchemasRencontres(int SrId_, int JoueurVisite_, int JoueurVisiteur_, int Ordre_, string Type_)
-   : this(JoueurVisite_, JoueurVisiteur_, Ordre_, Type_)
+  public CSchemasRencontres(int srId, int joueurVisite, int joueurVisiteur, int ordre, string type)
+   : this(joueurVisite, joueurVisiteur, ordre, type)
   {
-   SrId = SrId_;
+   SrId = srId;
   }
-  #endregion
-  #region Accesseurs
-  public int SrId
+
+     public int SrId
   {
-   get { return _SrId; }
-   set { _SrId = value; }
+   get => _srId;
+      set => _srId = value;
   }
   public int JoueurVisite
   {
-   get { return _JoueurVisite; }
-   set { _JoueurVisite = value; }
+   get => _joueurVisite;
+      set => _joueurVisite = value;
   }
   public int JoueurVisiteur
   {
-   get { return _JoueurVisiteur; }
-   set { _JoueurVisiteur = value; }
+   get => _joueurVisiteur;
+      set => _joueurVisiteur = value;
   }
   public int Ordre
   {
-   get { return _Ordre; }
-   set { _Ordre = value; }
+   get => _ordre;
+      set => _ordre = value;
   }
   public string Type
   {
-   get { return _Type; }
-   set { _Type = value; }
+   get => _type;
+      set => _type = value;
   }
-  #endregion
  }
 }

@@ -1,44 +1,34 @@
-#region Ressources extérieures
-using System;
-using System.Collections.Generic;
-using System.Text;
-#endregion
-
 namespace TennisTable.Classes
 {
  /// <summary>
  /// Classe de définition des données
  /// </summary>
- public class C_Series
+ public class CSeries
  {
-  #region Données membres
-  private int _SerieId;
-  private string _Denomination;
-  #endregion
-  #region Constructeurs
-  public C_Series()
+     private int _serieId;
+  private string _denomination;
+
+     public CSeries()
   { }
-  public C_Series(string Denomination_)
+  public CSeries(string denomination)
   {
-   Denomination = Denomination_;
+   Denomination = denomination;
   }
-  public C_Series(int SerieId_, string Denomination_)
-   : this(Denomination_)
+  public CSeries(int serieId, string denomination)
+   : this(denomination)
   {
-   SerieId = SerieId_;
+   SerieId = serieId;
   }
-  #endregion
-  #region Accesseurs
-  public int SerieId
+
+     public int SerieId
   {
-   get { return _SerieId; }
-   set { _SerieId = value; }
+   get => _serieId;
+      set => _serieId = value;
   }
   public string Denomination
   {
-   get { return _Denomination; }
-   set { _Denomination = value; }
+   get => _denomination;
+      set => _denomination = value;
   }
-  #endregion
  }
 }

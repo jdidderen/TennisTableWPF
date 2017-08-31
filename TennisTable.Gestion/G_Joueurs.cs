@@ -1,37 +1,31 @@
-#region Ressources extérieures
-using System;
 using System.Collections.Generic;
-using System.Text;
 using TennisTable.Classes;
 using TennisTable.Acces;
-#endregion
 
 namespace TennisTable.Gestion
 {
  /// <summary>
  /// Couche intermédiaire de gestion (Business Layer)
  /// </summary>
- public class G_Joueurs : G_Base
+ public class GJoueurs : GBase
  {
-  #region Constructeurs
-  public G_Joueurs()
-   : base()
+     public GJoueurs()
   { }
-  public G_Joueurs(string sChaineConnexion)
+  public GJoueurs(string sChaineConnexion)
    : base(sChaineConnexion)
   { }
-  #endregion
-  public int Ajouter(int License, string Nom, string Prenom, int Classement, string Mail, int Sexe, int? Club)
-  { return new A_Joueurs(ChaineConnexion).Ajouter(License, Nom, Prenom, Classement, Mail, Sexe, Club); }
-  public int Modifier(int JoueurId, int License, string Nom, string Prenom, int Classement, string Mail, int Sexe, int? Club)
-  { return new A_Joueurs(ChaineConnexion).Modifier(JoueurId, License, Nom, Prenom, Classement, Mail, Sexe, Club); }
-  public List<C_Joueurs> Lire(string Index)
-  { return new A_Joueurs(ChaineConnexion).Lire(Index); }
-  public C_Joueurs Lire_ID(int JoueurId)
-  { return new A_Joueurs(ChaineConnexion).Lire_ID(JoueurId); }
-  public int Supprimer(int JoueurId)
-  { return new A_Joueurs(ChaineConnexion).Supprimer(JoueurId); }
-  public int ObtenirLigne(int JoueurId, string Index)
-  { return new A_Joueurs(ChaineConnexion).ObtenirLigne(JoueurId, Index); }
+
+     public int Ajouter(int license, string nom, string prenom, int classement, string mail, int sexe, int? club)
+  { return new AJoueurs(ChaineConnexion).Ajouter(license, nom, prenom, classement, mail, sexe, club); }
+  public int Modifier(int joueurId, int license, string nom, string prenom, int classement, string mail, int sexe, int? club)
+  { return new AJoueurs(ChaineConnexion).Modifier(joueurId, license, nom, prenom, classement, mail, sexe, club); }
+  public List<CJoueurs> Lire(string index)
+  { return new AJoueurs(ChaineConnexion).Lire(index); }
+  public CJoueurs Lire_ID(int joueurId)
+  { return new AJoueurs(ChaineConnexion).Lire_ID(joueurId); }
+  public int Supprimer(int joueurId)
+  { return new AJoueurs(ChaineConnexion).Supprimer(joueurId); }
+  public int ObtenirLigne(int joueurId, string index)
+  { return new AJoueurs(ChaineConnexion).ObtenirLigne(joueurId, index); }
  }
 }

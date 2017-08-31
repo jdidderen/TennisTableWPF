@@ -1,86 +1,98 @@
-#region Ressources extérieures
-using System;
-using System.Collections.Generic;
-using System.Text;
-#endregion
+using System.ComponentModel;
+using System.Text.RegularExpressions;
 
 namespace TennisTable.Classes
 {
- /// <summary>
- /// Classe de définition des données
- /// </summary>
- public class C_Clubs
- {
-  #region Données membres
-  private int _ClubId;
-  private string _Indice;
-  private string _Nom;
-  private string _NomCourt;
-  private string _Adresse;
-  private int _Numero;
-  private int _CodePostal;
-  private string _Ville;
-  #endregion
-  #region Constructeurs
-  public C_Clubs()
-  { }
-  public C_Clubs(string Indice_, string Nom_, string NomCourt_, string Adresse_, int Numero_, int CodePostal_, string Ville_)
-  {
-   Indice = Indice_;
-   Nom = Nom_;
-   NomCourt = NomCourt_;
-   Adresse = Adresse_;
-   Numero = Numero_;
-   CodePostal = CodePostal_;
-   Ville = Ville_;
-  }
-  public C_Clubs(int ClubId_, string Indice_, string Nom_, string NomCourt_, string Adresse_, int Numero_, int CodePostal_, string Ville_)
-   : this(Indice_, Nom_, NomCourt_, Adresse_, Numero_, CodePostal_, Ville_)
-  {
-   ClubId = ClubId_;
-  }
-  #endregion
-  #region Accesseurs
-  public int ClubId
-  {
-   get { return _ClubId; }
-   set { _ClubId = value; }
-  }
-  public string Indice
-  {
-   get { return _Indice; }
-   set { _Indice = value; }
-  }
-  public string Nom
-  {
-   get { return _Nom; }
-   set { _Nom = value; }
-  }
-  public string NomCourt
-  {
-   get { return _NomCourt; }
-   set { _NomCourt = value; }
-  }
-  public string Adresse
-  {
-   get { return _Adresse; }
-   set { _Adresse = value; }
-  }
-  public int Numero
-  {
-   get { return _Numero; }
-   set { _Numero = value; }
-  }
-  public int CodePostal
-  {
-   get { return _CodePostal; }
-   set { _CodePostal = value; }
-  }
-  public string Ville
-  {
-   get { return _Ville; }
-   set { _Ville = value; }
-  }
-  #endregion
- }
+    /// <summary>
+    /// Classe de définition des données
+    /// </summary>
+    public class CClubs : INotifyPropertyChanged, IDataErrorInfo
+    {
+        private int _clubId;
+        private string _indice;
+        private string _nom;
+        private string _nomCourt;
+        private string _adresse;
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected virtual void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        public string Error => null;
+        public string this[string columnName]
+        {
+            get
+            {
+                string result = string.Empty;
+                switch (columnName)
+                {
+                    case "Nom":
+                        if (Nom == "" && Nom == null)
+                            result = "Le nom ne peut pas être vide";
+                        else if (Nom == null || !Regex.IsMatch(Nom, @"^(\p{L}\p{M}*\p{Z}*)+$"))
+                            result = "Un nom ne peut contenir que des lettres";
+                        break;
+                    case "NomCourt":
+                        if (NomCourt == "" && NomCourt == null)
+                            result = "Le nom court ne peut pas être vide";
+                        else if (NomCourt == null || !Regex.IsMatch(NomCourt, @"^(\p{L}\p{M}*\p{Z}*)+$"))
+                            result = "Un nom court ne peut contenir que des lettres";
+                        break;
+                    case "Indice":
+                        if (Indice == "" && Indice == null)
+                            result = "L'indice du club ne peut pas être vide";
+                        break;
+                    case "Adresse":
+                        if (Adresse == "" && Adresse == null)
+                            result = "Le nom court ne peut pas être vide";
+                        break;
+                }
+
+                return result;
+            }
+        }
+
+        public CClubs()
+        { }
+        public CClubs(string indice, string nom, string nomCourt, string adresse)
+        {
+            Indice = indice;
+            Nom = nom;
+            NomCourt = nomCourt;
+            Adresse = adresse;
+        }
+        public CClubs(int clubId, string indice, string nom, string nomCourt, string adresse)
+         : this(indice, nom, nomCourt, adresse)
+        {
+            ClubId = clubId;
+        }
+
+        public int ClubId
+        {
+            get => _clubId;
+            set { _clubId = value; OnPropertyChanged("ClubId"); }
+        }
+        public string Indice
+        {
+            get => _indice;
+            set { _indice = value; OnPropertyChanged("Indice"); }
+        }
+        public string Nom
+        {
+            get => _nom;
+            set { _nom = value; OnPropertyChanged("Nom"); }
+        }
+        public string NomCourt
+        {
+            get => _nomCourt;
+            set { _nomCourt = value; OnPropertyChanged("NomCourt"); }
+        }
+        public string Adresse
+        {
+            get => _adresse;
+            set { _adresse = value; OnPropertyChanged("Adresse"); }
+        }
+    }
 }

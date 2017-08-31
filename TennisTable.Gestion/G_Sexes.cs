@@ -1,37 +1,31 @@
-#region Ressources extérieures
-using System;
 using System.Collections.Generic;
-using System.Text;
 using TennisTable.Classes;
 using TennisTable.Acces;
-#endregion
 
 namespace TennisTable.Gestion
 {
  /// <summary>
  /// Couche intermédiaire de gestion (Business Layer)
  /// </summary>
- public class G_Sexes : G_Base
+ public class GSexes : GBase
  {
-  #region Constructeurs
-  public G_Sexes()
-   : base()
+     public GSexes()
   { }
-  public G_Sexes(string sChaineConnexion)
+  public GSexes(string sChaineConnexion)
    : base(sChaineConnexion)
   { }
-  #endregion
-  public int Ajouter(string Denomination)
-  { return new A_Sexes(ChaineConnexion).Ajouter(Denomination); }
-  public int Modifier(int SexeId, string Denomination)
-  { return new A_Sexes(ChaineConnexion).Modifier(SexeId, Denomination); }
-  public List<C_Sexes> Lire(string Index)
-  { return new A_Sexes(ChaineConnexion).Lire(Index); }
-  public C_Sexes Lire_ID(int SexeId)
-  { return new A_Sexes(ChaineConnexion).Lire_ID(SexeId); }
-  public int Supprimer(int SexeId)
-  { return new A_Sexes(ChaineConnexion).Supprimer(SexeId); }
-  public int ObtenirLigne(int SexeId, string Index)
-  { return new A_Sexes(ChaineConnexion).ObtenirLigne(SexeId, Index); }
+
+     public int Ajouter(string denomination)
+  { return new ASexes(ChaineConnexion).Ajouter(denomination); }
+  public int Modifier(int sexeId, string denomination)
+  { return new ASexes(ChaineConnexion).Modifier(sexeId, denomination); }
+  public List<CSexes> Lire(string index)
+  { return new ASexes(ChaineConnexion).Lire(index); }
+  public CSexes Lire_ID(int sexeId)
+  { return new ASexes(ChaineConnexion).Lire_ID(sexeId); }
+  public int Supprimer(int sexeId)
+  { return new ASexes(ChaineConnexion).Supprimer(sexeId); }
+  public int ObtenirLigne(int sexeId, string index)
+  { return new ASexes(ChaineConnexion).ObtenirLigne(sexeId, index); }
  }
 }

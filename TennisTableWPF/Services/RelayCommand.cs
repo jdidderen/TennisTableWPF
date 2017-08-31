@@ -1,15 +1,17 @@
 ﻿using System;
 using System.Windows.Input;
 
-namespace TennisTableWPF
+namespace TennisTableWPF.Services
 {
+    /// <inheritdoc />
     /// <summary>
     /// To register commands in MMVM pattern
     /// </summary>
-    class RelayCommands : ICommand
+    internal class RelayCommands : ICommand
     {
-        readonly Action<object> _execute;
-        readonly Predicate<object> _canExecute;
+        public readonly Action<object> _execute;
+        private readonly Predicate<object> _canExecute;
+        /// <inheritdoc />
         /// <summary>
         /// Constructer takes Execute events to register in CommandManager.
         /// </summary>
@@ -17,18 +19,7 @@ namespace TennisTableWPF
         public RelayCommands(Action<object> execute)
             : this(execute, null)
         {
-            try
-            {
-                if (null == execute)
-                {
-                    throw new NotImplementedException("Not implemented");
-                }
-                _execute = execute;
-            }
-            catch (Exception)
-            {
-                throw;
-            }
+            _execute = execute ?? throw new NotImplementedException("Not implemented");
         }
         /// <summary>
         /// Constructer takes Execute and CanExcecute events to register in CommandManager.
@@ -39,16 +30,12 @@ namespace TennisTableWPF
         {
             try
             {
-                if (null == execute)
-                {
-                    _execute = null;
-                    throw new NotImplementedException("Not implemented");
-                }
-                _execute = execute;
+                _execute = execute ?? throw new NotImplementedException("Not implemented");
                 _canExecute = canExecute;
             }
             catch (Exception)
             {
+                // ignored
             }
         }
         /// <summary>
@@ -56,15 +43,10 @@ namespace TennisTableWPF
         /// </summary>
         public event EventHandler CanExecuteChanged
         {
-            add
-            {
-                CommandManager.RequerySuggested += value;
-            }
-            remove
-            {
-                CommandManager.RequerySuggested -= value;
-            }
+            add => CommandManager.RequerySuggested += value;
+            remove => CommandManager.RequerySuggested -= value;
         }
+        /// <inheritdoc />
         /// <summary>
         /// Execute method.
         /// </summary>
@@ -73,6 +55,7 @@ namespace TennisTableWPF
         {
             _execute(parameter);
         }
+        /// <inheritdoc />
         /// <summary>
         /// CanExecute method.
         /// </summary>
@@ -81,13 +64,6 @@ namespace TennisTableWPF
         public bool CanExecute(object parameter)
         {
             return _canExecute == null || _canExecute(parameter);
-        }
-        /// <summary>
-        /// InvalidateCanExecute method will initiate validation of the Command.
-        /// </summary>
-        private void InvalidateCanExecute()
-        {
-            CommandManager.InvalidateRequerySuggested();
         }
     }
 }

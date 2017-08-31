@@ -1,7 +1,6 @@
 #region Ressources extérieures
 using System;
-using System.Collections.Generic;
-using System.Text;
+
 #endregion
 
 namespace TennisTable.Classes
@@ -9,175 +8,175 @@ namespace TennisTable.Classes
  /// <summary>
  /// Classe de définition des données
  /// </summary>
- public class C_Matchs
+ public class CMatchs
  {
   #region Données membres
-  private int _MatchId;
-  private string _NumMatch;
-  private  DateTime _Date;
-  private DateTime _HeureDebut;
-  private DateTime? _HeureFin;
-  private int? _CapitaineVisite;
-  private int? _CapitaineVisiteur;
-  private string _JugeArbitre;
-  private string _LettreVisite;
-  private string _LettreVisiteur;
-  private int _ClubVisite;
-  private int _ClubVisiteur;
-  private int? _J1Visite;
-  private int? _J1Visiteur;
-  private int? _J2Visite;
-  private int? _J2Visiteur;
-  private int? _J3Visite;
-  private int? _J3Visiteur;
-  private int? _J4Visite;
-  private int? _J4Visiteur;
-  private int _Serie;
-  private string _Division;
+  private int _matchId;
+  private string _numMatch;
+  private  DateTime _date;
+  private DateTime _heureDebut;
+  private DateTime? _heureFin;
+  private int? _capitaineVisite;
+  private int? _capitaineVisiteur;
+  private string _jugeArbitre;
+  private string _lettreVisite;
+  private string _lettreVisiteur;
+  private int _clubVisite;
+  private int _clubVisiteur;
+  private int? _j1Visite;
+  private int? _j1Visiteur;
+  private int? _j2Visite;
+  private int? _j2Visiteur;
+  private int? _j3Visite;
+  private int? _j3Visiteur;
+  private int? _j4Visite;
+  private int? _j4Visiteur;
+  private int _serie;
+  private string _division;
   #endregion
   #region Constructeurs
-  public C_Matchs()
+  public CMatchs()
   { }
-  public C_Matchs(string NumMatch_,DateTime  Date_, DateTime HeureDebut_, DateTime? HeureFin_, int? CapitaineVisite_, int? CapitaineVisiteur_, string JugeArbitre_, string LettreVisite_, string LettreVisiteur_, int ClubVisite_, int ClubVisiteur_, int? J1Visite_, int? J1Visiteur_, int? J2Visite_, int? J2Visiteur_, int? J3Visite_, int? J3Visiteur_, int? J4Visite_, int? J4Visiteur_, int Serie_, string Division_)
+  public CMatchs(string numMatch,DateTime  date, DateTime heureDebut, DateTime? heureFin, int? capitaineVisite, int? capitaineVisiteur, string jugeArbitre, string lettreVisite, string lettreVisiteur, int clubVisite, int clubVisiteur, int? j1Visite, int? j1Visiteur, int? j2Visite, int? j2Visiteur, int? j3Visite, int? j3Visiteur, int? j4Visite, int? j4Visiteur, int serie, string division)
   {
-   NumMatch = NumMatch_;
-   Date = Date_;
-   HeureDebut = HeureDebut_;
-   HeureFin = HeureFin_;
-   CapitaineVisite = CapitaineVisite_;
-   CapitaineVisiteur = CapitaineVisiteur_;
-   JugeArbitre = JugeArbitre_;
-   LettreVisite = LettreVisite_;
-   LettreVisiteur = LettreVisiteur_;
-   ClubVisite = ClubVisite_;
-   ClubVisiteur = ClubVisiteur_;
-   J1Visite = J1Visite_;
-   J1Visiteur = J1Visiteur_;
-   J2Visite = J2Visite_;
-   J2Visiteur = J2Visiteur_;
-   J3Visite = J3Visite_;
-   J3Visiteur = J3Visiteur_;
-   J4Visite = J4Visite_;
-   J4Visiteur = J4Visiteur_;
-   Serie = Serie_;
-   Division = Division_;
+   NumMatch = numMatch;
+   Date = date;
+   HeureDebut = heureDebut;
+   HeureFin = heureFin;
+   CapitaineVisite = capitaineVisite;
+   CapitaineVisiteur = capitaineVisiteur;
+   JugeArbitre = jugeArbitre;
+   LettreVisite = lettreVisite;
+   LettreVisiteur = lettreVisiteur;
+   ClubVisite = clubVisite;
+   ClubVisiteur = clubVisiteur;
+   J1Visite = j1Visite;
+   J1Visiteur = j1Visiteur;
+   J2Visite = j2Visite;
+   J2Visiteur = j2Visiteur;
+   J3Visite = j3Visite;
+   J3Visiteur = j3Visiteur;
+   J4Visite = j4Visite;
+   J4Visiteur = j4Visiteur;
+   Serie = serie;
+   Division = division;
   }
-  public C_Matchs(int MatchId_, string NumMatch_,DateTime  Date_, DateTime HeureDebut_, DateTime? HeureFin_, int? CapitaineVisite_, int? CapitaineVisiteur_, string JugeArbitre_, string LettreVisite_, string LettreVisiteur_, int ClubVisite_, int ClubVisiteur_, int? J1Visite_, int? J1Visiteur_, int? J2Visite_, int? J2Visiteur_, int? J3Visite_, int? J3Visiteur_, int? J4Visite_, int? J4Visiteur_, int Serie_, string Division_)
-   : this(NumMatch_, Date_, HeureDebut_, HeureFin_, CapitaineVisite_, CapitaineVisiteur_, JugeArbitre_,LettreVisite_,LettreVisiteur_, ClubVisite_, ClubVisiteur_, J1Visite_, J1Visiteur_, J2Visite_, J2Visiteur_, J3Visite_, J3Visiteur_, J4Visite_, J4Visiteur_, Serie_, Division_)
+  public CMatchs(int matchId, string numMatch,DateTime  date, DateTime heureDebut, DateTime? heureFin, int? capitaineVisite, int? capitaineVisiteur, string jugeArbitre, string lettreVisite, string lettreVisiteur, int clubVisite, int clubVisiteur, int? j1Visite, int? j1Visiteur, int? j2Visite, int? j2Visiteur, int? j3Visite, int? j3Visiteur, int? j4Visite, int? j4Visiteur, int serie, string division)
+   : this(numMatch, date, heureDebut, heureFin, capitaineVisite, capitaineVisiteur, jugeArbitre,lettreVisite,lettreVisiteur, clubVisite, clubVisiteur, j1Visite, j1Visiteur, j2Visite, j2Visiteur, j3Visite, j3Visiteur, j4Visite, j4Visiteur, serie, division)
   {
-   MatchId = MatchId_;
+   MatchId = matchId;
   }
   #endregion
   #region Accesseurs
   public int MatchId
   {
-   get { return _MatchId; }
-   set { _MatchId = value; }
+   get => _matchId;
+      set => _matchId = value;
   }
   public string NumMatch
   {
-   get { return _NumMatch; }
-   set { _NumMatch = value; }
+   get => _numMatch;
+      set => _numMatch = value;
   }
   public DateTime  Date
   {
-   get { return _Date; }
-   set { _Date = value; }
+   get => _date;
+      set => _date = value;
   }
   public DateTime HeureDebut
   {
-   get { return _HeureDebut; }
-   set { _HeureDebut = value; }
+   get => _heureDebut;
+      set => _heureDebut = value;
   }
   public DateTime? HeureFin
   {
-   get { return _HeureFin; }
-   set { _HeureFin = value; }
+   get => _heureFin;
+      set => _heureFin = value;
   }
   public int? CapitaineVisite
   {
-  get { return _CapitaineVisite; }
-  set { _CapitaineVisite = value; }
+  get => _capitaineVisite;
+      set => _capitaineVisite = value;
   }
   public int? CapitaineVisiteur
   {
-  get { return _CapitaineVisiteur; }
-  set { _CapitaineVisiteur = value; }
-   }
+  get => _capitaineVisiteur;
+      set => _capitaineVisiteur = value;
+  }
   public string JugeArbitre
   {
-  get { return _JugeArbitre; }
-  set { _JugeArbitre = value; }
+  get => _jugeArbitre;
+      set => _jugeArbitre = value;
   }
 public string LettreVisite
   {
-  get { return _LettreVisite; }
-  set { _LettreVisite = value; }
-  }
+  get => _lettreVisite;
+    set => _lettreVisite = value;
+}
   public string LettreVisiteur
   {
-  get { return _LettreVisiteur; }
-  set { _LettreVisiteur = value; }
+  get => _lettreVisiteur;
+      set => _lettreVisiteur = value;
   }
   public int ClubVisite
   {
-   get { return _ClubVisite; }
-   set { _ClubVisite = value; }
+   get => _clubVisite;
+      set => _clubVisite = value;
   }
   public int ClubVisiteur
   {
-   get { return _ClubVisiteur; }
-   set { _ClubVisiteur = value; }
+   get => _clubVisiteur;
+      set => _clubVisiteur = value;
   }
   public int? J1Visite
   {
-   get { return _J1Visite; }
-   set { _J1Visite = value; }
+   get => _j1Visite;
+      set => _j1Visite = value;
   }
   public int? J1Visiteur
   {
-   get { return _J1Visiteur; }
-   set { _J1Visiteur = value; }
+   get => _j1Visiteur;
+      set => _j1Visiteur = value;
   }
   public int? J2Visite
   {
-   get { return _J2Visite; }
-   set { _J2Visite = value; }
+   get => _j2Visite;
+      set => _j2Visite = value;
   }
   public int? J2Visiteur
   {
-   get { return _J2Visiteur; }
-   set { _J2Visiteur = value; }
+   get => _j2Visiteur;
+      set => _j2Visiteur = value;
   }
   public int? J3Visite
   {
-   get { return _J3Visite; }
-   set { _J3Visite = value; }
+   get => _j3Visite;
+      set => _j3Visite = value;
   }
   public int? J3Visiteur
   {
-   get { return _J3Visiteur; }
-   set { _J3Visiteur = value; }
+   get => _j3Visiteur;
+      set => _j3Visiteur = value;
   }
   public int? J4Visite
   {
-   get { return _J4Visite; }
-   set { _J4Visite = value; }
+   get => _j4Visite;
+      set => _j4Visite = value;
   }
   public int? J4Visiteur
   {
-   get { return _J4Visiteur; }
-   set { _J4Visiteur = value; }
+   get => _j4Visiteur;
+      set => _j4Visiteur = value;
   }
   public int Serie
   {
-   get { return _Serie; }
-   set { _Serie = value; }
+   get => _serie;
+      set => _serie = value;
   }
   public string Division
   {
-   get { return _Division; }
-   set { _Division = value; }
+   get => _division;
+      set => _division = value;
   }
   #endregion
  }

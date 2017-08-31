@@ -1,6 +1,5 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:local="clr-namespace:TennisTableWPF">
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <ResourceDictionary.MergedDictionaries>
         <!-- MahApps.Metro resource dictionaries. Make sure that all file names are Case Sensitive! -->
         <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Controls.xaml" />
@@ -46,6 +45,15 @@ Path=(Validation.Errors)[0].ErrorContent}"/>
         </Style.Triggers>
     </Style>
     <Style TargetType="ComboBox">
+        <Style.Triggers>
+            <Trigger Property="Validation.HasError" Value="true">
+                <Setter Property="ToolTip"
+          Value="{Binding RelativeSource={x:Static RelativeSource.Self},
+Path=(Validation.Errors)[0].ErrorContent}"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+    <Style TargetType="RichTextBox">
         <Style.Triggers>
             <Trigger Property="Validation.HasError" Value="true">
                 <Setter Property="ToolTip"

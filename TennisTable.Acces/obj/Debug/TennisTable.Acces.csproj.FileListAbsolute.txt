@@ -1,21 +1,16 @@
-E:\Documents\Google Drive\HEL\programmation[3eme]\TennisTableWPF\TennisTable.Acces\obj\Debug\TennisTable.Acces.csprojResolveAssemblyReference.cache
-E:\Documents\Google Drive\HEL\programmation[3eme]\TennisTableWPF\TennisTable.Acces\bin\Debug\TennisTable.Acces.dll
-E:\Documents\Google Drive\HEL\programmation[3eme]\TennisTableWPF\TennisTable.Acces\bin\Debug\TennisTable.Acces.pdb
-E:\Documents\Google Drive\HEL\programmation[3eme]\TennisTableWPF\TennisTable.Acces\bin\Debug\TennisTable.Classes.dll
-E:\Documents\Google Drive\HEL\programmation[3eme]\TennisTableWPF\TennisTable.Acces\bin\Debug\TennisTable.Classes.pdb
-E:\Documents\Google Drive\HEL\programmation[3eme]\TennisTableWPF\TennisTable.Acces\obj\Debug\TennisTable.Acces.dll
-E:\Documents\Google Drive\HEL\programmation[3eme]\TennisTableWPF\TennisTable.Acces\obj\Debug\TennisTable.Acces.pdb
-D:\Documents\Desktop\TennisTableWPF\TennisTable.Acces\bin\Debug\TennisTable.Acces.dll
-D:\Documents\Desktop\TennisTableWPF\TennisTable.Acces\bin\Debug\TennisTable.Acces.pdb
-D:\Documents\Desktop\TennisTableWPF\TennisTable.Acces\bin\Debug\TennisTable.Classes.dll
-D:\Documents\Desktop\TennisTableWPF\TennisTable.Acces\bin\Debug\TennisTable.Classes.pdb
-D:\Documents\Desktop\TennisTableWPF\TennisTable.Acces\obj\Debug\TennisTable.Acces.csprojResolveAssemblyReference.cache
-D:\Documents\Desktop\TennisTableWPF\TennisTable.Acces\obj\Debug\TennisTable.Acces.dll
-D:\Documents\Desktop\TennisTableWPF\TennisTable.Acces\obj\Debug\TennisTable.Acces.pdb
-d:\documents\documents\visual studio 2017\Projects\TennisTableWPF\TennisTable.Acces\obj\Debug\TennisTable.Acces.csprojResolveAssemblyReference.cache
-d:\documents\documents\visual studio 2017\Projects\TennisTableWPF\TennisTable.Acces\obj\Debug\TennisTable.Acces.dll
-d:\documents\documents\visual studio 2017\Projects\TennisTableWPF\TennisTable.Acces\obj\Debug\TennisTable.Acces.pdb
+d:\documents\documents\visual studio 2017\Projects\TennisTableWPF\TennisTable.Acces\bin\Debug\A_Base.cs
+d:\documents\documents\visual studio 2017\Projects\TennisTableWPF\TennisTable.Acces\bin\Debug\A_Classements.cs
+d:\documents\documents\visual studio 2017\Projects\TennisTableWPF\TennisTable.Acces\bin\Debug\A_Clubs.cs
+d:\documents\documents\visual studio 2017\Projects\TennisTableWPF\TennisTable.Acces\bin\Debug\A_Joueurs.cs
+d:\documents\documents\visual studio 2017\Projects\TennisTableWPF\TennisTable.Acces\bin\Debug\A_Matchs.cs
+d:\documents\documents\visual studio 2017\Projects\TennisTableWPF\TennisTable.Acces\bin\Debug\A_Rencontres.cs
+d:\documents\documents\visual studio 2017\Projects\TennisTableWPF\TennisTable.Acces\bin\Debug\A_SchemasRencontres.cs
+d:\documents\documents\visual studio 2017\Projects\TennisTableWPF\TennisTable.Acces\bin\Debug\A_Series.cs
+d:\documents\documents\visual studio 2017\Projects\TennisTableWPF\TennisTable.Acces\bin\Debug\A_Sexes.cs
 d:\documents\documents\visual studio 2017\Projects\TennisTableWPF\TennisTable.Acces\bin\Debug\TennisTable.Acces.dll
 d:\documents\documents\visual studio 2017\Projects\TennisTableWPF\TennisTable.Acces\bin\Debug\TennisTable.Acces.pdb
 d:\documents\documents\visual studio 2017\Projects\TennisTableWPF\TennisTable.Acces\bin\Debug\TennisTable.Classes.dll
 d:\documents\documents\visual studio 2017\Projects\TennisTableWPF\TennisTable.Acces\bin\Debug\TennisTable.Classes.pdb
+d:\documents\documents\visual studio 2017\Projects\TennisTableWPF\TennisTable.Acces\obj\Debug\TennisTable.Acces.csprojResolveAssemblyReference.cache
+d:\documents\documents\visual studio 2017\Projects\TennisTableWPF\TennisTable.Acces\obj\Debug\TennisTable.Acces.dll
+d:\documents\documents\visual studio 2017\Projects\TennisTableWPF\TennisTable.Acces\obj\Debug\TennisTable.Acces.pdb

@@ -1,58 +1,48 @@
-#region Ressources extérieures
-using System;
-using System.Collections.Generic;
-using System.Text;
-#endregion
-
 namespace TennisTable.Classes
 {
  /// <summary>
  /// Classe de définition des données
  /// </summary>
- public class C_SrIds
+ public class CSrIds
  {
-  #region Données membres
-  private int _RencId;
-  private int _MatchId;
-  private int _SrId;
-  private string _Score;
-  #endregion
-  #region Constructeurs
-  public C_SrIds()
+     private int _rencId;
+  private int _matchId;
+  private int _srId;
+  private string _score;
+
+     public CSrIds()
   { }
-  public C_SrIds(int MatchId_, int SrId_, string Score_)
+  public CSrIds(int matchId, int srId, string score)
   {
-   MatchId = MatchId_;
-   SrId = SrId_;
-   Score = Score_;
+   MatchId = matchId;
+   SrId = srId;
+   Score = score;
   }
-  public C_SrIds(int RencId_, int MatchId_, int SrId_, string Score_)
-   : this(MatchId_, SrId_, Score_)
+  public CSrIds(int rencId, int matchId, int srId, string score)
+   : this(matchId, srId, score)
   {
-   RencId = RencId_;
+   RencId = rencId;
   }
-  #endregion
-  #region Accesseurs
-  public int RencId
+
+     public int RencId
   {
-   get { return _RencId; }
-   set { _RencId = value; }
+   get => _rencId;
+      set => _rencId = value;
   }
   public int MatchId
   {
-   get { return _MatchId; }
-   set { _MatchId = value; }
+   get => _matchId;
+      set => _matchId = value;
   }
   public int SrId
   {
-   get { return _SrId; }
-   set { _SrId = value; }
+   get => _srId;
+      set => _srId = value;
   }
   public string Score
   {
-   get { return _Score; }
-   set { _Score = value; }
+   get => _score;
+      set => _score = value;
   }
-  #endregion
  }
 }

@@ -1,21 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-
-namespace TennisTableWPF.Services
+﻿namespace TennisTableWPF.Services
 {
     public enum MessageBoxButton
     {
         // Summary:
         //     The message box displays an OK button.
-        OK = 0,
+        Ok = 0,
         //
         // Summary:
         //     The message box displays OK and Cancel buttons.
-        OKCancel = 1,
+        OkCancel = 1,
         //
         // Summary:
         //     The message box displays Yes, No, and Cancel buttons.
@@ -34,7 +27,7 @@ namespace TennisTableWPF.Services
         //
         // Summary:
         //     The result value of the message box is OK.
-        OK = 1,
+        Ok = 1,
         //
         // Summary:
         //     The result value of the message box is Cancel.

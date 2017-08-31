@@ -1,37 +1,31 @@
-#region Ressources extérieures
-using System;
 using System.Collections.Generic;
-using System.Text;
 using TennisTable.Classes;
 using TennisTable.Acces;
-#endregion
 
 namespace TennisTable.Gestion
 {
  /// <summary>
  /// Couche intermédiaire de gestion (Business Layer)
  /// </summary>
- public class G_SchemasRencontres : G_Base
+ public class GSchemasRencontres : GBase
  {
-  #region Constructeurs
-  public G_SchemasRencontres()
-   : base()
+     public GSchemasRencontres()
   { }
-  public G_SchemasRencontres(string sChaineConnexion)
+  public GSchemasRencontres(string sChaineConnexion)
    : base(sChaineConnexion)
   { }
-  #endregion
-  public int Ajouter(int JoueurVisite, int JoueurVisiteur, int Ordre, string Type)
-  { return new A_SchemasRencontres(ChaineConnexion).Ajouter(JoueurVisite, JoueurVisiteur, Ordre, Type); }
-  public int Modifier(int SrId, int JoueurVisite, int JoueurVisiteur, int Ordre, string Type)
-  { return new A_SchemasRencontres(ChaineConnexion).Modifier(SrId, JoueurVisite, JoueurVisiteur, Ordre, Type); }
-  public List<C_SchemasRencontres> Lire(string Index)
-  { return new A_SchemasRencontres(ChaineConnexion).Lire(Index); }
-  public C_SchemasRencontres Lire_ID(int SrId)
-  { return new A_SchemasRencontres(ChaineConnexion).Lire_ID(SrId); }
-  public int Supprimer(int SrId)
-  { return new A_SchemasRencontres(ChaineConnexion).Supprimer(SrId); }
-  public int ObtenirLigne(int SrId, string Index)
-  { return new A_SchemasRencontres(ChaineConnexion).ObtenirLigne(SrId, Index); }
+
+     public int Ajouter(int joueurVisite, int joueurVisiteur, int ordre, string type)
+  { return new ASchemasRencontres(ChaineConnexion).Ajouter(joueurVisite, joueurVisiteur, ordre, type); }
+  public int Modifier(int srId, int joueurVisite, int joueurVisiteur, int ordre, string type)
+  { return new ASchemasRencontres(ChaineConnexion).Modifier(srId, joueurVisite, joueurVisiteur, ordre, type); }
+  public List<CSchemasRencontres> Lire(string index)
+  { return new ASchemasRencontres(ChaineConnexion).Lire(index); }
+  public CSchemasRencontres Lire_ID(int srId)
+  { return new ASchemasRencontres(ChaineConnexion).Lire_ID(srId); }
+  public int Supprimer(int srId)
+  { return new ASchemasRencontres(ChaineConnexion).Supprimer(srId); }
+  public int ObtenirLigne(int srId, string index)
+  { return new ASchemasRencontres(ChaineConnexion).ObtenirLigne(srId, index); }
  }
 }

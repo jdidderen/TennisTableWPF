@@ -1,86 +1,46 @@
-E:\Documents\Google Drive\HEL\programmation[3eme]\TennisTableWPF\TennisTableWPF\bin\Debug\TennisTableWPF.exe.config
-D:\Documents\Desktop\TennisTableWPF\TennisTableWPF\bin\Debug\TennisTableWPF.exe.config
-D:\Documents\Desktop\TennisTableWPF\TennisTableWPF\bin\Debug\TennisTableWPF.exe
-D:\Documents\Desktop\TennisTableWPF\TennisTableWPF\bin\Debug\TennisTableWPF.pdb
-D:\Documents\Desktop\TennisTableWPF\TennisTableWPF\bin\Debug\MahApps.Metro.dll
-D:\Documents\Desktop\TennisTableWPF\TennisTableWPF\bin\Debug\MaterialDesignColors.dll
-D:\Documents\Desktop\TennisTableWPF\TennisTableWPF\bin\Debug\MaterialDesignThemes.Wpf.dll
-D:\Documents\Desktop\TennisTableWPF\TennisTableWPF\bin\Debug\System.Windows.Interactivity.dll
-D:\Documents\Desktop\TennisTableWPF\TennisTableWPF\bin\Debug\TennisTable.Acces.dll
-D:\Documents\Desktop\TennisTableWPF\TennisTableWPF\bin\Debug\TennisTable.Classes.dll
-D:\Documents\Desktop\TennisTableWPF\TennisTableWPF\bin\Debug\TennisTable.Gestion.dll
-D:\Documents\Desktop\TennisTableWPF\TennisTableWPF\bin\Debug\Xamarin.Forms.Core.dll
-D:\Documents\Desktop\TennisTableWPF\TennisTableWPF\bin\Debug\Xamarin.Forms.Platform.dll
-D:\Documents\Desktop\TennisTableWPF\TennisTableWPF\bin\Debug\Xamarin.Forms.Xaml.dll
-D:\Documents\Desktop\TennisTableWPF\TennisTableWPF\bin\Debug\TennisTable.Acces.pdb
-D:\Documents\Desktop\TennisTableWPF\TennisTableWPF\bin\Debug\TennisTable.Classes.pdb
-D:\Documents\Desktop\TennisTableWPF\TennisTableWPF\bin\Debug\TennisTable.Gestion.pdb
-D:\Documents\Desktop\TennisTableWPF\TennisTableWPF\bin\Debug\MahApps.Metro.pdb
-D:\Documents\Desktop\TennisTableWPF\TennisTableWPF\bin\Debug\MahApps.Metro.xml
-D:\Documents\Desktop\TennisTableWPF\TennisTableWPF\bin\Debug\MaterialDesignThemes.Wpf.pdb
-D:\Documents\Desktop\TennisTableWPF\TennisTableWPF\bin\Debug\MaterialDesignThemes.Wpf.xml
-D:\Documents\Desktop\TennisTableWPF\TennisTableWPF\bin\Debug\Xamarin.Forms.Core.pdb
-D:\Documents\Desktop\TennisTableWPF\TennisTableWPF\bin\Debug\Xamarin.Forms.Core.xml
-D:\Documents\Desktop\TennisTableWPF\TennisTableWPF\bin\Debug\Xamarin.Forms.Platform.pdb
-D:\Documents\Desktop\TennisTableWPF\TennisTableWPF\bin\Debug\Xamarin.Forms.Xaml.pdb
-D:\Documents\Desktop\TennisTableWPF\TennisTableWPF\bin\Debug\Xamarin.Forms.Xaml.xml
-D:\Documents\Desktop\TennisTableWPF\TennisTableWPF\obj\Debug\TennisTableWPF.csprojResolveAssemblyReference.cache
-D:\Documents\Desktop\TennisTableWPF\TennisTableWPF\obj\Debug\MainWindow.g.cs
-D:\Documents\Desktop\TennisTableWPF\TennisTableWPF\obj\Debug\Views\JoueursView.g.cs
-D:\Documents\Desktop\TennisTableWPF\TennisTableWPF\obj\Debug\App.g.cs
-D:\Documents\Desktop\TennisTableWPF\TennisTableWPF\obj\Debug\GeneratedInternalTypeHelper.g.cs
-D:\Documents\Desktop\TennisTableWPF\TennisTableWPF\obj\Debug\TennisTableWPF_MarkupCompile.cache
-D:\Documents\Desktop\TennisTableWPF\TennisTableWPF\obj\Debug\TennisTableWPF_MarkupCompile.lref
-D:\Documents\Desktop\TennisTableWPF\TennisTableWPF\obj\Debug\App.baml
-D:\Documents\Desktop\TennisTableWPF\TennisTableWPF\obj\Debug\MainWindow.baml
-D:\Documents\Desktop\TennisTableWPF\TennisTableWPF\obj\Debug\Views\JoueursView.baml
-D:\Documents\Desktop\TennisTableWPF\TennisTableWPF\obj\Debug\TennisTableWPF.g.resources
-D:\Documents\Desktop\TennisTableWPF\TennisTableWPF\obj\Debug\TennisTableWPF.Properties.Resources.resources
-D:\Documents\Desktop\TennisTableWPF\TennisTableWPF\obj\Debug\TennisTableWPF.csproj.GenerateResource.Cache
-D:\Documents\Desktop\TennisTableWPF\TennisTableWPF\obj\Debug\TennisTableWPF.exe
-D:\Documents\Desktop\TennisTableWPF\TennisTableWPF\obj\Debug\TennisTableWPF.pdb
-D:\Documents\Desktop\TennisTableWPF\TennisTableWPF\obj\Debug\Skin.baml
-D:\Documents\Documents\Visual Studio 2017\Projects\TennisTableWPF\TennisTableWPF\bin\Debug\TennisTableWPF.exe.config
-D:\Documents\Documents\Visual Studio 2017\Projects\TennisTableWPF\TennisTableWPF\bin\Debug\TennisTableWPF.exe
-D:\Documents\Documents\Visual Studio 2017\Projects\TennisTableWPF\TennisTableWPF\bin\Debug\TennisTableWPF.pdb
-D:\Documents\Documents\Visual Studio 2017\Projects\TennisTableWPF\TennisTableWPF\bin\Debug\MahApps.Metro.dll
-D:\Documents\Documents\Visual Studio 2017\Projects\TennisTableWPF\TennisTableWPF\bin\Debug\MaterialDesignColors.dll
-D:\Documents\Documents\Visual Studio 2017\Projects\TennisTableWPF\TennisTableWPF\bin\Debug\MaterialDesignThemes.Wpf.dll
-D:\Documents\Documents\Visual Studio 2017\Projects\TennisTableWPF\TennisTableWPF\bin\Debug\System.Windows.Interactivity.dll
-D:\Documents\Documents\Visual Studio 2017\Projects\TennisTableWPF\TennisTableWPF\bin\Debug\TennisTable.Acces.dll
-D:\Documents\Documents\Visual Studio 2017\Projects\TennisTableWPF\TennisTableWPF\bin\Debug\TennisTable.Classes.dll
-D:\Documents\Documents\Visual Studio 2017\Projects\TennisTableWPF\TennisTableWPF\bin\Debug\TennisTable.Gestion.dll
-D:\Documents\Documents\Visual Studio 2017\Projects\TennisTableWPF\TennisTableWPF\bin\Debug\Xamarin.Forms.Core.dll
-D:\Documents\Documents\Visual Studio 2017\Projects\TennisTableWPF\TennisTableWPF\bin\Debug\Xamarin.Forms.Platform.dll
-D:\Documents\Documents\Visual Studio 2017\Projects\TennisTableWPF\TennisTableWPF\bin\Debug\Xamarin.Forms.Xaml.dll
-D:\Documents\Documents\Visual Studio 2017\Projects\TennisTableWPF\TennisTableWPF\bin\Debug\TennisTable.Acces.pdb
-D:\Documents\Documents\Visual Studio 2017\Projects\TennisTableWPF\TennisTableWPF\bin\Debug\TennisTable.Classes.pdb
-D:\Documents\Documents\Visual Studio 2017\Projects\TennisTableWPF\TennisTableWPF\bin\Debug\TennisTable.Gestion.pdb
-D:\Documents\Documents\Visual Studio 2017\Projects\TennisTableWPF\TennisTableWPF\bin\Debug\MahApps.Metro.pdb
-D:\Documents\Documents\Visual Studio 2017\Projects\TennisTableWPF\TennisTableWPF\bin\Debug\MahApps.Metro.xml
-D:\Documents\Documents\Visual Studio 2017\Projects\TennisTableWPF\TennisTableWPF\bin\Debug\MaterialDesignThemes.Wpf.pdb
-D:\Documents\Documents\Visual Studio 2017\Projects\TennisTableWPF\TennisTableWPF\bin\Debug\MaterialDesignThemes.Wpf.xml
-D:\Documents\Documents\Visual Studio 2017\Projects\TennisTableWPF\TennisTableWPF\bin\Debug\Xamarin.Forms.Core.pdb
-D:\Documents\Documents\Visual Studio 2017\Projects\TennisTableWPF\TennisTableWPF\bin\Debug\Xamarin.Forms.Core.xml
-D:\Documents\Documents\Visual Studio 2017\Projects\TennisTableWPF\TennisTableWPF\bin\Debug\Xamarin.Forms.Platform.pdb
-D:\Documents\Documents\Visual Studio 2017\Projects\TennisTableWPF\TennisTableWPF\bin\Debug\Xamarin.Forms.Xaml.pdb
-D:\Documents\Documents\Visual Studio 2017\Projects\TennisTableWPF\TennisTableWPF\bin\Debug\Xamarin.Forms.Xaml.xml
-D:\Documents\Documents\Visual Studio 2017\Projects\TennisTableWPF\TennisTableWPF\obj\Debug\TennisTableWPF.csprojResolveAssemblyReference.cache
-D:\Documents\Documents\Visual Studio 2017\Projects\TennisTableWPF\TennisTableWPF\obj\Debug\MainWindow.g.cs
-D:\Documents\Documents\Visual Studio 2017\Projects\TennisTableWPF\TennisTableWPF\obj\Debug\Views\JoueursView.g.cs
-D:\Documents\Documents\Visual Studio 2017\Projects\TennisTableWPF\TennisTableWPF\obj\Debug\App.g.cs
-D:\Documents\Documents\Visual Studio 2017\Projects\TennisTableWPF\TennisTableWPF\obj\Debug\GeneratedInternalTypeHelper.g.cs
-D:\Documents\Documents\Visual Studio 2017\Projects\TennisTableWPF\TennisTableWPF\obj\Debug\TennisTableWPF_MarkupCompile.cache
-D:\Documents\Documents\Visual Studio 2017\Projects\TennisTableWPF\TennisTableWPF\obj\Debug\TennisTableWPF_MarkupCompile.lref
-D:\Documents\Documents\Visual Studio 2017\Projects\TennisTableWPF\TennisTableWPF\obj\Debug\MainWindow.baml
-D:\Documents\Documents\Visual Studio 2017\Projects\TennisTableWPF\TennisTableWPF\obj\Debug\Skin.baml
-D:\Documents\Documents\Visual Studio 2017\Projects\TennisTableWPF\TennisTableWPF\obj\Debug\Views\JoueursView.baml
-D:\Documents\Documents\Visual Studio 2017\Projects\TennisTableWPF\TennisTableWPF\obj\Debug\TennisTableWPF.g.resources
-D:\Documents\Documents\Visual Studio 2017\Projects\TennisTableWPF\TennisTableWPF\obj\Debug\TennisTableWPF.Properties.Resources.resources
-D:\Documents\Documents\Visual Studio 2017\Projects\TennisTableWPF\TennisTableWPF\obj\Debug\TennisTableWPF.csproj.GenerateResource.Cache
-D:\Documents\Documents\Visual Studio 2017\Projects\TennisTableWPF\TennisTableWPF\obj\Debug\TennisTableWPF.exe
-D:\Documents\Documents\Visual Studio 2017\Projects\TennisTableWPF\TennisTableWPF\obj\Debug\TennisTableWPF.pdb
-D:\Documents\Documents\Visual Studio 2017\Projects\TennisTableWPF\TennisTableWPF\obj\Debug\App.baml
+d:\documents\documents\visual studio 2017\Projects\TennisTableWPF\TennisTableWPF\bin\Debug\A_Base.cs
+d:\documents\documents\visual studio 2017\Projects\TennisTableWPF\TennisTableWPF\bin\Debug\A_Classements.cs
+d:\documents\documents\visual studio 2017\Projects\TennisTableWPF\TennisTableWPF\bin\Debug\A_Clubs.cs
+d:\documents\documents\visual studio 2017\Projects\TennisTableWPF\TennisTableWPF\bin\Debug\A_Joueurs.cs
+d:\documents\documents\visual studio 2017\Projects\TennisTableWPF\TennisTableWPF\bin\Debug\A_Matchs.cs
+d:\documents\documents\visual studio 2017\Projects\TennisTableWPF\TennisTableWPF\bin\Debug\A_Rencontres.cs
+d:\documents\documents\visual studio 2017\Projects\TennisTableWPF\TennisTableWPF\bin\Debug\A_SchemasRencontres.cs
+d:\documents\documents\visual studio 2017\Projects\TennisTableWPF\TennisTableWPF\bin\Debug\A_Series.cs
+d:\documents\documents\visual studio 2017\Projects\TennisTableWPF\TennisTableWPF\bin\Debug\A_Sexes.cs
 d:\documents\documents\visual studio 2017\Projects\TennisTableWPF\TennisTableWPF\bin\Debug\Resources\background.jpg
+d:\documents\documents\visual studio 2017\Projects\TennisTableWPF\TennisTableWPF\bin\Debug\TennisTableWPF.exe.config
+d:\documents\documents\visual studio 2017\Projects\TennisTableWPF\TennisTableWPF\bin\Debug\TennisTableWPF.exe
+d:\documents\documents\visual studio 2017\Projects\TennisTableWPF\TennisTableWPF\bin\Debug\TennisTableWPF.pdb
+d:\documents\documents\visual studio 2017\Projects\TennisTableWPF\TennisTableWPF\bin\Debug\MahApps.Metro.dll
+d:\documents\documents\visual studio 2017\Projects\TennisTableWPF\TennisTableWPF\bin\Debug\Microsoft.Expression.Interactions.dll
+d:\documents\documents\visual studio 2017\Projects\TennisTableWPF\TennisTableWPF\bin\Debug\System.Windows.Interactivity.dll
+d:\documents\documents\visual studio 2017\Projects\TennisTableWPF\TennisTableWPF\bin\Debug\TennisTable.Acces.dll
+d:\documents\documents\visual studio 2017\Projects\TennisTableWPF\TennisTableWPF\bin\Debug\TennisTable.Classes.dll
+d:\documents\documents\visual studio 2017\Projects\TennisTableWPF\TennisTableWPF\bin\Debug\TennisTable.Gestion.dll
+d:\documents\documents\visual studio 2017\Projects\TennisTableWPF\TennisTableWPF\bin\Debug\TennisTable.Acces.pdb
+d:\documents\documents\visual studio 2017\Projects\TennisTableWPF\TennisTableWPF\bin\Debug\TennisTable.Classes.pdb
+d:\documents\documents\visual studio 2017\Projects\TennisTableWPF\TennisTableWPF\bin\Debug\TennisTable.Gestion.pdb
+d:\documents\documents\visual studio 2017\Projects\TennisTableWPF\TennisTableWPF\bin\Debug\MahApps.Metro.pdb
+d:\documents\documents\visual studio 2017\Projects\TennisTableWPF\TennisTableWPF\bin\Debug\MahApps.Metro.xml
+d:\documents\documents\visual studio 2017\Projects\TennisTableWPF\TennisTableWPF\bin\Debug\Microsoft.Expression.Interactions.xml
+d:\documents\documents\visual studio 2017\Projects\TennisTableWPF\TennisTableWPF\obj\Debug\TennisTableWPF.csprojResolveAssemblyReference.cache
+d:\documents\documents\visual studio 2017\Projects\TennisTableWPF\TennisTableWPF\obj\Debug\Skin.baml
+d:\documents\documents\visual studio 2017\Projects\TennisTableWPF\TennisTableWPF\obj\Debug\Views\ClubsView.baml
+d:\documents\documents\visual studio 2017\Projects\TennisTableWPF\TennisTableWPF\obj\Debug\Views\JoueursView.baml
+d:\documents\documents\visual studio 2017\Projects\TennisTableWPF\TennisTableWPF\obj\Debug\Views\SexesView.baml
+d:\documents\documents\visual studio 2017\Projects\TennisTableWPF\TennisTableWPF\obj\Debug\App.baml
+d:\documents\documents\visual studio 2017\Projects\TennisTableWPF\TennisTableWPF\obj\Debug\MainWindow.g.cs
+d:\documents\documents\visual studio 2017\Projects\TennisTableWPF\TennisTableWPF\obj\Debug\Views\ClubsView.g.cs
+d:\documents\documents\visual studio 2017\Projects\TennisTableWPF\TennisTableWPF\obj\Debug\Views\JoueursView.g.cs
+d:\documents\documents\visual studio 2017\Projects\TennisTableWPF\TennisTableWPF\obj\Debug\Views\SexesView.g.cs
+d:\documents\documents\visual studio 2017\Projects\TennisTableWPF\TennisTableWPF\obj\Debug\App.g.cs
 d:\documents\documents\visual studio 2017\Projects\TennisTableWPF\TennisTableWPF\obj\Debug\TennisTableWPF_Content.g.cs
-d:\documents\documents\visual studio 2017\Projects\TennisTableWPF\TennisTableWPF\bin\Debug\MaterialDesignColors.pdb
+d:\documents\documents\visual studio 2017\Projects\TennisTableWPF\TennisTableWPF\obj\Debug\GeneratedInternalTypeHelper.g.cs
+d:\documents\documents\visual studio 2017\Projects\TennisTableWPF\TennisTableWPF\obj\Debug\TennisTableWPF_MarkupCompile.cache
+d:\documents\documents\visual studio 2017\Projects\TennisTableWPF\TennisTableWPF\obj\Debug\TennisTableWPF_MarkupCompile.lref
+d:\documents\documents\visual studio 2017\Projects\TennisTableWPF\TennisTableWPF\obj\Debug\MainWindow.baml
+d:\documents\documents\visual studio 2017\Projects\TennisTableWPF\TennisTableWPF\obj\Debug\TennisTableWPF.g.resources
+d:\documents\documents\visual studio 2017\Projects\TennisTableWPF\TennisTableWPF\obj\Debug\TennisTableWPF.Properties.Resources.resources
+d:\documents\documents\visual studio 2017\Projects\TennisTableWPF\TennisTableWPF\obj\Debug\TennisTableWPF.csproj.GenerateResource.Cache
+d:\documents\documents\visual studio 2017\Projects\TennisTableWPF\TennisTableWPF\obj\Debug\TennisTableWPF.exe
+d:\documents\documents\visual studio 2017\Projects\TennisTableWPF\TennisTableWPF\obj\Debug\TennisTableWPF.pdb

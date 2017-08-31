@@ -1,37 +1,32 @@
-#region Ressources extérieures
 using System;
 using System.Collections.Generic;
-using System.Text;
 using TennisTable.Classes;
 using TennisTable.Acces;
-#endregion
 
 namespace TennisTable.Gestion
 {
  /// <summary>
  /// Couche intermédiaire de gestion (Business Layer)
  /// </summary>
- public class G_Matchs : G_Base
+ public class GMatchs : GBase
  {
-  #region Constructeurs
-  public G_Matchs()
-   : base()
+     public GMatchs()
   { }
-  public G_Matchs(string sChaineConnexion)
+  public GMatchs(string sChaineConnexion)
    : base(sChaineConnexion)
   { }
-  #endregion
-  public int Ajouter(string NumMatch,DateTime  Date, DateTime HeureDebut, DateTime? HeureFin, int? CapitaineVisite, int? CapitaineVisiteur, string JugeArbitre, string LettreVisite, string LettreVisiteur, int ClubVisite, int ClubVisiteur, int? J1Visite, int? J1Visiteur, int? J2Visite, int? J2Visiteur, int? J3Visite, int? J3Visiteur, int? J4Visite, int? J4Visiteur, int Serie, string Division)
-  { return new A_Matchs(ChaineConnexion).Ajouter(NumMatch, Date, HeureDebut, HeureFin,CapitaineVisite,CapitaineVisiteur,JugeArbitre,LettreVisite,LettreVisiteur, ClubVisite, ClubVisiteur, J1Visite, J1Visiteur, J2Visite, J2Visiteur, J3Visite, J3Visiteur, J4Visite, J4Visiteur, Serie, Division); }
-  public int Modifier(int MatchId, string NumMatch,DateTime  Date, DateTime HeureDebut, DateTime? HeureFin, int? CapitaineVisite, int? CapitaineVisiteur, string JugeArbitre, string LettreVisite, string LettreVisiteur, int ClubVisite, int ClubVisiteur, int? J1Visite, int? J1Visiteur, int? J2Visite, int? J2Visiteur, int? J3Visite, int? J3Visiteur, int? J4Visite, int? J4Visiteur, int Serie, string Division)
-  { return new A_Matchs(ChaineConnexion).Modifier(MatchId, NumMatch, Date, HeureDebut, HeureFin,CapitaineVisite,CapitaineVisiteur,JugeArbitre,LettreVisite,LettreVisiteur,ClubVisite, ClubVisiteur, J1Visite, J1Visiteur, J2Visite, J2Visiteur, J3Visite, J3Visiteur, J4Visite, J4Visiteur, Serie, Division); }
-  public List<C_Matchs> Lire(string Index)
-  { return new A_Matchs(ChaineConnexion).Lire(Index); }
-  public C_Matchs Lire_ID(int MatchId)
-  { return new A_Matchs(ChaineConnexion).Lire_ID(MatchId); }
-  public int Supprimer(int MatchId)
-  { return new A_Matchs(ChaineConnexion).Supprimer(MatchId); }
-  public int ObtenirLigne(int MatchId, string Index)
-  { return new A_Matchs(ChaineConnexion).ObtenirLigne(MatchId, Index); }
+
+     public int Ajouter(string numMatch,DateTime  date, DateTime heureDebut, DateTime? heureFin, int? capitaineVisite, int? capitaineVisiteur, string jugeArbitre, string lettreVisite, string lettreVisiteur, int clubVisite, int clubVisiteur, int? j1Visite, int? j1Visiteur, int? j2Visite, int? j2Visiteur, int? j3Visite, int? j3Visiteur, int? j4Visite, int? j4Visiteur, int serie, string division)
+  { return new AMatchs(ChaineConnexion).Ajouter(numMatch, date, heureDebut, heureFin,capitaineVisite,capitaineVisiteur,jugeArbitre,lettreVisite,lettreVisiteur, clubVisite, clubVisiteur, j1Visite, j1Visiteur, j2Visite, j2Visiteur, j3Visite, j3Visiteur, j4Visite, j4Visiteur, serie, division); }
+  public int Modifier(int matchId, string numMatch,DateTime  date, DateTime heureDebut, DateTime? heureFin, int? capitaineVisite, int? capitaineVisiteur, string jugeArbitre, string lettreVisite, string lettreVisiteur, int clubVisite, int clubVisiteur, int? j1Visite, int? j1Visiteur, int? j2Visite, int? j2Visiteur, int? j3Visite, int? j3Visiteur, int? j4Visite, int? j4Visiteur, int serie, string division)
+  { return new AMatchs(ChaineConnexion).Modifier(matchId, numMatch, date, heureDebut, heureFin,capitaineVisite,capitaineVisiteur,jugeArbitre,lettreVisite,lettreVisiteur,clubVisite, clubVisiteur, j1Visite, j1Visiteur, j2Visite, j2Visiteur, j3Visite, j3Visiteur, j4Visite, j4Visiteur, serie, division); }
+  public List<CMatchs> Lire(string index)
+  { return new AMatchs(ChaineConnexion).Lire(index); }
+  public CMatchs Lire_ID(int matchId)
+  { return new AMatchs(ChaineConnexion).Lire_ID(matchId); }
+  public int Supprimer(int matchId)
+  { return new AMatchs(ChaineConnexion).Supprimer(matchId); }
+  public int ObtenirLigne(int matchId, string index)
+  { return new AMatchs(ChaineConnexion).ObtenirLigne(matchId, index); }
  }
 }

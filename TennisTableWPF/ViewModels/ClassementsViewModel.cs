@@ -1,16 +1,13 @@
-﻿using System.Windows.Forms;
-using TennisTable;
-using TennisTable.Classes;
+﻿using TennisTable.Classes;
 using TennisTable.Gestion;
-using TennisTable.Acces;
 using System.Collections.ObjectModel;
 
 namespace TennisTableWPF.ViewModels
 {
     class ClassementsViewModel
     {
-        private ObservableCollection<C_Classements> _classements;
-        public ObservableCollection<C_Classements> Classements
+        private ObservableCollection<CClassements> _classements;
+        public ObservableCollection<CClassements> Classements
         {
             get
             {
@@ -23,7 +20,7 @@ namespace TennisTableWPF.ViewModels
         }
         public void ListeClassements()
         {
-            _classements = new ObservableCollection<C_Classements>(new G_Classements().Lire("Classement"));
+            _classements = new ObservableCollection<CClassements>(new GClassements().Lire("Classement"));
         }
     }
 }

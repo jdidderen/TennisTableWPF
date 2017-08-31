@@ -1,37 +1,31 @@
-#region Ressources extérieures
-using System;
 using System.Collections.Generic;
-using System.Text;
 using TennisTable.Classes;
 using TennisTable.Acces;
-#endregion
 
 namespace TennisTable.Gestion
 {
- /// <summary>
- /// Couche intermédiaire de gestion (Business Layer)
- /// </summary>
- public class G_Clubs : G_Base
+    /// <summary>
+    /// Couche intermédiaire de gestion (Business Layer)
+    /// </summary>
+    public class GClubs : GBase
  {
-  #region Constructeurs
-  public G_Clubs()
-   : base()
+     public GClubs()
   { }
-  public G_Clubs(string sChaineConnexion)
+  public GClubs(string sChaineConnexion)
    : base(sChaineConnexion)
   { }
-  #endregion
-  public int Ajouter(string Indice, string Nom, string NomCourt, string Adresse, int Numero, int CodePostal, string Ville)
-  { return new A_Clubs(ChaineConnexion).Ajouter(Indice, Nom, NomCourt, Adresse, Numero, CodePostal, Ville); }
-  public int Modifier(int ClubId, string Indice, string Nom, string NomCourt, string Adresse, int Numero, int CodePostal, string Ville)
-  { return new A_Clubs(ChaineConnexion).Modifier(ClubId, Indice, Nom, NomCourt, Adresse, Numero, CodePostal, Ville); }
-  public List<C_Clubs> Lire(string Index)
-  { return new A_Clubs(ChaineConnexion).Lire(Index); }
-  public C_Clubs Lire_ID(int ClubId)
-  { return new A_Clubs(ChaineConnexion).Lire_ID(ClubId); }
-  public int Supprimer(int ClubId)
-  { return new A_Clubs(ChaineConnexion).Supprimer(ClubId); }
-  public int ObtenirLigne(int ClubId, string Index)
-  { return new A_Clubs(ChaineConnexion).ObtenirLigne(ClubId, Index); }
+
+     public int Ajouter(string indice, string nom, string nomCourt, string adresse)
+  { return new AClubs(ChaineConnexion).Ajouter(indice, nom, nomCourt, adresse); }
+  public int Modifier(int clubId, string indice, string nom, string nomCourt, string adresse)
+  { return new AClubs(ChaineConnexion).Modifier(clubId, indice, nom, nomCourt, adresse); }
+  public List<CClubs> Lire(string index)
+  { return new AClubs(ChaineConnexion).Lire(index); }
+  public CClubs Lire_ID(int clubId)
+  { return new AClubs(ChaineConnexion).Lire_ID(clubId); }
+  public int Supprimer(int clubId)
+  { return new AClubs(ChaineConnexion).Supprimer(clubId); }
+  public int ObtenirLigne(int clubId, string index)
+  { return new AClubs(ChaineConnexion).ObtenirLigne(clubId, index); }
  }
 }
