@@ -8,8 +8,14 @@ using TennisTableWPF.Services;
 
 namespace TennisTableWPF.ViewModels
 {
-    public class ClubsViewModel : PropertiesChanged
+    public class ClubsViewModel : INotifyPropertyChanged
     {
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected virtual void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
         private string _creerClubMessage;
         public string CreerClubMessage { get => _creerClubMessage; set { _creerClubMessage = value; OnPropertyChanged("CreerClubMessage"); } }
         private string _supprimerClubMessage;

@@ -8,8 +8,14 @@ using TennisTableWPF.Services;
 
 namespace TennisTableWPF.ViewModels
 {
-    public class JoueursViewModel : PropertiesChanged
+    public class JoueursViewModel : INotifyPropertyChanged
     {
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected virtual void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
         #region Status et messages des contrôles
         private string _creerJoueurMessage;
         public string CreerJoueurMessage { get => _creerJoueurMessage; set { _creerJoueurMessage = value; OnPropertyChanged("CreerJoueurMessage"); } }

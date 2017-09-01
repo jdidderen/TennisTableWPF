@@ -1,0 +1,17 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:TennisTableWPF"
+                    xmlns:views="clr-namespace:TennisTableWPF.Views"
+                    xmlns:services="clr-namespace:TennisTableWPF.Services"
+                    xmlns:tabs="clr-namespace:TennisTableWPF.Services.Tabs">
+    <services:ViewModelLocator x:Key="Locator" />
+    <DataTemplate x:Key="JoueursContentTemplate">
+        <views:JoueursView DataContext="{Binding JoueursTabContentViewModel}"/>
+    </DataTemplate>
+    <DataTemplate x:Key="ClubsContentTemplate">
+        <views:ClubsView DataContext="{Binding ClubsTabContentViewModel}"/>
+    </DataTemplate>
+    <tabs:ViewSelector x:Key="Selector"
+                           ClubsTemplate="{StaticResource ClubsContentTemplate}"
+                           JoueursTemplate="{StaticResource JoueursContentTemplate}" />
+</ResourceDictionary>

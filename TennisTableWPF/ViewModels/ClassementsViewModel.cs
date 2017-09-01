@@ -1,11 +1,18 @@
 ﻿using TennisTable.Classes;
 using TennisTable.Gestion;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 
 namespace TennisTableWPF.ViewModels
 {
-    public class ClassementsViewModel
+    public class ClassementsViewModel : INotifyPropertyChanged
     {
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected virtual void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
         private ObservableCollection<CClassements> _classements;
         public ObservableCollection<CClassements> Classements
         {

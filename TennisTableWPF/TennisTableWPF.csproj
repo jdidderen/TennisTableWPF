@@ -38,6 +38,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Dragablz, Version=0.0.3.193, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Dragablz.0.0.3.193\lib\net45\Dragablz.dll</HintPath>
+    </Reference>
     <Reference Include="MahApps.Metro, Version=1.5.0.23, Culture=neutral, PublicKeyToken=f4fb5a3c4d1e5b4f, processorArchitecture=MSIL">
       <HintPath>..\packages\MahApps.Metro.1.5.0\lib\net45\MahApps.Metro.dll</HintPath>
     </Reference>
@@ -71,21 +74,34 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Models\TabsModel.cs" />
+    <Compile Include="Services\Tabs\TabsModel.cs" />
     <Compile Include="Services\IDialogService.cs" />
     <Compile Include="Services\DialogService.cs" />
-    <Compile Include="Services\PropertiesChanged.cs" />
     <Compile Include="Services\RelayCommand.cs" />
+    <Compile Include="Services\Tabs\ITabsModel.cs" />
     <Compile Include="Services\ViewModelLocator.cs" />
+    <Compile Include="Services\Tabs\ViewSelector.cs" />
     <Compile Include="ViewModels\ClassementsViewModel.cs" />
     <Compile Include="ViewModels\ClubsViewModel.cs" />
     <Compile Include="ViewModels\JoueursViewModel.cs" />
     <Compile Include="ViewModels\SexesViewModel.cs" />
     <Compile Include="ViewModels\TabViewModel.cs" />
-    <Compile Include="Views\ClubsView.xaml.cs">
+    <Compile Include="Views\Clubs\ClubsDetailsView.xaml.cs">
+      <DependentUpon>ClubsDetailsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Clubs\ClubsListeView.xaml.cs">
+      <DependentUpon>ClubsListeView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Clubs\ClubsView.xaml.cs">
       <DependentUpon>ClubsView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\JoueursView.xaml.cs">
+    <Compile Include="Views\Joueurs\JoueursDetailsView.xaml.cs">
+      <DependentUpon>JoueursDetailsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Joueurs\JoueursListeView.xaml.cs">
+      <DependentUpon>JoueursListeView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Joueurs\JoueursView.xaml.cs">
       <DependentUpon>JoueursView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\SexesView.xaml.cs">
@@ -103,15 +119,35 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Ressources.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Skin.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\ClubsView.xaml">
+    <Page Include="Views\Clubs\ClubsDetailsView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\JoueursView.xaml">
+    <Page Include="Views\Clubs\ClubsListeView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Clubs\ClubsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Joueurs\JoueursDetailsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Joueurs\JoueursListeView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Joueurs\JoueursView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -179,6 +215,9 @@
     <Content Include="Resources\Refresh.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Resources\TennisTable.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\TennisTable.Acces\TennisTable.Acces.csproj">
@@ -194,6 +233,7 @@
       <Name>TennisTable.Gestion</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

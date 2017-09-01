@@ -1,21 +1,45 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Runtime.Remoting.Messaging;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
-using TennisTableWPF.Models;
 using TennisTableWPF.Services;
+using TennisTableWPF.Services.Tabs;
 using TennisTableWPF.Views;
 
 namespace TennisTableWPF.ViewModels
 {
-    public class TabViewModel
+    public class TabViewModel : INotifyPropertyChanged
     {
-        public ObservableCollection<TabsModel> Tabs { get; set; }
-        public TabsModel TabsSelected { get; set; }
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected virtual void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+        private ObservableCollection<TabsModel> _tabs;
+        public ObservableCollection<TabsModel> Tabs
+        {
+            get => _tabs;
+            set
+            {
+                _tabs = value;
+                OnPropertyChanged("Tabs");
+            }
+        }
+        private TabsModel _tabsSelected;
+        public TabsModel TabsSelected
+        {
+            get => _tabsSelected;
+            set
+            {
+                _tabsSelected = value;
+                OnPropertyChanged("TabsSelected");
+            }
+        }
         private readonly IDialogService _dialogservice;
         public TabViewModel(IDialogService dialogservice)
         {
@@ -32,6 +56,16 @@ namespace TennisTableWPF.ViewModels
                                param => AddToTabJoueursViewCommand_CanExecute()));
             }
         }
+        private ICommand _addToTabClubsViewCommand;
+        public ICommand AddToTabClubsViewCommand
+        {
+            get
+            {
+                return _addToTabClubsViewCommand ?? (_addToTabClubsViewCommand =
+                           new RelayCommands(param => AddToTabClubsViewCommand_Execute(),
+                               param => AddToTabClubsViewCommand_CanExecute()));
+            }
+        }
         private ICommand _closeTabViewCommand;
         public ICommand CloseTabViewCommand
         {
@@ -44,12 +78,13 @@ namespace TennisTableWPF.ViewModels
         }
         private bool CloseTabViewCommand_CanExecute()
         {
-            throw new NotImplementedException();
+            return TabsSelected != null;
         }
-
         private void CloseTabViewCommand_Execute()
         {
-            throw new NotImplementedException();
+            Tabs.Remove(TabsSelected);
+            if (TabsSelected == null) return;
+            TabsSelected = Tabs.First();
         }
         private bool AddToTabJoueursViewCommand_CanExecute()
         {
@@ -57,7 +92,17 @@ namespace TennisTableWPF.ViewModels
         }
         private void AddToTabJoueursViewCommand_Execute()
         {
-            Tabs.Add(new TabsModel {Content = new JoueursView(),Header = "Liste des joueurs"});
+            Tabs.Add(new TabsModel {CurrentMyTabContentViewModel = new JoueursTabContentViewModel(),Header = "Liste des joueurs"});
+            TabsSelected = Tabs[Tabs.Count - 1];
+        }
+        private bool AddToTabClubsViewCommand_CanExecute()
+        {
+            return true;
+        }
+        private void AddToTabClubsViewCommand_Execute()
+        {
+            Tabs.Add(new TabsModel { CurrentMyTabContentViewModel = new ClubsTabContentViewModel(), Header = "Liste des clubs" });
+            TabsSelected = Tabs[Tabs.Count - 1];
         }
     }
 }
