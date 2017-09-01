@@ -8,14 +8,8 @@ using TennisTableWPF.Services;
 
 namespace TennisTableWPF.ViewModels
 {
-    public class ClubsViewModel : INotifyPropertyChanged
+    public class ClubsViewModel : PropertiesChanged
     {
-        public event PropertyChangedEventHandler PropertyChanged;
-        protected virtual void OnPropertyChanged(string propertyName)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
-
         private string _creerClubMessage;
         public string CreerClubMessage { get => _creerClubMessage; set { _creerClubMessage = value; OnPropertyChanged("CreerClubMessage"); } }
         private string _supprimerClubMessage;
@@ -35,7 +29,6 @@ namespace TennisTableWPF.ViewModels
         public bool SupprimerButtonStatus { get => _supprimerButtonStatus; set { _supprimerButtonStatus = value; OnPropertyChanged("SupprimerButtonStatus"); } }
         private bool _editerButtonStatus;
         public bool EditerButtonStatus { get => _editerButtonStatus; set { _editerButtonStatus = value; OnPropertyChanged("EditerButtonStatus"); } }
-
         private ICommand _creerClubCommand;
         public ICommand CreerClubCommand
         {
@@ -85,7 +78,6 @@ namespace TennisTableWPF.ViewModels
                                param => SupprimerClubCommand_CanExecute()));
             }
         }
-
         private ObservableCollection<CClubs> _clubs;
         public ObservableCollection<CClubs> Clubs
         {
@@ -98,7 +90,6 @@ namespace TennisTableWPF.ViewModels
                 return _clubs;
             }
         }
-
         private readonly IDialogService _dialogservice;
         public GClubs GClubs;
         private CClubs _clubSelected;
@@ -111,7 +102,6 @@ namespace TennisTableWPF.ViewModels
                 OnPropertyChanged("ClubSelected");
             }
         }
-
         public ClubsViewModel(IDialogService dialogservice)
         {
             _dialogservice = dialogservice;
@@ -121,7 +111,6 @@ namespace TennisTableWPF.ViewModels
             EditerButtonStatus = true;
             SupprimerButtonStatus = false;
         }
-
         private bool CreerClubCommand_CanExecute()
         {
             CreerClubMessage = "Ajouter un nouveau club";
@@ -228,7 +217,6 @@ namespace TennisTableWPF.ViewModels
                 ReloadClubs();
             }
         }
-
         public void ListeClubs()
         {
             _clubs = new ObservableCollection<CClubs>(GClubs.Lire("ClubId"));

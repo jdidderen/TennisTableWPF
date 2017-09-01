@@ -12,12 +12,14 @@ namespace TennisTableWPF.Services
         public ClubsViewModel ClubsViewModel { get; }
         public SexesViewModel SexesViewModel { get; }
         public JoueursViewModel JoueursViewModel { get; }
+        public TabViewModel TabViewModel { get; }
         public ViewModelLocator()
         {
             IDialogService dialogservice = new DialogService();
             JoueursViewModel = new JoueursViewModel(dialogservice);
             ClubsViewModel = new ClubsViewModel(dialogservice);
             SexesViewModel = new SexesViewModel(dialogservice);
+            TabViewModel = new TabViewModel(dialogservice);
         }
     }
 }

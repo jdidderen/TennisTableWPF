@@ -9,5 +9,7 @@
 //------------------------------------------------------------------------------
 
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/background.jpg")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/closetab.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/refresh.png")]
 
 

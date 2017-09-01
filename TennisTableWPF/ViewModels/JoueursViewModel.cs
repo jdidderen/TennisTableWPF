@@ -8,14 +8,9 @@ using TennisTableWPF.Services;
 
 namespace TennisTableWPF.ViewModels
 {
-    public class JoueursViewModel : INotifyPropertyChanged
+    public class JoueursViewModel : PropertiesChanged
     {
-        public event PropertyChangedEventHandler PropertyChanged;
-        protected virtual void OnPropertyChanged(string propertyName)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
-
+        #region Status et messages des contrôles
         private string _creerJoueurMessage;
         public string CreerJoueurMessage { get => _creerJoueurMessage; set { _creerJoueurMessage = value; OnPropertyChanged("CreerJoueurMessage"); } }
         private string _supprimerJoueurMessage;
@@ -26,7 +21,6 @@ namespace TennisTableWPF.ViewModels
         public string ModifierJoueurMessage { get => _modifierJoueurMessage; set { _modifierJoueurMessage = value; OnPropertyChanged("ModifierJoueurMessage"); } }
         private string _editerJoueurMessage;
         public string EditerJoueurMessage { get => _editerJoueurMessage; set { _editerJoueurMessage = value; OnPropertyChanged("EditerJoueurMessage"); } }
-
         private bool _textBoxStatus;
         public bool TextBoxStatus { get => _textBoxStatus; set { _textBoxStatus = value; OnPropertyChanged("TextBoxStatus"); } }
         private bool _sauverButtonStatus;
@@ -35,6 +29,8 @@ namespace TennisTableWPF.ViewModels
         public bool SupprimerButtonStatus { get => _supprimerButtonStatus; set { _supprimerButtonStatus = value; OnPropertyChanged("SupprimerButtonStatus"); } }
         private bool _editerButtonStatus;
         public bool EditerButtonStatus { get => _editerButtonStatus; set { _editerButtonStatus = value; OnPropertyChanged("EditerButtonStatus"); } }
+        #endregion
+        #region Commandes
 
         private ICommand _creerJoueurCommand;
         public ICommand CreerJoueurCommand
@@ -86,6 +82,19 @@ namespace TennisTableWPF.ViewModels
                                param => SupprimerJoueurCommand_CanExecute()));
             }
         }
+        private ICommand _refreshJoueurCommand;
+        public ICommand RefreshJoueurCommand
+        {
+            get
+            {
+                return _refreshJoueurCommand ?? (_refreshJoueurCommand =
+                           new RelayCommands(param => RefreshJoueurCommand_Execute(),
+                               param => RefreshJoueurCommand_CanExecute()));
+            }
+        }
+
+        #endregion
+        #region Propriétés
 
         private ObservableCollection<CJoueurs> _joueurs;
         public ObservableCollection<CJoueurs> Joueurs
@@ -99,7 +108,6 @@ namespace TennisTableWPF.ViewModels
                 return _joueurs;
             }
         }
-
         private readonly IDialogService _dialogservice;
         public ClassementsViewModel JClassements { get; set; }
         public ClubsViewModel JClubs { get; set; }
@@ -116,6 +124,9 @@ namespace TennisTableWPF.ViewModels
             }
         }
 
+        #endregion
+        #region Constructeur
+
         public JoueursViewModel(IDialogService dialogservice)
         {
             _dialogservice = dialogservice;
@@ -128,6 +139,9 @@ namespace TennisTableWPF.ViewModels
             EditerButtonStatus = true;
             SupprimerButtonStatus = false;
         }
+
+        #endregion
+        #region Méthodes - Commandes
 
         private bool CreerJoueurCommand_CanExecute()
         {
@@ -235,6 +249,17 @@ namespace TennisTableWPF.ViewModels
                 ReloadJoueurs();
             }
         }
+        private bool RefreshJoueurCommand_CanExecute()
+        {
+            return true;
+        }
+        private void RefreshJoueurCommand_Execute()
+        {
+            ReloadJoueurs();
+        }
+
+        #endregion
+        #region Méthodes
 
         public void ListeJoueurs()
         {
@@ -245,5 +270,7 @@ namespace TennisTableWPF.ViewModels
             _joueurs.Clear();
             GJoueurs.Lire("JoueurId").ToList().ForEach(_joueurs.Add);
         }
+
+        #endregion
     }
 }

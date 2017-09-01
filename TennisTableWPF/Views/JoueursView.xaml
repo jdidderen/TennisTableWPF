@@ -4,12 +4,17 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
-             mc:Ignorable="d" Width="401.697" Height="274.5">
-    <Grid Margin="0" Opacity="0.9" DataContext="{Binding JoueursViewModel, Source={StaticResource Locator}}">
-        <Grid.Background>
-            <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.AppWorkspaceColorKey}}"/>
-        </Grid.Background>
-        <ListBox x:Name="ListeJoueurs" SelectedItem="{Binding Path=JoueurSelected,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" ItemsSource="{Binding Joueurs}" Margin="10,10,248,4">
+             mc:Ignorable="d">
+    <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" DataContext="{Binding JoueursViewModel, Source={StaticResource Locator}}" MaxHeight="600" MaxWidth="800">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" MinWidth="200"/>
+            <ColumnDefinition Width="*" MinWidth="320"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" MinHeight="200" />
+            <RowDefinition Height="*" MinHeight="60" />
+        </Grid.RowDefinitions>
+        <ListBox  x:Name="ListeJoueurs" SelectedItem="{Binding Path=JoueurSelected,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" ItemsSource="{Binding Joueurs}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Column="0" Grid.RowSpan="2" Margin="5,2,5,2">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <TextBlock>
@@ -29,41 +34,71 @@
                 </i:EventTrigger>
             </i:Interaction.Triggers>
         </ListBox>
-        <TextBox x:Name="IdJoueur" IsEnabled="{Binding TextBoxStatus}" Text="{Binding SelectedItem.JoueurId, ElementName=ListeJoueurs,ValidatesOnDataErrors=True,NotifyOnValidationError=True,ValidatesOnExceptions=True}" Validation.ErrorTemplate="{StaticResource ErrorTemplate}" IsReadOnly="True" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="148" Margin="248,8,0,0"/>
-        <Label x:Name="IdJoueurLabel"   Content="ID du joueur :" HorizontalAlignment="Left" VerticalAlignment="Top" Width="100" Foreground="Black" FontFamily="Arctic" RenderTransformOrigin="0.582,1.026" Margin="160,8,0,0" Height="23" FontSize="10"/>
-        <TextBox x:Name="LicenseJoueur" IsEnabled="{Binding TextBoxStatus}" Text="{Binding SelectedItem.License, ElementName=ListeJoueurs,ValidatesOnDataErrors=True,NotifyOnValidationError=True,ValidatesOnExceptions=True}" Validation.ErrorTemplate="{StaticResource ErrorTemplate}" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="148" Margin="248,36,0,0" />
-        <Label x:Name="LicenseJoueurLabel" Content="N° de license :" HorizontalAlignment="Left" Margin="160,36,0,0" VerticalAlignment="Top" Width="100" Foreground="Black" FontFamily="Arctic" FontSize="10"/>
-        <TextBox x:Name="NomJoueur" IsEnabled="{Binding TextBoxStatus}" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="{Binding SelectedItem.Nom, ElementName=ListeJoueurs,ValidatesOnDataErrors=True,NotifyOnValidationError=True,ValidatesOnExceptions=True}" Validation.ErrorTemplate="{StaticResource ErrorTemplate}" VerticalAlignment="Top" Width="148" Margin="248,64,0,0"/>
-        <Label x:Name="NomJoueurLabel" Content="Nom :" HorizontalAlignment="Left" Margin="160,64,0,0" VerticalAlignment="Top" Width="100" Foreground="Black" FontFamily="Arctic" FontSize="10"/>
-        <TextBox x:Name="PrenomJoueur" IsEnabled="{Binding TextBoxStatus}" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="{Binding SelectedItem.Prenom, ElementName=ListeJoueurs,ValidatesOnDataErrors=True,NotifyOnValidationError=True,ValidatesOnExceptions=True}" Validation.ErrorTemplate="{StaticResource ErrorTemplate}" VerticalAlignment="Top" Width="148" Margin="248,92,0,0"/>
-        <Label x:Name="PrenomJoueurLabel" Content="Prénom :" HorizontalAlignment="Left" Margin="160,92,0,0" VerticalAlignment="Top" Width="100" Foreground="Black" FontFamily="Arctic" FontSize="10"/>
-        <ComboBox x:Name="ClassementJoueur" IsEnabled="{Binding TextBoxStatus}" ItemsSource="{Binding JClassements.Classements}" SelectedValue="{Binding SelectedItem.Classement,ElementName=ListeJoueurs,ValidatesOnDataErrors=True,NotifyOnValidationError=True,ValidatesOnExceptions=True}" Validation.ErrorTemplate="{StaticResource ErrorTemplate}" SelectedValuePath="ClassementId" DisplayMemberPath="Classement" HorizontalAlignment="Left" Height="21" VerticalAlignment="Top" Width="148" Margin="248,120,0,0" />
-        <Label x:Name="ClassementJoueurLabel" Content="Classement :" HorizontalAlignment="Left" Margin="160,120,0,0" VerticalAlignment="Top" Width="100" Foreground="Black" FontFamily="Arctic" FontSize="10"/>
-        <Button x:Name="CreateJoueur" Command="{Binding CreerJoueurCommand}" Style="{StaticResource MyButton}" HorizontalAlignment="Left" Margin="165,234,0,0" VerticalAlignment="Top" Width="40" Height="38" BorderBrush="{x:Null}" Foreground="{x:Null}" ToolTip="{Binding Path=CreerJoueurMessage}" ToolTipService.ShowDuration="10000" ToolTipService.ShowOnDisabled="true" >
-            <Button.Background>
-                <ImageBrush ImageSource="../Resources/Create.png" Stretch="Uniform"/>
-            </Button.Background>
-        </Button>
-        <Button x:Name="EditJoueur" Style="{StaticResource MyButton}" Command="{Binding ModifierJoueurCommand}" Margin="211,234,151,0" VerticalAlignment="Top" Height="38" BorderBrush="{x:Null}" Foreground="{x:Null}" ToolTip="Éditer le joueur sélectionné" ToolTipService.ShowDuration="10000" RenderTransformOrigin="1.4,0.447" ToolTipService.ShowOnDisabled="true" >
-            <Button.Background>
-                <ImageBrush ImageSource="../Resources/Edit.png" Stretch="Uniform"/>
-            </Button.Background>
-        </Button>
-        <Button x:Name="DeleteJoueur" Command="{Binding SupprimerJoueurCommand}" Style="{StaticResource MyButton}" HorizontalAlignment="Left" Margin="255,234,0,0" VerticalAlignment="Top" Width="40" Height="38" BorderBrush="{x:Null}" Foreground="{x:Null}" ToolTip="Supprimer le joueur sélectionné" ToolTipService.ShowDuration="10000" RenderTransformOrigin="2.019,0.507" ToolTipService.ShowOnDisabled="true" >
-            <Button.Background>
-                <ImageBrush ImageSource="../Resources/Delete.png" Stretch="Uniform"/>
-            </Button.Background>
-        </Button>
-        <Button x:Name="SaveJoueur" Style="{StaticResource MyButton}" Command="{Binding SauverJoueurCommand}" HorizontalAlignment="Left" Margin="301,234,0,0" VerticalAlignment="Top" Width="40" Height="38" BorderBrush="{x:Null}" Foreground="{x:Null}" ToolTip="{Binding Path=SauverJoueurMessage}" ToolTipService.ShowDuration="10000" ToolTipService.ShowOnDisabled="true" >
-            <Button.Background>
-                <ImageBrush ImageSource="../Resources/Save.png" Stretch="Uniform"/>
-            </Button.Background>
-        </Button>
-        <TextBox x:Name="MailJoueur" IsEnabled="{Binding TextBoxStatus}" HorizontalAlignment="Left" Height="20" TextWrapping="Wrap" Text="{Binding SelectedItem.Mail, ElementName=ListeJoueurs,ValidatesOnDataErrors=True,NotifyOnValidationError=True,ValidatesOnExceptions=True}" Validation.ErrorTemplate="{StaticResource ErrorTemplate}" VerticalAlignment="Top" Width="148" Margin="248,151,0,0"/>
-        <Label x:Name="MailJoueurLabel" Content="Mail :" HorizontalAlignment="Left" Margin="160,148,0,0" VerticalAlignment="Top" Width="100" Foreground="Black" FontFamily="Arctic" FontSize="10"/>
-        <ComboBox x:Name="SexeJoueur" IsEnabled="{Binding TextBoxStatus}" HorizontalAlignment="Left" Height="23" ItemsSource="{Binding JSexes.Sexes}" SelectedValue="{Binding SelectedItem.Sexe,ElementName=ListeJoueurs,ValidatesOnDataErrors=True,NotifyOnValidationError=True,ValidatesOnExceptions=True}" Validation.ErrorTemplate="{StaticResource ErrorTemplate}" SelectedValuePath="SexeId" DisplayMemberPath="Denomination" VerticalAlignment="Top" Width="148" Margin="248,176,0,0"/>
-        <Label x:Name="SexeLabel" Content="Sexe :" HorizontalAlignment="Left" Margin="160,178,0,0" VerticalAlignment="Top" Width="100" Foreground="Black" FontFamily="Arctic" FontSize="10"/>
-        <ComboBox x:Name="ClubJoueur" IsEnabled="{Binding TextBoxStatus}" HorizontalAlignment="Left" Height="23" ItemsSource="{Binding JClubs.Clubs}" SelectedValue="{Binding SelectedItem.Club,ElementName=ListeJoueurs,ValidatesOnDataErrors=True,NotifyOnValidationError=True,ValidatesOnExceptions=True}" Validation.ErrorTemplate="{StaticResource ErrorTemplate}" SelectedValuePath="ClubId" DisplayMemberPath="Nom" VerticalAlignment="Top" Width="148" Margin="248,206,0,0"/>
-        <Label x:Name="ClubLabel" Content="Club :" HorizontalAlignment="Left" Margin="160,204,0,0" VerticalAlignment="Top" Width="100" Foreground="Black" FontFamily="Arctic" FontSize="10"/>
+        <Grid Grid.Column="1" Grid.Row="0" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" MinWidth="100"></ColumnDefinition>
+                <ColumnDefinition Width="*" MinWidth="150"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" MinHeight="25"></RowDefinition>
+                <RowDefinition Height="*" MinHeight="25"></RowDefinition>
+                <RowDefinition Height="*" MinHeight="25"></RowDefinition>
+                <RowDefinition Height="*" MinHeight="25"></RowDefinition>
+                <RowDefinition Height="*" MinHeight="25"></RowDefinition>
+                <RowDefinition Height="*" MinHeight="25"></RowDefinition>
+                <RowDefinition Height="*" MinHeight="25"></RowDefinition>
+                <RowDefinition Height="*" MinHeight="25"></RowDefinition>
+            </Grid.RowDefinitions>
+            <TextBox x:Name="IdJoueur" IsEnabled="{Binding TextBoxStatus}" Text="{Binding SelectedItem.JoueurId, ElementName=ListeJoueurs,ValidatesOnDataErrors=True,NotifyOnValidationError=True,ValidatesOnExceptions=True}" Validation.ErrorTemplate="{StaticResource ErrorTemplate}" IsReadOnly="True" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="0" Grid.Column="1" Margin="0,0,0,2"/>
+            <Label x:Name="IdJoueurLabel"   Content="ID du joueur :" Foreground="Black" FontFamily="Arctic" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="0" Grid.Column="0" FontSize="14"/>
+            <TextBox x:Name="LicenseJoueur" IsEnabled="{Binding TextBoxStatus}" Text="{Binding SelectedItem.License, ElementName=ListeJoueurs,ValidatesOnDataErrors=True,NotifyOnValidationError=True,ValidatesOnExceptions=True}" Validation.ErrorTemplate="{StaticResource ErrorTemplate}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="1" Grid.Column="1" Margin="0,0,0,2"/>
+            <Label x:Name="LicenseJoueurLabel" Content="N° de license :" Foreground="Black" FontFamily="Arctic" FontSize="14" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="1" Grid.Column="0" />
+            <TextBox x:Name="NomJoueur" IsEnabled="{Binding TextBoxStatus}" Text="{Binding SelectedItem.Nom, ElementName=ListeJoueurs,ValidatesOnDataErrors=True,NotifyOnValidationError=True,ValidatesOnExceptions=True}" Validation.ErrorTemplate="{StaticResource ErrorTemplate}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="2" Grid.Column="1" Margin="0,0,0,2"/>
+            <Label x:Name="NomJoueurLabel" Content="Nom :" Foreground="Black" FontFamily="Arctic" FontSize="14" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="2" Grid.Column="0" />
+            <TextBox x:Name="PrenomJoueur" IsEnabled="{Binding TextBoxStatus}" Text="{Binding SelectedItem.Prenom, ElementName=ListeJoueurs,ValidatesOnDataErrors=True,NotifyOnValidationError=True,ValidatesOnExceptions=True}" Validation.ErrorTemplate="{StaticResource ErrorTemplate}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="3" Grid.Column="1" Margin="0,0,0,2"/>
+            <Label x:Name="PrenomJoueurLabel" Content="Prénom :" Foreground="Black" FontFamily="Arctic" FontSize="14" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="3" Grid.Column="0" />
+            <ComboBox x:Name="ClassementJoueur" IsEnabled="{Binding TextBoxStatus}" ItemsSource="{Binding JClassements.Classements}" SelectedValue="{Binding SelectedItem.Classement,ElementName=ListeJoueurs,ValidatesOnDataErrors=True,NotifyOnValidationError=True,ValidatesOnExceptions=True}" Validation.ErrorTemplate="{StaticResource ErrorTemplate}" SelectedValuePath="ClassementId" DisplayMemberPath="Classement" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="4" Grid.Column="1" Margin="0,0,0,2"/>
+            <Label x:Name="ClassementJoueurLabel" Content="Classement :" Foreground="Black" FontSize="14" FontFamily="Arctic" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="4" Grid.Column="0" />
+            <TextBox x:Name="MailJoueur" IsEnabled="{Binding TextBoxStatus}" Text="{Binding SelectedItem.Mail, ElementName=ListeJoueurs,ValidatesOnDataErrors=True,NotifyOnValidationError=True,ValidatesOnExceptions=True}" Validation.ErrorTemplate="{StaticResource ErrorTemplate}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="5" Grid.Column="1" Margin="0,0,0,2"/>
+            <Label x:Name="MailJoueurLabel" Content="Mail :" Foreground="Black" FontFamily="Arctic" FontSize="14" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="5" Grid.Column="0" />
+            <ComboBox x:Name="SexeJoueur" IsEnabled="{Binding TextBoxStatus}" ItemsSource="{Binding JSexes.Sexes}" SelectedValue="{Binding SelectedItem.Sexe,ElementName=ListeJoueurs,ValidatesOnDataErrors=True,NotifyOnValidationError=True,ValidatesOnExceptions=True}" Validation.ErrorTemplate="{StaticResource ErrorTemplate}" SelectedValuePath="SexeId" DisplayMemberPath="Denomination" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="6" Grid.Column="1" Margin="0,0,0,2"/>
+            <Label x:Name="SexeLabel" Content="Sexe :" Foreground="Black" FontFamily="Arctic" FontSize="14" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="6" Grid.Column="0" />
+            <ComboBox x:Name="ClubJoueur" IsEnabled="{Binding TextBoxStatus}" ItemsSource="{Binding JClubs.Clubs}" SelectedValue="{Binding SelectedItem.Club,ElementName=ListeJoueurs,ValidatesOnDataErrors=True,NotifyOnValidationError=True,ValidatesOnExceptions=True}" Validation.ErrorTemplate="{StaticResource ErrorTemplate}" SelectedValuePath="ClubId" DisplayMemberPath="Nom" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="7" Grid.Column="1" Margin="0,0,0,2"/>
+            <Label x:Name="ClubLabel" Content="Club :" LayoutTransform="{StaticResource FontStretchCondensed}" FontFamily="Arctic" Foreground="Black" FontStretch="Normal" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="7" Grid.Column="0" />
+        </Grid>
+        <Grid Grid.Column="1" Grid.Row="1" VerticalAlignment="Top" HorizontalAlignment="Stretch" MinHeight="64">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" MinWidth="64"></ColumnDefinition>
+                <ColumnDefinition Width="*" MinWidth="64"></ColumnDefinition>
+                <ColumnDefinition Width="*" MinWidth="64"></ColumnDefinition>
+                <ColumnDefinition Width="*" MinWidth="64"></ColumnDefinition>
+                <ColumnDefinition Width="*" MinWidth="64"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Button x:Name="CreateJoueur" Command="{Binding CreerJoueurCommand}" Style="{StaticResource MyButton}" BorderBrush="{x:Null}" Foreground="{x:Null}" ToolTip="{Binding Path=CreerJoueurMessage}" ToolTipService.ShowDuration="10000" ToolTipService.ShowOnDisabled="true" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Column="0" Margin="5,5,5,5">
+                <Button.Background>
+                    <ImageBrush ImageSource="../Resources/Create.png" Stretch="Uniform"/>
+                </Button.Background>
+            </Button>
+            <Button x:Name="EditJoueur" Style="{StaticResource MyButton}" Command="{Binding ModifierJoueurCommand}" BorderBrush="{x:Null}" Foreground="{x:Null}" ToolTip="Éditer le joueur sélectionné" ToolTipService.ShowDuration="10000" ToolTipService.ShowOnDisabled="true" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Column="1" Margin="5,5,5,5">
+                <Button.Background>
+                    <ImageBrush ImageSource="../Resources/Edit.png" Stretch="Uniform"/>
+                </Button.Background>
+            </Button>
+            <Button x:Name="DeleteJoueur" Command="{Binding SupprimerJoueurCommand}" Style="{StaticResource MyButton}" BorderBrush="{x:Null}" Foreground="{x:Null}" ToolTip="Supprimer le joueur sélectionné" ToolTipService.ShowDuration="10000" RenderTransformOrigin="2.019,0.507" ToolTipService.ShowOnDisabled="true" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Column="2" Margin="5,5,5,5">
+                <Button.Background>
+                    <ImageBrush ImageSource="../Resources/Delete.png" Stretch="Uniform"/>
+                </Button.Background>
+            </Button>
+            <Button x:Name="SaveJoueur" Style="{StaticResource MyButton}" Command="{Binding SauverJoueurCommand}" BorderBrush="{x:Null}" Foreground="{x:Null}" ToolTip="{Binding Path=SauverJoueurMessage}" ToolTipService.ShowDuration="10000" ToolTipService.ShowOnDisabled="true" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Column="3" Margin="5,5,5,5">
+                <Button.Background>
+                    <ImageBrush ImageSource="../Resources/Save.png" Stretch="Uniform"/>
+                </Button.Background>
+            </Button>
+            <Button x:Name="RefreshJoueur" Style="{StaticResource MyButton}" Command="{Binding RefreshJoueurCommand}" BorderBrush="{x:Null}" Foreground="{x:Null}" ToolTip="{Binding Path=RefreshJoueurMessage}" ToolTipService.ShowDuration="10000" ToolTipService.ShowOnDisabled="true" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Column="4" Margin="5,5,5,5">
+                <Button.Background>
+                    <ImageBrush ImageSource="../Resources/Refresh.png" Stretch="Uniform"/>
+                </Button.Background>
+            </Button>
+        </Grid>
     </Grid>
 </UserControl>

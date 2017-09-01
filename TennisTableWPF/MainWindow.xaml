@@ -5,13 +5,14 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local1="clr-namespace:TennisTableWPF.Views"
+        xmlns:VM="clr-namespace:TennisTableWPF.ViewModels"
         mc:Ignorable="d"
-        Title="MainWindow" Height="700.254" Width="1428.195">
+        Title="MainWindow" Height="768" Width="1024">
     <controls:MetroWindow.Background>
         <ImageBrush ImageSource="Resources/background.jpg"/>
     </controls:MetroWindow.Background>
     <DockPanel>
-        <Grid>
+        <Grid DataContext="{Binding TabViewModel, Source={StaticResource Locator}}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="auto" />
                 <ColumnDefinition Width="*" />
@@ -37,15 +38,37 @@
                 </Expander.Header>
                 <Expander.Content>
                     <Grid HorizontalAlignment="Stretch" Background="#D8808080" Width="168" >
-                        <Button x:Name="ShowJoueursButton" Content="Afficher les joueurs" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="148" RenderTransformOrigin="0.716,0.5"/>
+                        <Button x:Name="ShowJoueursButton" Command="{Binding AddToTabJoueursViewCommand}" Content="Afficher les joueurs" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="148" RenderTransformOrigin="0.716,0.5"/>
                     </Grid>
                 </Expander.Content>
             </Expander>
             <TabControl Margin="1,4,4,4"
+                        ItemsSource="{Binding Path=Tabs}"
+                        SelectedItem="{Binding TabsSelected}"
                         Grid.Row="0"
                         BorderBrush="DarkGray"
                         Grid.Column="1"
-                        IsSynchronizedWithCurrentItem="True" Background="#D8808080"/>
+                        IsSynchronizedWithCurrentItem="True" Background="#D8808080">
+                <TabControl.ContentTemplate>
+                    <DataTemplate DataType="{x:Type local1:JoueursView}">
+                        <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="Auto" Height="Auto">
+                            <local1:JoueursView />
+                        </Grid>
+                    </DataTemplate>
+                </TabControl.ContentTemplate>
+                <TabControl.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding Header}" VerticalAlignment="Center"/>
+                            <Button BorderBrush="{x:Null}" Command="{Binding CloseTabViewCommand}" Foreground="{x:Null}" Height="26" Width="26" VerticalAlignment="Center">
+                                <Button.Background>
+                                    <ImageBrush ImageSource="pack://siteoforigin:,,,/Resources/CloseTab.png" Stretch="Uniform"/>
+                                </Button.Background>
+                            </Button>
+                        </StackPanel>
+                    </DataTemplate>
+                </TabControl.ItemTemplate>
+            </TabControl>
         </Grid>
     </DockPanel>
 </controls:MetroWindow>
