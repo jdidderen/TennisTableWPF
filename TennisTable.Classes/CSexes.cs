@@ -6,17 +6,10 @@ namespace TennisTable.Classes
     /// <summary>
     /// Classe de définition des données
     /// </summary>
-    public class CSexes : INotifyPropertyChanged, IDataErrorInfo
+    public class CSexes : PropertiesChanges, IDataErrorInfo
     {
         private int _sexeId;
         private string _denomination;
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        protected virtual void OnPropertyChanged(string propertyName)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
 
         public string Error => null;
 
@@ -45,13 +38,13 @@ namespace TennisTable.Classes
 
         public CSexes(string denomination)
         {
-            Denomination = denomination;
+            _denomination = denomination;
         }
 
         public CSexes(int sexeId, string denomination)
             : this(denomination)
         {
-            SexeId = sexeId;
+            _sexeId = sexeId;
         }
 
         public int SexeId

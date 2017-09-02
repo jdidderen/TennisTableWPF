@@ -15,64 +15,38 @@ namespace TennisTable.Acces
             : base(sChaineConnexion)
         { }
 
-        public int Ajouter(string numMatch, DateTime date, DateTime heureDebut, DateTime? heureFin, int? capitaineVisite, int? capitaineVisiteur, string jugeArbitre, string lettreVisite, string lettreVisiteur, int clubVisite, int clubVisiteur, int? j1Visite, int? j1Visiteur, int? j2Visite, int? j2Visiteur, int? j3Visite, int? j3Visiteur, int? j4Visite, int? j4Visiteur, int serie, string division)
+        public int Ajouter(string numMatch, DateTime date, DateTime heure, int serie, string division,int equipeVisiteur,int equipeVisite,string score)
         {
             CreerCommande("AjouterMatchs");
             Commande.Parameters.Add("MatchId", SqlDbType.Int);
             Direction("MatchId", ParameterDirection.Output);
             Commande.Parameters.AddWithValue("@NumMatch", numMatch);
             Commande.Parameters.AddWithValue("@Date", date);
-            Commande.Parameters.AddWithValue("@HeureDebut", heureDebut);
-            Commande.Parameters.AddWithValue("@HeureFin", heureFin ?? Convert.DBNull);
-            Commande.Parameters.AddWithValue("@CapitaineVisite", capitaineVisite ?? Convert.DBNull);
-            Commande.Parameters.AddWithValue("@CapitaineVisiteur", capitaineVisiteur ?? Convert.DBNull);
-            Commande.Parameters.AddWithValue("@JugeArbitre", jugeArbitre ?? Convert.DBNull);
-            Commande.Parameters.AddWithValue("@LettreVisite", lettreVisite ?? Convert.DBNull);
-            Commande.Parameters.AddWithValue("@LettreVisiteur", lettreVisiteur ?? Convert.DBNull);
-            Commande.Parameters.AddWithValue("@ClubVisite", clubVisite);
-            Commande.Parameters.AddWithValue("@ClubVisiteur", clubVisiteur);
-            Commande.Parameters.AddWithValue("@J1Visite", j1Visite ?? Convert.DBNull);
-            Commande.Parameters.AddWithValue("@J1Visiteur", j1Visiteur ?? Convert.DBNull);
-            Commande.Parameters.AddWithValue("@J2Visite", j2Visite ?? Convert.DBNull);
-            Commande.Parameters.AddWithValue("@J2Visiteur", j2Visiteur ?? Convert.DBNull);
-            Commande.Parameters.AddWithValue("@J3Visite", j3Visite ?? Convert.DBNull);
-            Commande.Parameters.AddWithValue("@J3Visiteur", j3Visiteur ?? Convert.DBNull);
-            Commande.Parameters.AddWithValue("@J4Visite", j4Visite ?? Convert.DBNull);
-            Commande.Parameters.AddWithValue("@J4Visiteur", j4Visiteur ?? Convert.DBNull);
+            Commande.Parameters.AddWithValue("@Heure", heure);
             Commande.Parameters.AddWithValue("@Serie", serie);
             Commande.Parameters.AddWithValue("@Division", division);
+            Commande.Parameters.AddWithValue("@equipeVisiteur", equipeVisiteur);
+            Commande.Parameters.AddWithValue("@equipeVisite", equipeVisite);
+            Commande.Parameters.AddWithValue("@Score", score);
             Commande.Connection.Open();
             Commande.ExecuteNonQuery();
             var res = int.Parse(LireParametre("MatchId"));
             Commande.Connection.Close();
             return res;
         }
-        public int Modifier(int matchId, string numMatch, DateTime date, DateTime heureDebut, DateTime? heureFin, int? capitaineVisite, int? capitaineVisiteur, string jugeArbitre, string lettreVisite, string lettreVisiteur, int clubVisite, int clubVisiteur, int? j1Visite, int? j1Visiteur, int? j2Visite, int? j2Visiteur, int? j3Visite, int? j3Visiteur, int? j4Visite, int? j4Visiteur, int serie, string division)
+        public int Modifier(int matchId, string numMatch, DateTime date, DateTime heure, int serie, string division,int equipeVisiteur, int equipeVisite, string score)
         {
             CreerCommande("ModifierMatchs");
             const int res = 0;
             Commande.Parameters.AddWithValue("MatchId", matchId);
             Commande.Parameters.AddWithValue("@NumMatch", numMatch);
             Commande.Parameters.AddWithValue("@Date", date);
-            Commande.Parameters.AddWithValue("@HeureDebut", heureDebut);
-            Commande.Parameters.AddWithValue("@HeureFin", heureFin ?? Convert.DBNull);
-            Commande.Parameters.AddWithValue("@CapitaineVisite", capitaineVisite ?? Convert.DBNull);
-            Commande.Parameters.AddWithValue("@CapitaineVisiteur", capitaineVisiteur ?? Convert.DBNull);
-            Commande.Parameters.AddWithValue("@JugeArbitre", jugeArbitre ?? Convert.DBNull);
-            Commande.Parameters.AddWithValue("@LettreVisite", lettreVisite);
-            Commande.Parameters.AddWithValue("@LettreVisiteur", lettreVisiteur);
-            Commande.Parameters.AddWithValue("@ClubVisite", clubVisite);
-            Commande.Parameters.AddWithValue("@ClubVisiteur", clubVisiteur);
-            Commande.Parameters.AddWithValue("@J1Visite", j1Visite ?? Convert.DBNull);
-            Commande.Parameters.AddWithValue("@J1Visiteur", j1Visiteur ?? Convert.DBNull);
-            Commande.Parameters.AddWithValue("@J2Visite", j2Visite ?? Convert.DBNull);
-            Commande.Parameters.AddWithValue("@J2Visiteur", j2Visiteur ?? Convert.DBNull);
-            Commande.Parameters.AddWithValue("@J3Visite", j3Visite ?? Convert.DBNull);
-            Commande.Parameters.AddWithValue("@J3Visiteur", j3Visiteur ?? Convert.DBNull);
-            Commande.Parameters.AddWithValue("@J4Visite", j4Visite ?? Convert.DBNull);
-            Commande.Parameters.AddWithValue("@J4Visiteur", j4Visiteur ?? Convert.DBNull);
+            Commande.Parameters.AddWithValue("@Heure", heure);
             Commande.Parameters.AddWithValue("@Serie", serie);
             Commande.Parameters.AddWithValue("@Division", division);
+            Commande.Parameters.AddWithValue("@equipeVisiteur", equipeVisiteur);
+            Commande.Parameters.AddWithValue("@equipeVisite", equipeVisite);
+            Commande.Parameters.AddWithValue("@Score", score);
             Commande.Connection.Open();
             Commande.ExecuteNonQuery();
             Commande.Connection.Close();
@@ -92,25 +66,13 @@ namespace TennisTable.Acces
                     MatchId = int.Parse(dr["MatchId"].ToString()),
                     NumMatch = dr["NumMatch"].ToString(),
                     Date = DateTime.Parse(dr["Date"].ToString()),
-                    HeureDebut = DateTime.Parse(dr["HeureDebut"].ToString())
+                    Heure = DateTime.Parse(dr["Heure"].ToString()),
+                    Serie = int.Parse(dr["Serie"].ToString()),
+                    Division = dr["Division"].ToString(),
+                    EquipeVisiteur = int.Parse(dr["EquipeVisiteur"].ToString()),
+                    EquipeVisite = int.Parse(dr["EquipeVisite"].ToString()),
+                    Score = dr["Score"].ToString()
                 };
-                if (dr["CapitaineVisite"] != DBNull.Value) tmp.CapitaineVisite = int.Parse(dr["CapitaineVisite"].ToString());
-                if (dr["CapitaineVisiteur"] != DBNull.Value) tmp.CapitaineVisiteur = int.Parse(dr["CapitaineVisiteur"].ToString());
-                if (dr["JugeArbitre"] != DBNull.Value) tmp.JugeArbitre = dr["JugeArbitre"].ToString();
-                tmp.LettreVisite = dr["LettreVisite"].ToString();
-                tmp.LettreVisiteur = dr["LettreVisiteur"].ToString();
-                tmp.ClubVisite = int.Parse(dr["ClubVisite"].ToString());
-                tmp.ClubVisiteur = int.Parse(dr["ClubVisiteur"].ToString());
-                if (dr["J1Visite"] != DBNull.Value) tmp.J1Visite = int.Parse(dr["J1Visite"].ToString());
-                if (dr["J1Visiteur"] != DBNull.Value) tmp.J1Visiteur = int.Parse(dr["J1Visiteur"].ToString());
-                if (dr["J2Visite"] != DBNull.Value) tmp.J2Visite = int.Parse(dr["J2Visite"].ToString());
-                if (dr["J2Visiteur"] != DBNull.Value) tmp.J2Visiteur = int.Parse(dr["J2Visiteur"].ToString());
-                if (dr["J3Visite"] != DBNull.Value) tmp.J3Visite = int.Parse(dr["J3Visite"].ToString());
-                if (dr["J3Visiteur"] != DBNull.Value) tmp.J3Visiteur = int.Parse(dr["J3Visiteur"].ToString());
-                if (dr["J4Visite"] != DBNull.Value) tmp.J4Visite = int.Parse(dr["J4Visite"].ToString());
-                if (dr["J4Visiteur"] != DBNull.Value) tmp.J4Visiteur = int.Parse(dr["J4Visiteur"].ToString());
-                tmp.Serie = int.Parse(dr["Serie"].ToString());
-                tmp.Division = dr["Division"].ToString();
                 res.Add(tmp);
             }
             dr.Close();
@@ -129,25 +91,12 @@ namespace TennisTable.Acces
                 res.MatchId = matchId;
                 res.NumMatch = dr["NumMatch"].ToString();
                 res.Date = DateTime.Parse(dr["Date"].ToString());
-                res.HeureDebut = DateTime.Parse(dr["HeureDebut"].ToString());
-                if (dr["HeureFin"] != DBNull.Value) res.HeureFin = DateTime.Parse(dr["HeureFin"].ToString());
-                if (dr["CapitaineVisite"] != DBNull.Value) res.CapitaineVisite = int.Parse(dr["CapitaineVisite"].ToString());
-                if (dr["CapitaineVisiteur"] != DBNull.Value) res.CapitaineVisiteur = int.Parse(dr["CapitaineVisiteur"].ToString());
-                if (dr["JugeArbitre"] != DBNull.Value) res.JugeArbitre = dr["JugeArbitre"].ToString();
-                res.LettreVisite = dr["LettreVisite"].ToString();
-                res.LettreVisiteur = dr["LettreVisiteur"].ToString();
-                res.ClubVisite = int.Parse(dr["ClubVisite"].ToString());
-                res.ClubVisiteur = int.Parse(dr["ClubVisiteur"].ToString());
-                if (dr["J1Visite"] != DBNull.Value) res.J1Visite = int.Parse(dr["J1Visite"].ToString());
-                if (dr["J1Visiteur"] != DBNull.Value) res.J1Visiteur = int.Parse(dr["J1Visiteur"].ToString());
-                if (dr["J2Visite"] != DBNull.Value) res.J2Visite = int.Parse(dr["J2Visite"].ToString());
-                if (dr["J2Visiteur"] != DBNull.Value) res.J2Visiteur = int.Parse(dr["J2Visiteur"].ToString());
-                if (dr["J3Visite"] != DBNull.Value) res.J3Visite = int.Parse(dr["J3Visite"].ToString());
-                if (dr["J3Visiteur"] != DBNull.Value) res.J3Visiteur = int.Parse(dr["J3Visiteur"].ToString());
-                if (dr["J4Visite"] != DBNull.Value) res.J4Visite = int.Parse(dr["J4Visite"].ToString());
-                if (dr["J4Visiteur"] != DBNull.Value) res.J4Visiteur = int.Parse(dr["J4Visiteur"].ToString());
+                res.Heure = DateTime.Parse(dr["HeureDebut"].ToString());
                 res.Serie = int.Parse(dr["Serie"].ToString());
                 res.Division = dr["Division"].ToString();
+                res.EquipeVisiteur = int.Parse(dr["EquipeVisiteur"].ToString());
+                res.EquipeVisite = int.Parse(dr["EquipeVisite"].ToString());
+                res.Score = dr["Score"].ToString();
             }
             dr.Close();
             Commande.Connection.Close();

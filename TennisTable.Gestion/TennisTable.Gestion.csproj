@@ -41,13 +41,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GEquipes.cs" />
     <Compile Include="G_Base.cs" />
     <Compile Include="G_Classements.cs" />
     <Compile Include="G_Clubs.cs" />
     <Compile Include="G_Joueurs.cs" />
     <Compile Include="G_Matchs.cs" />
-    <Compile Include="G_Rencontres.cs" />
-    <Compile Include="G_SchemasRencontres.cs" />
     <Compile Include="G_Series.cs" />
     <Compile Include="G_Sexes.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

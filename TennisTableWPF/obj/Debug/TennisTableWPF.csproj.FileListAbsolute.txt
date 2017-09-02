@@ -3,13 +3,12 @@ d:\documents\documents\visual studio 2017\Projects\TennisTableWPF\TennisTableWPF
 d:\documents\documents\visual studio 2017\Projects\TennisTableWPF\TennisTableWPF\bin\Debug\A_Clubs.cs
 d:\documents\documents\visual studio 2017\Projects\TennisTableWPF\TennisTableWPF\bin\Debug\A_Joueurs.cs
 d:\documents\documents\visual studio 2017\Projects\TennisTableWPF\TennisTableWPF\bin\Debug\A_Matchs.cs
-d:\documents\documents\visual studio 2017\Projects\TennisTableWPF\TennisTableWPF\bin\Debug\A_Rencontres.cs
-d:\documents\documents\visual studio 2017\Projects\TennisTableWPF\TennisTableWPF\bin\Debug\A_SchemasRencontres.cs
 d:\documents\documents\visual studio 2017\Projects\TennisTableWPF\TennisTableWPF\bin\Debug\A_Series.cs
 d:\documents\documents\visual studio 2017\Projects\TennisTableWPF\TennisTableWPF\bin\Debug\A_Sexes.cs
 d:\documents\documents\visual studio 2017\Projects\TennisTableWPF\TennisTableWPF\bin\Debug\Resources\background.jpg
 d:\documents\documents\visual studio 2017\Projects\TennisTableWPF\TennisTableWPF\bin\Debug\Resources\CloseTab.png
 d:\documents\documents\visual studio 2017\Projects\TennisTableWPF\TennisTableWPF\bin\Debug\Resources\Refresh.png
+d:\documents\documents\visual studio 2017\Projects\TennisTableWPF\TennisTableWPF\bin\Debug\Resources\TennisTable.png
 d:\documents\documents\visual studio 2017\Projects\TennisTableWPF\TennisTableWPF\bin\Debug\TennisTableWPF.exe.config
 d:\documents\documents\visual studio 2017\Projects\TennisTableWPF\TennisTableWPF\bin\Debug\TennisTableWPF.exe
 d:\documents\documents\visual studio 2017\Projects\TennisTableWPF\TennisTableWPF\bin\Debug\TennisTableWPF.pdb
@@ -58,4 +57,3 @@ d:\documents\documents\visual studio 2017\Projects\TennisTableWPF\TennisTableWPF
 d:\documents\documents\visual studio 2017\Projects\TennisTableWPF\TennisTableWPF\obj\Debug\TennisTableWPF.csproj.GenerateResource.Cache
 d:\documents\documents\visual studio 2017\Projects\TennisTableWPF\TennisTableWPF\obj\Debug\TennisTableWPF.exe
 d:\documents\documents\visual studio 2017\Projects\TennisTableWPF\TennisTableWPF\obj\Debug\TennisTableWPF.pdb
-d:\documents\documents\visual studio 2017\Projects\TennisTableWPF\TennisTableWPF\bin\Debug\Resources\TennisTable.png

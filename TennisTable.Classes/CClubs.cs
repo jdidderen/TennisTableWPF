@@ -6,20 +6,13 @@ namespace TennisTable.Classes
     /// <summary>
     /// Classe de définition des données
     /// </summary>
-    public class CClubs : INotifyPropertyChanged, IDataErrorInfo
+    public class CClubs : PropertiesChanges, IDataErrorInfo
     {
         private int _clubId;
         private string _indice;
         private string _nom;
         private string _nomCourt;
         private string _adresse;
-
-        public event PropertyChangedEventHandler PropertyChanged;
-        protected virtual void OnPropertyChanged(string propertyName)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
-
         public string Error => null;
         public string this[string columnName]
         {
@@ -53,22 +46,20 @@ namespace TennisTable.Classes
                 return result;
             }
         }
-
         public CClubs()
         { }
         public CClubs(string indice, string nom, string nomCourt, string adresse)
         {
-            Indice = indice;
-            Nom = nom;
-            NomCourt = nomCourt;
-            Adresse = adresse;
+            _indice = indice;
+            _nom = nom;
+            _nomCourt = nomCourt;
+            _adresse = adresse;
         }
         public CClubs(int clubId, string indice, string nom, string nomCourt, string adresse)
          : this(indice, nom, nomCourt, adresse)
         {
-            ClubId = clubId;
+            _clubId = clubId;
         }
-
         public int ClubId
         {
             get => _clubId;

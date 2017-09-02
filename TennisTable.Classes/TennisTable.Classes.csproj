@@ -41,14 +41,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="C_Classements.cs" />
-    <Compile Include="C_Clubs.cs" />
-    <Compile Include="C_Joueurs.cs" />
-    <Compile Include="C_Matchs.cs" />
-    <Compile Include="C_Rencontres.cs" />
-    <Compile Include="C_SchemasRencontres.cs" />
-    <Compile Include="C_Series.cs" />
-    <Compile Include="C_Sexes.cs" />
+    <Compile Include="CEquipes.cs" />
+    <Compile Include="CClassements.cs" />
+    <Compile Include="CClubs.cs" />
+    <Compile Include="CJoueurs.cs" />
+    <Compile Include="CMatchs.cs" />
+    <Compile Include="CSeries.cs" />
+    <Compile Include="CSexes.cs" />
+    <Compile Include="PropertiesChanges.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

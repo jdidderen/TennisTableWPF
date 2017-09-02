@@ -3,8 +3,6 @@ d:\documents\documents\visual studio 2017\Projects\TennisTableWPF\TennisTable.Ge
 d:\documents\documents\visual studio 2017\Projects\TennisTableWPF\TennisTable.Gestion\bin\Debug\A_Clubs.cs
 d:\documents\documents\visual studio 2017\Projects\TennisTableWPF\TennisTable.Gestion\bin\Debug\A_Joueurs.cs
 d:\documents\documents\visual studio 2017\Projects\TennisTableWPF\TennisTable.Gestion\bin\Debug\A_Matchs.cs
-d:\documents\documents\visual studio 2017\Projects\TennisTableWPF\TennisTable.Gestion\bin\Debug\A_Rencontres.cs
-d:\documents\documents\visual studio 2017\Projects\TennisTableWPF\TennisTable.Gestion\bin\Debug\A_SchemasRencontres.cs
 d:\documents\documents\visual studio 2017\Projects\TennisTableWPF\TennisTable.Gestion\bin\Debug\A_Series.cs
 d:\documents\documents\visual studio 2017\Projects\TennisTableWPF\TennisTable.Gestion\bin\Debug\A_Sexes.cs
 d:\documents\documents\visual studio 2017\Projects\TennisTableWPF\TennisTable.Gestion\bin\Debug\TennisTable.Gestion.dll

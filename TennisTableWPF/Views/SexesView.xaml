@@ -4,17 +4,25 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
-             mc:Ignorable="d" Width="401.697" Height="116.517">
-    <Grid Margin="0" Opacity="0.9" DataContext="{Binding SexesViewModel, Source={StaticResource Locator}}">
-        <Grid.Background>
-            <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.AppWorkspaceColorKey}}"/>
-        </Grid.Background>
-        <ListBox x:Name="ListeSexes" SelectedItem="{Binding Path=SexeSelected,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" ItemsSource="{Binding Sexes}" Margin="10,10,248,10">
+             xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls">
+    <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" DataContext="{Binding SexesViewModel, Source={StaticResource Locator}}" MaxHeight="600" MaxWidth="800">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" MinWidth="200"/>
+            <ColumnDefinition Width="*" MinWidth="320"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" MinHeight="50" />
+            <RowDefinition Height="*" MinHeight="60" />
+        </Grid.RowDefinitions>
+        <ListBox Grid.RowSpan="2" Grid.Column="0" x:Name="ListeSexes" SelectedItem="{Binding Path=SexeSelected,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" ItemsSource="{Binding Sexes}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="5,2,5,2">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <TextBlock>
                         <TextBlock.Text>
-                            <Binding Path="Denomination" />
+                            <MultiBinding StringFormat="{}{0} ({1})">
+                                <Binding Path="Denomination" />
+                                <Binding Path="SexeId" />
+                            </MultiBinding>
                         </TextBlock.Text>
                     </TextBlock>
                 </DataTemplate>
@@ -25,29 +33,53 @@
                 </i:EventTrigger>
             </i:Interaction.Triggers>
         </ListBox>
-        <TextBox x:Name="IdSexe" IsEnabled="{Binding TextBoxStatus}" Text="{Binding SelectedItem.SexeId, ElementName=ListeSexes,ValidatesOnDataErrors=True,NotifyOnValidationError=True,ValidatesOnExceptions=True}" Validation.ErrorTemplate="{StaticResource ErrorTemplate}" IsReadOnly="True" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="148" Margin="248,8,0,0"/>
-        <Label x:Name="IdSexeLabel"   Content="ID du sexe :" HorizontalAlignment="Left" VerticalAlignment="Top" Width="100" Foreground="Black" FontFamily="Arctic" RenderTransformOrigin="0.582,1.026" Margin="160,8,0,0" Height="23" FontSize="10"/>
-        <TextBox x:Name="Sexe" IsEnabled="{Binding TextBoxStatus}" Text="{Binding SelectedItem.Denomination, ElementName=ListeSexes,ValidatesOnDataErrors=True,NotifyOnValidationError=True,ValidatesOnExceptions=True}" Validation.ErrorTemplate="{StaticResource ErrorTemplate}" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="148" Margin="248,36,0,0" />
-        <Label x:Name="SexeLabel" Content="Sexe :" HorizontalAlignment="Left" Margin="160,36,0,0" VerticalAlignment="Top" Width="100" Foreground="Black" FontFamily="Arctic" FontSize="10"/>
-        <Button x:Name="CreateSexe" Command="{Binding CreerSexeCommand}" Style="{StaticResource MyButton}" HorizontalAlignment="Left" Margin="166,71,0,0" VerticalAlignment="Top" Width="40" Height="38" BorderBrush="{x:Null}" Foreground="{x:Null}" ToolTip="{Binding Path=CreerSexeMessage}" ToolTipService.ShowDuration="10000" ToolTipService.ShowOnDisabled="true" >
-            <Button.Background>
-                <ImageBrush ImageSource="../Resources/Create.png" Stretch="Uniform"/>
-            </Button.Background>
-        </Button>
-        <Button x:Name="EditSexe" Style="{StaticResource MyButton}" Command="{Binding ModifierSexeCommand}" Margin="212,71,150,0" VerticalAlignment="Top" Height="38" BorderBrush="{x:Null}" Foreground="{x:Null}" ToolTip="Éditer le sexe sélectionné" ToolTipService.ShowDuration="10000" RenderTransformOrigin="1.4,0.447" ToolTipService.ShowOnDisabled="true" >
-            <Button.Background>
-                <ImageBrush ImageSource="../Resources/Edit.png" Stretch="Uniform"/>
-            </Button.Background>
-        </Button>
-        <Button x:Name="DeleteSexe" Command="{Binding SupprimerSexeCommand}" Style="{StaticResource MyButton}" HorizontalAlignment="Left" Margin="256,71,0,0" VerticalAlignment="Top" Width="40" Height="38" BorderBrush="{x:Null}" Foreground="{x:Null}" ToolTip="Supprimer le sexe sélectionné" ToolTipService.ShowDuration="10000" RenderTransformOrigin="2.019,0.507" ToolTipService.ShowOnDisabled="true" >
-            <Button.Background>
-                <ImageBrush ImageSource="../Resources/Delete.png" Stretch="Uniform"/>
-            </Button.Background>
-        </Button>
-        <Button x:Name="SaveSexe" Style="{StaticResource MyButton}" Command="{Binding SauverSexeCommand}" HorizontalAlignment="Left" Margin="302,71,0,0" VerticalAlignment="Top" Width="40" Height="38" BorderBrush="{x:Null}" Foreground="{x:Null}" ToolTip="{Binding Path=SauverSexeMessage}" ToolTipService.ShowDuration="10000" ToolTipService.ShowOnDisabled="true" >
-            <Button.Background>
-                <ImageBrush ImageSource="../Resources/Save.png" Stretch="Uniform"/>
-            </Button.Background>
-        </Button>
+        <Grid Grid.Column="1" Grid.Row="0" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" MinWidth="100"></ColumnDefinition>
+                <ColumnDefinition Width="*" MinWidth="150"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" MinHeight="25"></RowDefinition>
+                <RowDefinition Height="*" MinHeight="25"></RowDefinition>
+            </Grid.RowDefinitions>
+            <TextBox x:Name="IdSexe" controls:TextBoxHelper.ClearTextButton="True"  IsEnabled="{Binding TextBoxStatus}" Text="{Binding SexeSelected.SexeId}" IsReadOnly="True" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="0" Grid.Column="1" Margin="0,0,0,2"/>
+            <Label x:Name="IdSexeLabel"   Content="ID du sexe :" Foreground="Black" FontFamily="Arctic" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="0" Grid.Column="0" FontSize="14"/>
+            <TextBox x:Name="DenominationSexe" IsEnabled="{Binding TextBoxStatus}" Text="{Binding SexeSelected.Denomination,ValidatesOnDataErrors=True,NotifyOnValidationError=True,ValidatesOnExceptions=True}" Validation.ErrorTemplate="{StaticResource ErrorTemplate}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="1" Grid.Column="1" Margin="0,0,0,2"/>
+            <Label x:Name="DenominationLabel" Content="Dénomination :" Foreground="Black" FontFamily="Arctic" FontSize="14" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="1" Grid.Column="0" />
+        </Grid>
+        <Grid Grid.Column="1" Grid.Row="1" VerticalAlignment="Top" HorizontalAlignment="Stretch" MinHeight="64">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" MinWidth="64"></ColumnDefinition>
+                <ColumnDefinition Width="*" MinWidth="64"></ColumnDefinition>
+                <ColumnDefinition Width="*" MinWidth="64"></ColumnDefinition>
+                <ColumnDefinition Width="*" MinWidth="64"></ColumnDefinition>
+                <ColumnDefinition Width="*" MinWidth="64"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Button x:Name="CreateSexe" Command="{Binding CreerSexeCommand}" Style="{StaticResource MyButton}" BorderBrush="{x:Null}" Foreground="{x:Null}" ToolTip="{Binding Path=CreerSexeMessage}" ToolTipService.ShowDuration="10000" ToolTipService.ShowOnDisabled="true" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Column="0" Margin="5,5,5,5">
+                <Button.Background>
+                    <ImageBrush ImageSource="/TennisTableWPF;component/Resources/Create.png" Stretch="Uniform"/>
+                </Button.Background>
+            </Button>
+            <Button x:Name="EditSexe" Style="{StaticResource MyButton}" Command="{Binding ModifierSexeCommand}" BorderBrush="{x:Null}" Foreground="{x:Null}" ToolTip="Éditer le sexe sélectionné" ToolTipService.ShowDuration="10000" ToolTipService.ShowOnDisabled="true" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Column="1" Margin="5,5,5,5">
+                <Button.Background>
+                    <ImageBrush ImageSource="/TennisTableWPF;component/Resources/Edit.png" Stretch="Uniform"/>
+                </Button.Background>
+            </Button>
+            <Button x:Name="DeleteSexe" Command="{Binding SupprimerSexeCommand}" Style="{StaticResource MyButton}" BorderBrush="{x:Null}" Foreground="{x:Null}" ToolTip="Supprimer le sexe sélectionné" ToolTipService.ShowDuration="10000" RenderTransformOrigin="2.019,0.507" ToolTipService.ShowOnDisabled="true" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Column="2" Margin="5,5,5,5">
+                <Button.Background>
+                    <ImageBrush ImageSource="/TennisTableWPF;component/Resources/Delete.png" Stretch="Uniform"/>
+                </Button.Background>
+            </Button>
+            <Button x:Name="SaveSexe" Style="{StaticResource MyButton}" Command="{Binding SauverSexeCommand}" BorderBrush="{x:Null}" Foreground="{x:Null}" ToolTip="{Binding Path=SauverSexeMessage}" ToolTipService.ShowDuration="10000" ToolTipService.ShowOnDisabled="true" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Column="3" Margin="5,5,5,5">
+                <Button.Background>
+                    <ImageBrush ImageSource="/TennisTableWPF;component/Resources/Save.png" Stretch="Uniform"/>
+                </Button.Background>
+            </Button>
+            <Button x:Name="RefreshSexe" Style="{StaticResource MyButton}" Command="{Binding RefreshSexeCommand}" BorderBrush="{x:Null}" Foreground="{x:Null}" ToolTip="{Binding Path=RefreshSexeMessage}" ToolTipService.ShowDuration="10000" ToolTipService.ShowOnDisabled="true" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Column="4" Margin="5,5,5,5">
+                <Button.Background>
+                    <ImageBrush ImageSource="/TennisTableWPF;component/Resources/Refresh.png" Stretch="Uniform"/>
+                </Button.Background>
+            </Button>
+        </Grid>
     </Grid>
 </UserControl>
