@@ -1,0 +1,86 @@
+﻿<UserControl x:Class="TennisTableWPF.Views.SeriesView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:TennisTableWPF.Views"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls">
+    <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" DataContext="{Binding SeriesViewModel, Source={StaticResource Locator}}" MaxHeight="600" MaxWidth="800">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" MinWidth="200"/>
+            <ColumnDefinition Width="*" MinWidth="320"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" MinHeight="50" />
+            <RowDefinition Height="*" MinHeight="60" />
+        </Grid.RowDefinitions>
+        <ListBox Grid.RowSpan="2" Grid.Column="0" x:Name="ListeSeries" SelectedItem="{Binding Path=SerieSelected,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" ItemsSource="{Binding Series}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="5,2,5,2">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock>
+                        <TextBlock.Text>
+                            <MultiBinding StringFormat="{}{0} ({1})">
+                                <Binding Path="Denomination" />
+                                <Binding Path="SerieId" />
+                            </MultiBinding>
+                        </TextBlock.Text>
+                    </TextBlock>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="SelectionChanged">
+                    <i:InvokeCommandAction Command="{Binding SeriesSelectedCommand}" />
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+        </ListBox>
+        <Grid Grid.Column="1" Grid.Row="0" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" MinWidth="100"></ColumnDefinition>
+                <ColumnDefinition Width="*" MinWidth="150"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" MinHeight="25"></RowDefinition>
+                <RowDefinition Height="*" MinHeight="25"></RowDefinition>
+            </Grid.RowDefinitions>
+            <TextBox x:Name="IdSerie" controls:TextBoxHelper.ClearTextButton="True"  IsEnabled="{Binding TextBoxStatus}" Text="{Binding SerieSelected.SerieId}" IsReadOnly="True" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="0" Grid.Column="1" Margin="0,0,0,2"/>
+            <Label x:Name="IdSerieLabel"   Content="ID de la série :" Foreground="Black" FontFamily="Arctic" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="0" Grid.Column="0" FontSize="14"/>
+            <TextBox x:Name="DenominationSerie" IsEnabled="{Binding TextBoxStatus}" Text="{Binding SerieSelected.Denomination,ValidatesOnDataErrors=True,NotifyOnValidationError=True,ValidatesOnExceptions=True}" Validation.ErrorTemplate="{StaticResource ErrorTemplate}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="1" Grid.Column="1" Margin="0,0,0,2"/>
+            <Label x:Name="DenominationLabel" Content="Dénomination :" Foreground="Black" FontFamily="Arctic" FontSize="14" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="1" Grid.Column="0" />
+        </Grid>
+        <Grid Grid.Column="1" Grid.Row="1" VerticalAlignment="Top" HorizontalAlignment="Stretch" MinHeight="64">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" MinWidth="64"></ColumnDefinition>
+                <ColumnDefinition Width="*" MinWidth="64"></ColumnDefinition>
+                <ColumnDefinition Width="*" MinWidth="64"></ColumnDefinition>
+                <ColumnDefinition Width="*" MinWidth="64"></ColumnDefinition>
+                <ColumnDefinition Width="*" MinWidth="64"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Button x:Name="CreateSerie" Command="{Binding CreerSerieCommand}" Style="{StaticResource MyButton}" BorderBrush="{x:Null}" Foreground="{x:Null}" ToolTip="{Binding Path=CreerSerieMessage}" ToolTipService.ShowDuration="10000" ToolTipService.ShowOnDisabled="true" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Column="0" Margin="5,5,5,5">
+                <Button.Background>
+                    <ImageBrush ImageSource="/TennisTableWPF;component/Resources/Create.png" Stretch="Uniform"/>
+                </Button.Background>
+            </Button>
+            <Button x:Name="EditSerie" Style="{StaticResource MyButton}" Command="{Binding ModifierSerieCommand}" BorderBrush="{x:Null}" Foreground="{x:Null}" ToolTip="Éditer le serie sélectionné" ToolTipService.ShowDuration="10000" ToolTipService.ShowOnDisabled="true" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Column="1" Margin="5,5,5,5">
+                <Button.Background>
+                    <ImageBrush ImageSource="/TennisTableWPF;component/Resources/Edit.png" Stretch="Uniform"/>
+                </Button.Background>
+            </Button>
+            <Button x:Name="DeleteSerie" Command="{Binding SupprimerSerieCommand}" Style="{StaticResource MyButton}" BorderBrush="{x:Null}" Foreground="{x:Null}" ToolTip="Supprimer le serie sélectionné" ToolTipService.ShowDuration="10000" RenderTransformOrigin="2.019,0.507" ToolTipService.ShowOnDisabled="true" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Column="2" Margin="5,5,5,5">
+                <Button.Background>
+                    <ImageBrush ImageSource="/TennisTableWPF;component/Resources/Delete.png" Stretch="Uniform"/>
+                </Button.Background>
+            </Button>
+            <Button x:Name="SaveSerie" Style="{StaticResource MyButton}" Command="{Binding SauverSerieCommand}" BorderBrush="{x:Null}" Foreground="{x:Null}" ToolTip="{Binding Path=SauverSerieMessage}" ToolTipService.ShowDuration="10000" ToolTipService.ShowOnDisabled="true" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Column="3" Margin="5,5,5,5">
+                <Button.Background>
+                    <ImageBrush ImageSource="/TennisTableWPF;component/Resources/Save.png" Stretch="Uniform"/>
+                </Button.Background>
+            </Button>
+            <Button x:Name="RefreshSerie" Style="{StaticResource MyButton}" Command="{Binding RefreshSerieCommand}" BorderBrush="{x:Null}" Foreground="{x:Null}" ToolTip="{Binding Path=RefreshSerieMessage}" ToolTipService.ShowDuration="10000" ToolTipService.ShowOnDisabled="true" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Column="4" Margin="5,5,5,5">
+                <Button.Background>
+                    <ImageBrush ImageSource="/TennisTableWPF;component/Resources/Refresh.png" Stretch="Uniform"/>
+                </Button.Background>
+            </Button>
+        </Grid>
+    </Grid>
+</UserControl>

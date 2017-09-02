@@ -1,0 +1,86 @@
+﻿<UserControl x:Class="TennisTableWPF.Views.ClassementView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:TennisTableWPF.Views"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls">
+    <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" DataContext="{Binding ClassementsViewModel, Source={StaticResource Locator}}" MaxHeight="600" MaxWidth="800">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" MinWidth="200"/>
+            <ColumnDefinition Width="*" MinWidth="320"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" MinHeight="50" />
+            <RowDefinition Height="*" MinHeight="60" />
+        </Grid.RowDefinitions>
+        <ListBox Grid.RowSpan="2" Grid.Column="0" x:Name="ListeClassements" SelectedItem="{Binding Path=ClassementSelected,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" ItemsSource="{Binding Classements}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="5,2,5,2">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock>
+                        <TextBlock.Text>
+                            <MultiBinding StringFormat="{}{0} ({1})">
+                                <Binding Path="Classement" />
+                                <Binding Path="ClassementId" />
+                            </MultiBinding>
+                        </TextBlock.Text>
+                    </TextBlock>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="SelectionChanged">
+                    <i:InvokeCommandAction Command="{Binding ClassementsSelectedCommand}" />
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+        </ListBox>
+        <Grid Grid.Column="1" Grid.Row="0" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" MinWidth="100"></ColumnDefinition>
+                <ColumnDefinition Width="*" MinWidth="150"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" MinHeight="25"></RowDefinition>
+                <RowDefinition Height="*" MinHeight="25"></RowDefinition>
+            </Grid.RowDefinitions>
+            <TextBox x:Name="IdClassement" controls:TextBoxHelper.ClearTextButton="True"  IsEnabled="{Binding TextBoxStatus}" Text="{Binding ClassementSelected.ClassementId}" IsReadOnly="True" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="0" Grid.Column="1" Margin="0,0,0,2"/>
+            <Label x:Name="IdClassementLabel"   Content="ID du classement :" Foreground="Black" FontFamily="Arctic" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="0" Grid.Column="0" FontSize="14"/>
+            <TextBox x:Name="DenominationClassement" IsEnabled="{Binding TextBoxStatus}" Text="{Binding ClassementSelected.Classement,ValidatesOnDataErrors=True,NotifyOnValidationError=True,ValidatesOnExceptions=True}" Validation.ErrorTemplate="{StaticResource ErrorTemplate}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="1" Grid.Column="1" Margin="0,0,0,2"/>
+            <Label x:Name="DenominationLabel" Content="Dénomination :" Foreground="Black" FontFamily="Arctic" FontSize="14" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="1" Grid.Column="0" />
+        </Grid>
+        <Grid Grid.Column="1" Grid.Row="1" VerticalAlignment="Top" HorizontalAlignment="Stretch" MinHeight="64">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" MinWidth="64"></ColumnDefinition>
+                <ColumnDefinition Width="*" MinWidth="64"></ColumnDefinition>
+                <ColumnDefinition Width="*" MinWidth="64"></ColumnDefinition>
+                <ColumnDefinition Width="*" MinWidth="64"></ColumnDefinition>
+                <ColumnDefinition Width="*" MinWidth="64"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Button x:Name="CreateClassement" Command="{Binding CreerClassementCommand}" Style="{StaticResource MyButton}" BorderBrush="{x:Null}" Foreground="{x:Null}" ToolTip="{Binding Path=CreerClassementMessage}" ToolTipService.ShowDuration="10000" ToolTipService.ShowOnDisabled="true" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Column="0" Margin="5,5,5,5">
+                <Button.Background>
+                    <ImageBrush ImageSource="/TennisTableWPF;component/Resources/Create.png" Stretch="Uniform"/>
+                </Button.Background>
+            </Button>
+            <Button x:Name="EditClassement" Style="{StaticResource MyButton}" Command="{Binding ModifierClassementCommand}" BorderBrush="{x:Null}" Foreground="{x:Null}" ToolTip="Éditer le classement sélectionné" ToolTipService.ShowDuration="10000" ToolTipService.ShowOnDisabled="true" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Column="1" Margin="5,5,5,5">
+                <Button.Background>
+                    <ImageBrush ImageSource="/TennisTableWPF;component/Resources/Edit.png" Stretch="Uniform"/>
+                </Button.Background>
+            </Button>
+            <Button x:Name="DeleteClassement" Command="{Binding SupprimerClassementCommand}" Style="{StaticResource MyButton}" BorderBrush="{x:Null}" Foreground="{x:Null}" ToolTip="Supprimer le classement sélectionné" ToolTipService.ShowDuration="10000" RenderTransformOrigin="2.019,0.507" ToolTipService.ShowOnDisabled="true" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Column="2" Margin="5,5,5,5">
+                <Button.Background>
+                    <ImageBrush ImageSource="/TennisTableWPF;component/Resources/Delete.png" Stretch="Uniform"/>
+                </Button.Background>
+            </Button>
+            <Button x:Name="SaveClassement" Style="{StaticResource MyButton}" Command="{Binding SauverClassementCommand}" BorderBrush="{x:Null}" Foreground="{x:Null}" ToolTip="{Binding Path=SauverClassementMessage}" ToolTipService.ShowDuration="10000" ToolTipService.ShowOnDisabled="true" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Column="3" Margin="5,5,5,5">
+                <Button.Background>
+                    <ImageBrush ImageSource="/TennisTableWPF;component/Resources/Save.png" Stretch="Uniform"/>
+                </Button.Background>
+            </Button>
+            <Button x:Name="RefreshClassement" Style="{StaticResource MyButton}" Command="{Binding RefreshClassementCommand}" BorderBrush="{x:Null}" Foreground="{x:Null}" ToolTip="{Binding Path=RefreshClassementMessage}" ToolTipService.ShowDuration="10000" ToolTipService.ShowOnDisabled="true" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Column="4" Margin="5,5,5,5">
+                <Button.Background>
+                    <ImageBrush ImageSource="/TennisTableWPF;component/Resources/Refresh.png" Stretch="Uniform"/>
+                </Button.Background>
+            </Button>
+        </Grid>
+    </Grid>
+</UserControl>

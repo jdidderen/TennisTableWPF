@@ -14,10 +14,19 @@ namespace TennisTableWPF.Services.Tabs
                     return ClubsTemplate;
                 case JoueursTabContentViewModel _:
                     return JoueursTemplate;
+                case MatchsTabContentViewModel _:
+                    return MatchsTemplate;
+                case EquipesTabContentViewModel _:
+                    return EquipesTemplate;
+                case StaticDatasTabContentViewModel _:
+                    return StaticDatasTemplate;
             }
             return null;
         }
         public DataTemplate JoueursTemplate { get; set; }
         public DataTemplate ClubsTemplate { get; set; }
+        public DataTemplate EquipesTemplate { get; set; }
+        public DataTemplate MatchsTemplate { get; set; }
+        public DataTemplate StaticDatasTemplate { get; set; }
     }
 }

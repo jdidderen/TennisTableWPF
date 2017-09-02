@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 d:\documents\documents\visual studio 2017\Projects\TennisTableWPF\TennisTableWPF\App.xaml
-10-557283523
+15426293837
 4-1108027994
-24-1580417134
+30-1748459631
 24-1426314367
-MainWindow.xaml;Ressources.xaml;Skin.xaml;Views\Clubs\ClubsDetailsView.xaml;Views\Clubs\ClubsListeView.xaml;Views\Clubs\ClubsView.xaml;Views\Joueurs\JoueursDetailsView.xaml;Views\Joueurs\JoueursListeView.xaml;Views\Joueurs\JoueursView.xaml;Views\SexesView.xaml;
+MainWindow.xaml;Ressources.xaml;Skin.xaml;Views\EquipesView.xaml;Views\MatchsView.xaml;Views\StaticDatas\ClassementView.xaml;Views\Clubs\ClubsDetailsView.xaml;Views\Clubs\ClubsListeView.xaml;Views\Clubs\ClubsView.xaml;Views\Joueurs\JoueursDetailsView.xaml;Views\Joueurs\JoueursListeView.xaml;Views\Joueurs\JoueursView.xaml;Views\StaticDatas\SeriesView.xaml;Views\StaticDatas\SexesView.xaml;Views\StaticDatas\StaticDataView.xaml;
 
 False
 

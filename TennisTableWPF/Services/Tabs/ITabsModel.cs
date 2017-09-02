@@ -16,5 +16,13 @@ namespace TennisTableWPF.Services.Tabs
     public class ClubsTabContentViewModel : ITabsModel
     {
     }
-
+    public class MatchsTabContentViewModel : ITabsModel
+    {
+    }
+    public class EquipesTabContentViewModel : ITabsModel
+    {
+    }
+    public class StaticDatasTabContentViewModel : ITabsModel
+    {
+    }
 }

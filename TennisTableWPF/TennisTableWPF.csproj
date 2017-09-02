@@ -84,8 +84,18 @@
     <Compile Include="ViewModels\ClassementsViewModel.cs" />
     <Compile Include="ViewModels\ClubsViewModel.cs" />
     <Compile Include="ViewModels\JoueursViewModel.cs" />
+    <Compile Include="ViewModels\SeriesViewModel.cs" />
     <Compile Include="ViewModels\SexesViewModel.cs" />
     <Compile Include="ViewModels\TabViewModel.cs" />
+    <Compile Include="Views\EquipesView.xaml.cs">
+      <DependentUpon>EquipesView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MatchsView.xaml.cs">
+      <DependentUpon>MatchsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\StaticDatas\ClassementView.xaml.cs">
+      <DependentUpon>ClassementView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Clubs\ClubsDetailsView.xaml.cs">
       <DependentUpon>ClubsDetailsView.xaml</DependentUpon>
     </Compile>
@@ -104,8 +114,14 @@
     <Compile Include="Views\Joueurs\JoueursView.xaml.cs">
       <DependentUpon>JoueursView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\SexesView.xaml.cs">
+    <Compile Include="Views\StaticDatas\SeriesView.xaml.cs">
+      <DependentUpon>SeriesView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\StaticDatas\SexesView.xaml.cs">
       <DependentUpon>SexesView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\StaticDatas\StaticDataView.xaml.cs">
+      <DependentUpon>StaticDataView.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -124,6 +140,18 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Skin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\EquipesView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\MatchsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\StaticDatas\ClassementView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -151,7 +179,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\SexesView.xaml">
+    <Page Include="Views\StaticDatas\SeriesView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\StaticDatas\SexesView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\StaticDatas\StaticDataView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

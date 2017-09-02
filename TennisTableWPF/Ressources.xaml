@@ -11,7 +11,20 @@
     <DataTemplate x:Key="ClubsContentTemplate">
         <views:ClubsView DataContext="{Binding ClubsTabContentViewModel}"/>
     </DataTemplate>
+    <DataTemplate x:Key="EquipesContentTemplate">
+        <views:EquipesView DataContext="{Binding EquipesTabContentViewModel}"/>
+    </DataTemplate>
+    <DataTemplate x:Key="MatchsContentTemplate">
+        <views:MatchsView DataContext="{Binding MatchsTabContentViewModel}"/>
+    </DataTemplate>
+    <DataTemplate x:Key="StaticDatasContentTemplate">
+        <views:StaticDataView DataContext="{Binding StaticDatasTabContentViewModel}"/>
+    </DataTemplate>
     <tabs:ViewSelector x:Key="Selector"
                            ClubsTemplate="{StaticResource ClubsContentTemplate}"
-                           JoueursTemplate="{StaticResource JoueursContentTemplate}" />
+                           JoueursTemplate="{StaticResource JoueursContentTemplate}" 
+                           EquipesTemplate="{StaticResource EquipesContentTemplate}"
+                           MatchsTemplate="{StaticResource MatchsContentTemplate}"
+                           StaticDatasTemplate="{StaticResource StaticDatasContentTemplate}"
+                       />
 </ResourceDictionary>

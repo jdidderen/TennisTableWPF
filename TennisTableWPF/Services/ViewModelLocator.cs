@@ -13,6 +13,8 @@ namespace TennisTableWPF.Services
         public SexesViewModel SexesViewModel { get; }
         public JoueursViewModel JoueursViewModel { get; }
         public TabViewModel TabViewModel { get; }
+        public SeriesViewModel SeriesViewModel { get; }
+        public ClassementsViewModel ClassementsViewModel { get; }
         public ViewModelLocator()
         {
             IDialogService dialogservice = new DialogService();
@@ -20,6 +22,8 @@ namespace TennisTableWPF.Services
             ClubsViewModel = new ClubsViewModel(dialogservice);
             SexesViewModel = new SexesViewModel(dialogservice);
             TabViewModel = new TabViewModel(dialogservice);
+            SeriesViewModel = new SeriesViewModel(dialogservice);
+            ClassementsViewModel = new ClassementsViewModel(dialogservice);
         }
     }
 }

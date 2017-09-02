@@ -2,4 +2,4 @@ TennisTableWPF
 
 TODO LIST :
 
-Ajouter Reload buttons dans les Views (+ commandes associées)
+Corriger bouton refresh pour les views (Classements,Sexes,Séries)

@@ -136,7 +136,7 @@ namespace TennisTableWPF.ViewModels
         public JoueursViewModel(IDialogService dialogservice)
         {
             _dialogservice = dialogservice;
-            JClassements = new ClassementsViewModel();
+            JClassements = new ClassementsViewModel(dialogservice);
             JClubs = new ClubsViewModel(dialogservice);
             JSexes = new SexesViewModel(dialogservice);
             GJoueurs = new GJoueurs();
