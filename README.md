@@ -8,7 +8,8 @@ Rajouter les vérifications nécessaires pour les différentes Views (Côté DB 
 ViewModels : Héritage class PropertiesChanged
 JoueurView : Rajout d'un datagrid avec les équipes et les matchs
 EquipeView : Rajout d'un datagrid avec les matchs
-Clubs View : Rajout d'un datagrid avec les joueurs et les équipes (A voir)
+ClubsView : Rajout d'un datagrid avec les joueurs et les équipes (A voir)
 Rajouter système de filtres et recherches
 EquipeView : ListBox JoueurSelected reflet du choix utilisateur
 Models : Rajouter conditions d'erreur
+EquipeView : Gérer les champs Joueurs pour ajout,edit et autres

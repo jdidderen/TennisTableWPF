@@ -35,7 +35,9 @@ d:\documents\documents\visual studio 2017\Projects\TennisTableWPF\TennisTableWPF
 d:\documents\documents\visual studio 2017\Projects\TennisTableWPF\TennisTableWPF\obj\Debug\Views\Equipes\EquipesDetailsView.g.cs
 d:\documents\documents\visual studio 2017\Projects\TennisTableWPF\TennisTableWPF\obj\Debug\Views\Equipes\EquipesListeView.g.cs
 d:\documents\documents\visual studio 2017\Projects\TennisTableWPF\TennisTableWPF\obj\Debug\Views\Equipes\EquipesView.g.cs
-d:\documents\documents\visual studio 2017\Projects\TennisTableWPF\TennisTableWPF\obj\Debug\Views\MatchsView.g.cs
+d:\documents\documents\visual studio 2017\Projects\TennisTableWPF\TennisTableWPF\obj\Debug\Views\Matchs\MatchsDetailsView.g.cs
+d:\documents\documents\visual studio 2017\Projects\TennisTableWPF\TennisTableWPF\obj\Debug\Views\Matchs\MatchsListeView.g.cs
+d:\documents\documents\visual studio 2017\Projects\TennisTableWPF\TennisTableWPF\obj\Debug\Views\Matchs\MatchsView.g.cs
 d:\documents\documents\visual studio 2017\Projects\TennisTableWPF\TennisTableWPF\obj\Debug\Views\StaticDatas\ClassementView.g.cs
 d:\documents\documents\visual studio 2017\Projects\TennisTableWPF\TennisTableWPF\obj\Debug\Views\Clubs\ClubsDetailsView.g.cs
 d:\documents\documents\visual studio 2017\Projects\TennisTableWPF\TennisTableWPF\obj\Debug\Views\Clubs\ClubsListeView.g.cs
@@ -57,7 +59,9 @@ d:\documents\documents\visual studio 2017\Projects\TennisTableWPF\TennisTableWPF
 d:\documents\documents\visual studio 2017\Projects\TennisTableWPF\TennisTableWPF\obj\Debug\Views\Equipes\EquipesDetailsView.baml
 d:\documents\documents\visual studio 2017\Projects\TennisTableWPF\TennisTableWPF\obj\Debug\Views\Equipes\EquipesListeView.baml
 d:\documents\documents\visual studio 2017\Projects\TennisTableWPF\TennisTableWPF\obj\Debug\Views\Equipes\EquipesView.baml
-d:\documents\documents\visual studio 2017\Projects\TennisTableWPF\TennisTableWPF\obj\Debug\Views\MatchsView.baml
+d:\documents\documents\visual studio 2017\Projects\TennisTableWPF\TennisTableWPF\obj\Debug\Views\Matchs\MatchsDetailsView.baml
+d:\documents\documents\visual studio 2017\Projects\TennisTableWPF\TennisTableWPF\obj\Debug\Views\Matchs\MatchsListeView.baml
+d:\documents\documents\visual studio 2017\Projects\TennisTableWPF\TennisTableWPF\obj\Debug\Views\Matchs\MatchsView.baml
 d:\documents\documents\visual studio 2017\Projects\TennisTableWPF\TennisTableWPF\obj\Debug\Views\StaticDatas\ClassementView.baml
 d:\documents\documents\visual studio 2017\Projects\TennisTableWPF\TennisTableWPF\obj\Debug\Views\Clubs\ClubsListeView.baml
 d:\documents\documents\visual studio 2017\Projects\TennisTableWPF\TennisTableWPF\obj\Debug\Views\Clubs\ClubsView.baml

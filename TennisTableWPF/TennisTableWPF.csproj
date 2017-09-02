@@ -85,9 +85,11 @@
     <Compile Include="ViewModels\ClubsViewModel.cs" />
     <Compile Include="ViewModels\EquipesViewModel.cs" />
     <Compile Include="ViewModels\JoueursViewModel.cs" />
+    <Compile Include="ViewModels\MatchsViewModel.cs" />
     <Compile Include="ViewModels\SeriesViewModel.cs" />
     <Compile Include="ViewModels\SexesViewModel.cs" />
     <Compile Include="ViewModels\TabViewModel.cs" />
+    <Compile Include="ViewModels\ViewModelBase.cs" />
     <Compile Include="Views\Equipes\EquipesDetailsView.xaml.cs">
       <DependentUpon>EquipesDetailsView.xaml</DependentUpon>
     </Compile>
@@ -97,7 +99,13 @@
     <Compile Include="Views\Equipes\EquipesView.xaml.cs">
       <DependentUpon>EquipesView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\MatchsView.xaml.cs">
+    <Compile Include="Views\Matchs\MatchsDetailsView.xaml.cs">
+      <DependentUpon>MatchsDetailsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Matchs\MatchsListeView.xaml.cs">
+      <DependentUpon>MatchsListeView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Matchs\MatchsView.xaml.cs">
       <DependentUpon>MatchsView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\StaticDatas\ClassementView.xaml.cs">
@@ -162,7 +170,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\MatchsView.xaml">
+    <Page Include="Views\Matchs\MatchsDetailsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Matchs\MatchsListeView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Matchs\MatchsView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

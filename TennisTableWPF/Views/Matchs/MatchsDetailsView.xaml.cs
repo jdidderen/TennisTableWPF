@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace TennisTableWPF.Views
+namespace TennisTableWPF.Views.Matchs
 {
     /// <summary>
-    /// Logique d'interaction pour MatchsView.xaml
+    /// Logique d'interaction pour MatchsDetailsView.xaml
     /// </summary>
-    public partial class MatchsView : UserControl
+    public partial class MatchsDetailsView : UserControl
     {
-        public MatchsView()
+        public MatchsDetailsView()
         {
             InitializeComponent();
         }

@@ -48,27 +48,27 @@
                 <ColumnDefinition Width="*" MinWidth="64"></ColumnDefinition>
                 <ColumnDefinition Width="*" MinWidth="64"></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <Button x:Name="CreateClub" Command="{Binding CreerClubCommand}" Style="{StaticResource MyButton}" BorderBrush="{x:Null}" Foreground="{x:Null}" ToolTip="{Binding Path=CreerClubMessage}" ToolTipService.ShowDuration="10000" ToolTipService.ShowOnDisabled="true" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Column="0" Margin="5,5,5,5">
+            <Button x:Name="CreateClub" Command="{Binding CreerCommand}" Style="{StaticResource MyButton}" BorderBrush="{x:Null}" Foreground="{x:Null}" ToolTip="{Binding Path=CreerMessage}" ToolTipService.ShowDuration="10000" ToolTipService.ShowOnDisabled="true" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Column="0" Margin="5,5,5,5">
                 <Button.Background>
                     <ImageBrush ImageSource="/TennisTableWPF;component/Resources/Create.png" Stretch="Uniform"/>
                 </Button.Background>
             </Button>
-            <Button x:Name="EditClub" Style="{StaticResource MyButton}" Command="{Binding ModifierClubCommand}" BorderBrush="{x:Null}" Foreground="{x:Null}" ToolTip="Éditer le club sélectionné" ToolTipService.ShowDuration="10000" ToolTipService.ShowOnDisabled="true" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Column="1" Margin="5,5,5,5">
+            <Button x:Name="EditClub" Style="{StaticResource MyButton}" Command="{Binding ModifierCommand}" BorderBrush="{x:Null}" Foreground="{x:Null}" ToolTip="{Binding Path=EditerMessage}" ToolTipService.ShowDuration="10000" ToolTipService.ShowOnDisabled="true" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Column="1" Margin="5,5,5,5">
                 <Button.Background>
                     <ImageBrush ImageSource="/TennisTableWPF;component/Resources/Edit.png" Stretch="Uniform"/>
                 </Button.Background>
             </Button>
-            <Button x:Name="DeleteClub" Command="{Binding SupprimerClubCommand}" Style="{StaticResource MyButton}" BorderBrush="{x:Null}" Foreground="{x:Null}" ToolTip="Supprimer le club sélectionné" ToolTipService.ShowDuration="10000" RenderTransformOrigin="2.019,0.507" ToolTipService.ShowOnDisabled="true" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Column="2" Margin="5,5,5,5">
+            <Button x:Name="DeleteClub" Command="{Binding SupprimerCommand}" Style="{StaticResource MyButton}" BorderBrush="{x:Null}" Foreground="{x:Null}" ToolTip="{Binding Path=SupprimerMessage}" ToolTipService.ShowDuration="10000" RenderTransformOrigin="2.019,0.507" ToolTipService.ShowOnDisabled="true" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Column="2" Margin="5,5,5,5">
                 <Button.Background>
                     <ImageBrush ImageSource="/TennisTableWPF;component/Resources/Delete.png" Stretch="Uniform"/>
                 </Button.Background>
             </Button>
-            <Button x:Name="SaveClub" Style="{StaticResource MyButton}" Command="{Binding SauverClubCommand}" BorderBrush="{x:Null}" Foreground="{x:Null}" ToolTip="{Binding Path=SauverClubMessage}" ToolTipService.ShowDuration="10000" ToolTipService.ShowOnDisabled="true" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Column="3" Margin="5,5,5,5">
+            <Button x:Name="SaveClub" Style="{StaticResource MyButton}" Command="{Binding SauverCommand}" BorderBrush="{x:Null}" Foreground="{x:Null}" ToolTip="{Binding Path=SauverMessage}" ToolTipService.ShowDuration="10000" ToolTipService.ShowOnDisabled="true" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Column="3" Margin="5,5,5,5">
                 <Button.Background>
                     <ImageBrush ImageSource="/TennisTableWPF;component/Resources/Save.png" Stretch="Uniform"/>
                 </Button.Background>
             </Button>
-            <Button x:Name="RefreshClub" Style="{StaticResource MyButton}" Command="{Binding RefreshClubCommand}" BorderBrush="{x:Null}" Foreground="{x:Null}" ToolTip="{Binding Path=RefreshClubMessage}" ToolTipService.ShowDuration="10000" ToolTipService.ShowOnDisabled="true" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Column="4" Margin="5,5,5,5">
+            <Button x:Name="RefreshClub" Style="{StaticResource MyButton}" Command="{Binding RefreshCommand}" BorderBrush="{x:Null}" Foreground="{x:Null}" ToolTip="{Binding Path=RefreshMessage}" ToolTipService.ShowDuration="10000" ToolTipService.ShowOnDisabled="true" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Column="4" Margin="5,5,5,5">
                 <Button.Background>
                     <ImageBrush ImageSource="/TennisTableWPF;component/Resources/Refresh.png" Stretch="Uniform"/>
                 </Button.Background>

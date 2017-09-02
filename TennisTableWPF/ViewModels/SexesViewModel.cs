@@ -8,84 +8,9 @@ using TennisTableWPF.Services;
 
 namespace TennisTableWPF.ViewModels
 {
-    public class SexesViewModel : INotifyPropertyChanged
+    public class SexesViewModel : ViewModelBase
     {
-        public event PropertyChangedEventHandler PropertyChanged;
-        protected virtual void OnPropertyChanged(string propertyName)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
-
-        private string _creerSexeMessage;
-        public string CreerSexeMessage { get => _creerSexeMessage; set { _creerSexeMessage = value; OnPropertyChanged("CreerSexeMessage"); } }
-        private string _supprimerSexeMessage;
-        public string SupprimerSexeMessage { get => _supprimerSexeMessage; set { _supprimerSexeMessage = value; OnPropertyChanged("SupprimerSexeMessage"); } }
-        private string _sauverSexeMessage;
-        public string SauverSexeMessage { get => _sauverSexeMessage; set { _sauverSexeMessage = value; OnPropertyChanged("SauverSexeMessage"); } }
-        private string _modifierSexeMessage;
-        public string ModifierSexeMessage { get => _modifierSexeMessage; set { _modifierSexeMessage = value; OnPropertyChanged("ModifierSexeMessage"); } }
-        private string _editerSexeMessage;
-        public string EditerSexeMessage { get => _editerSexeMessage; set { _editerSexeMessage = value; OnPropertyChanged("EditerSexeMessage"); } }
-
-        private bool _textBoxStatus;
-        public bool TextBoxStatus { get => _textBoxStatus; set { _textBoxStatus = value; OnPropertyChanged("TextBoxStatus"); } }
-        private bool _sauverButtonStatus;
-        public bool SauverButtonStatus { get => _sauverButtonStatus; set { _sauverButtonStatus = value; OnPropertyChanged("SauverButtonStatus"); } }
-        private bool _supprimerButtonStatus;
-        public bool SupprimerButtonStatus { get => _supprimerButtonStatus; set { _supprimerButtonStatus = value; OnPropertyChanged("SupprimerButtonStatus"); } }
-        private bool _editerButtonStatus;
-        public bool EditerButtonStatus { get => _editerButtonStatus; set { _editerButtonStatus = value; OnPropertyChanged("EditerButtonStatus"); } }
-
-        private ICommand _creerSexeCommand;
-        public ICommand CreerSexeCommand
-        {
-            get
-            {
-                return _creerSexeCommand ?? (_creerSexeCommand = new RelayCommands(param => CreerSexeCommand_Execute(),
-                           param => CreerSexeCommand_CanExecute()));
-            }
-        }
-        private ICommand _sauverSexeCommand;
-        public ICommand SauverSexeCommand
-        {
-            get
-            {
-                return _sauverSexeCommand ?? (_sauverSexeCommand =
-                           new RelayCommands(param => SauverSexeCommand_Execute(),
-                               param => SauverSexeCommand_CanExecute()));
-            }
-        }
-        private ICommand _modifierSexeCommand;
-        public ICommand ModifierSexeCommand
-        {
-            get
-            {
-                return _modifierSexeCommand ?? (_modifierSexeCommand =
-                           new RelayCommands(param => ModifierSexeCommand_Execute(),
-                               param => ModifierSexeCommand_CanExecute()));
-            }
-        }
-        private ICommand _sexesSelectedCommand;
-        public ICommand SexesSelectedCommand
-        {
-            get
-            {
-                return _sexesSelectedCommand ?? (_sexesSelectedCommand =
-                           new RelayCommands(param => SexesSelectedCommand_Execute(),
-                               param => SexesSelectedCommand_CanExecute()));
-            }
-        }
-        private ICommand _supprimerSexeCommand;
-        public ICommand SupprimerSexeCommand
-        {
-            get
-            {
-                return _supprimerSexeCommand ?? (_supprimerSexeCommand =
-                           new RelayCommands(param => SupprimerSexeCommand_Execute(),
-                               param => SupprimerSexeCommand_CanExecute()));
-            }
-        }
-
+        #region Propriétés
         private ObservableCollection<CSexes> _sexes;
         public ObservableCollection<CSexes> Sexes
         {
@@ -98,11 +23,6 @@ namespace TennisTableWPF.ViewModels
                 return _sexes;
             }
         }
-
-        private readonly IDialogService _dialogservice;
-        public ClassementsViewModel JClassements { get; set; }
-        public ClubsViewModel JClubs { get; set; }
-        public SexesViewModel JSexes { get; set; }
         public GSexes GSexes;
         private CSexes _sexeSelected;
         public CSexes SexeSelected
@@ -114,53 +34,49 @@ namespace TennisTableWPF.ViewModels
                 OnPropertyChanged("SexeSelected");
             }
         }
-
+        #endregion
+        #region Constructeur
         public SexesViewModel(IDialogService dialogservice)
         {
-            _dialogservice = dialogservice;
+            DialogService = dialogservice;
             GSexes = new GSexes();
-            TextBoxStatus = false;
-            SauverButtonStatus = false;
-            EditerButtonStatus = true;
-            SupprimerButtonStatus = false;
         }
-
-        private bool CreerSexeCommand_CanExecute()
+        #endregion
+        #region Méthodes - Commandes
+        public override bool CreerCommand_CanExecute()
         {
-            CreerSexeMessage = "Ajouter un nouveau sexe";
+            CreerMessage = "Ajouter un nouveau sexe";
             return true;
         }
-        private void CreerSexeCommand_Execute()
+        public override void CreerCommand_Execute()
         {
             Sexes.Add(new CSexes());
             SexeSelected = Sexes[Sexes.Count - 1];
         }
-        private bool SauverSexeCommand_CanExecute()
+        public override bool SauverCommand_CanExecute()
         {
             if (SexeSelected == null)
             {
-                SauverSexeMessage = "Sauver les données du sexe sélectionné - Aucun sexe sélectionné";
+                SauverMessage = "Sauver les données du sexe sélectionné - Aucun sexe sélectionné";
             }
             else if (EditerButtonStatus)
             {
-                SauverSexeMessage = "Sauver les données du sexe sélectionné - L'édition n'a pas été activée";
+                SauverMessage = "Sauver les données du sexe sélectionné - L'édition n'a pas été activée";
             }
             else if (SexeSelected.Denomination == null)
             {
-                SauverSexeMessage = "Sauver les données du sexe sélectionné - Certains champs obligatoires sont vides";
+                SauverMessage = "Sauver les données du sexe sélectionné - Certains champs obligatoires sont vides";
             }
             else
             {
-                SauverSexeMessage = "Sauver les données du sexe sélectionné";
+                SauverMessage = "Sauver les données du sexe sélectionné";
                 return true;
             }
             return false;
         }
-        private void SauverSexeCommand_Execute()
+        public override void SauverCommand_Execute()
         {
-            TextBoxStatus = false;
-            SauverButtonStatus = false;
-            EditerButtonStatus = true;
+            base.SauverCommand_Execute();
             if (SexeSelected.SexeId == 0)
             {
                 GSexes.Ajouter(SexeSelected.Denomination);
@@ -170,32 +86,21 @@ namespace TennisTableWPF.ViewModels
             {
                 GSexes.Modifier(SexeSelected.SexeId, SexeSelected.Denomination);
             }
-
         }
-        private bool ModifierSexeCommand_CanExecute()
+        public override bool ModifierCommand_CanExecute()
         {
             if (SexeSelected == null)
             {
-                _editerSexeMessage = "Éditer les données du sexe sélectionné - Aucun sexe sélectionné";
+                EditerMessage = "Éditer les données du sexe sélectionné - Aucun sexe sélectionné";
             }
             else
             {
-                _editerSexeMessage = "Éditer les données du sexe sélectionné";
+                EditerMessage = "Éditer les données du sexe sélectionné";
                 return true;
             }
             return false;
         }
-        private void ModifierSexeCommand_Execute()
-        {
-            TextBoxStatus = true;
-            SauverButtonStatus = true;
-            EditerButtonStatus = false;
-        }
-        private bool SexesSelectedCommand_CanExecute()
-        {
-            return true;
-        }
-        private void SexesSelectedCommand_Execute()
+        public override void SelectedCommand_Execute()
         {
             if (SexeSelected != null)
             {
@@ -210,28 +115,33 @@ namespace TennisTableWPF.ViewModels
                 EditerButtonStatus = false;
             }
         }
-        private bool SupprimerSexeCommand_CanExecute()
+        public override bool SupprimerCommand_CanExecute()
         {
             if (SexeSelected == null)
             {
-                SauverSexeMessage = "Supprimer le sexe sélectionné - Aucun sexe sélectionné";
+                SupprimerMessage = "Supprimer le sexe sélectionné - Aucun sexe sélectionné";
             }
             else
             {
-                SauverSexeMessage = "Sauver les données du sexe sélectionné";
+                SupprimerMessage = "Supprimer le sexe sélectionné";
                 return true;
             }
             return false;
         }
-        private void SupprimerSexeCommand_Execute()
+        public override void SupprimerCommand_Execute()
         {
-            if (_dialogservice.ShowMessageBox("Êtes-vous sur de vouloir supprimer ce sexe ?",
+            if (DialogService.ShowMessageBox("Êtes-vous sur de vouloir supprimer ce sexe ?",
                     "Confirmation de suppresion", MessageBoxButton.YesNo, MessageBoxIcon.Exclamation) !=
                 MessageBoxResult.Yes) return;
             GSexes.Supprimer(SexeSelected.SexeId);
             ReloadSexes();
         }
-
+        public override void RefreshCommand_Execute()
+        {
+            ReloadSexes();
+        }
+        #endregion
+        #region Méthodes
         public void ListeSexes()
         {
             _sexes = new ObservableCollection<CSexes>(GSexes.Lire("SexeId"));
@@ -241,5 +151,6 @@ namespace TennisTableWPF.ViewModels
             _sexes.Clear();
             GSexes.Lire("SexeId").ToList().ForEach(_sexes.Add);
         }
+        #endregion
     }
 }

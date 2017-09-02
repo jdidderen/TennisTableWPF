@@ -30,7 +30,7 @@
             </ListBox.ItemTemplate>
             <i:Interaction.Triggers>
                 <i:EventTrigger EventName="SelectionChanged">
-                    <i:InvokeCommandAction Command="{Binding SeriesSelectedCommand}" />
+                    <i:InvokeCommandAction Command="{Binding SelectedCommand}" />
                 </i:EventTrigger>
             </i:Interaction.Triggers>
         </ListBox>
@@ -56,27 +56,27 @@
                 <ColumnDefinition Width="*" MinWidth="64"></ColumnDefinition>
                 <ColumnDefinition Width="*" MinWidth="64"></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <Button x:Name="CreateSerie" Command="{Binding CreerSerieCommand}" Style="{StaticResource MyButton}" BorderBrush="{x:Null}" Foreground="{x:Null}" ToolTip="{Binding Path=CreerSerieMessage}" ToolTipService.ShowDuration="10000" ToolTipService.ShowOnDisabled="true" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Column="0" Margin="5,5,5,5">
+            <Button x:Name="CreateSerie" Command="{Binding CreerCommand}" Style="{StaticResource MyButton}" BorderBrush="{x:Null}" Foreground="{x:Null}" ToolTip="{Binding Path=CreerMessage}" ToolTipService.ShowDuration="10000" ToolTipService.ShowOnDisabled="true" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Column="0" Margin="5,5,5,5">
                 <Button.Background>
                     <ImageBrush ImageSource="/TennisTableWPF;component/Resources/Create.png" Stretch="Uniform"/>
                 </Button.Background>
             </Button>
-            <Button x:Name="EditSerie" Style="{StaticResource MyButton}" Command="{Binding ModifierSerieCommand}" BorderBrush="{x:Null}" Foreground="{x:Null}" ToolTip="Éditer le serie sélectionné" ToolTipService.ShowDuration="10000" ToolTipService.ShowOnDisabled="true" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Column="1" Margin="5,5,5,5">
+            <Button x:Name="EditSerie" Style="{StaticResource MyButton}" Command="{Binding ModifierCommand}" BorderBrush="{x:Null}" Foreground="{x:Null}" ToolTip="{Binding Path=EditerMessage}" ToolTipService.ShowDuration="10000" ToolTipService.ShowOnDisabled="true" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Column="1" Margin="5,5,5,5">
                 <Button.Background>
                     <ImageBrush ImageSource="/TennisTableWPF;component/Resources/Edit.png" Stretch="Uniform"/>
                 </Button.Background>
             </Button>
-            <Button x:Name="DeleteSerie" Command="{Binding SupprimerSerieCommand}" Style="{StaticResource MyButton}" BorderBrush="{x:Null}" Foreground="{x:Null}" ToolTip="Supprimer le serie sélectionné" ToolTipService.ShowDuration="10000" RenderTransformOrigin="2.019,0.507" ToolTipService.ShowOnDisabled="true" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Column="2" Margin="5,5,5,5">
+            <Button x:Name="DeleteSerie" Command="{Binding SupprimerCommand}" Style="{StaticResource MyButton}" BorderBrush="{x:Null}" Foreground="{x:Null}" ToolTip="{Binding Path=SupprimerMessage}" ToolTipService.ShowDuration="10000" RenderTransformOrigin="2.019,0.507" ToolTipService.ShowOnDisabled="true" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Column="2" Margin="5,5,5,5">
                 <Button.Background>
                     <ImageBrush ImageSource="/TennisTableWPF;component/Resources/Delete.png" Stretch="Uniform"/>
                 </Button.Background>
             </Button>
-            <Button x:Name="SaveSerie" Style="{StaticResource MyButton}" Command="{Binding SauverSerieCommand}" BorderBrush="{x:Null}" Foreground="{x:Null}" ToolTip="{Binding Path=SauverSerieMessage}" ToolTipService.ShowDuration="10000" ToolTipService.ShowOnDisabled="true" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Column="3" Margin="5,5,5,5">
+            <Button x:Name="SaveSerie" Style="{StaticResource MyButton}" Command="{Binding SauverCommand}" BorderBrush="{x:Null}" Foreground="{x:Null}" ToolTip="{Binding Path=SauverMessage}" ToolTipService.ShowDuration="10000" ToolTipService.ShowOnDisabled="true" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Column="3" Margin="5,5,5,5">
                 <Button.Background>
                     <ImageBrush ImageSource="/TennisTableWPF;component/Resources/Save.png" Stretch="Uniform"/>
                 </Button.Background>
             </Button>
-            <Button x:Name="RefreshSerie" Style="{StaticResource MyButton}" Command="{Binding RefreshSerieCommand}" BorderBrush="{x:Null}" Foreground="{x:Null}" ToolTip="{Binding Path=RefreshSerieMessage}" ToolTipService.ShowDuration="10000" ToolTipService.ShowOnDisabled="true" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Column="4" Margin="5,5,5,5">
+            <Button x:Name="RefreshSerie" Style="{StaticResource MyButton}" Command="{Binding RefreshCommand}" BorderBrush="{x:Null}" Foreground="{x:Null}" ToolTip="{Binding Path=RefreshMessage}" ToolTipService.ShowDuration="10000" ToolTipService.ShowOnDisabled="true" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Column="4" Margin="5,5,5,5">
                 <Button.Background>
                     <ImageBrush ImageSource="/TennisTableWPF;component/Resources/Refresh.png" Stretch="Uniform"/>
                 </Button.Background>

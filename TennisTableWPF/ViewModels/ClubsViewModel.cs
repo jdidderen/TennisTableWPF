@@ -8,82 +8,9 @@ using TennisTableWPF.Services;
 
 namespace TennisTableWPF.ViewModels
 {
-    public class ClubsViewModel : INotifyPropertyChanged
+    public class ClubsViewModel : ViewModelBase
     {
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        protected virtual void OnPropertyChanged(string propertyName)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
-        private string _creerClubMessage;
-        public string CreerClubMessage { get => _creerClubMessage; set { _creerClubMessage = value; OnPropertyChanged("CreerClubMessage"); } }
-        private string _supprimerClubMessage;
-        public string SupprimerClubMessage { get => _supprimerClubMessage; set { _supprimerClubMessage = value; OnPropertyChanged("SupprimerClubMessage"); } }
-        private string _sauverClubMessage;
-        public string SauverClubMessage { get => _sauverClubMessage; set { _sauverClubMessage = value; OnPropertyChanged("SauverClubMessage"); } }
-        private string _modifierClubMessage;
-        public string ModifierClubMessage { get => _modifierClubMessage; set { _modifierClubMessage = value; OnPropertyChanged("ModifierClubMessage"); } }
-        private string _editerClubMessage;
-        public string EditerClubMessage { get => _editerClubMessage; set { _editerClubMessage = value; OnPropertyChanged("EditerClubMessage"); } }
-
-        private bool _textBoxStatus;
-        public bool TextBoxStatus { get => _textBoxStatus; set { _textBoxStatus = value; OnPropertyChanged("TextBoxStatus"); } }
-        private bool _sauverButtonStatus;
-        public bool SauverButtonStatus { get => _sauverButtonStatus; set { _sauverButtonStatus = value; OnPropertyChanged("SauverButtonStatus"); } }
-        private bool _supprimerButtonStatus;
-        public bool SupprimerButtonStatus { get => _supprimerButtonStatus; set { _supprimerButtonStatus = value; OnPropertyChanged("SupprimerButtonStatus"); } }
-        private bool _editerButtonStatus;
-        public bool EditerButtonStatus { get => _editerButtonStatus; set { _editerButtonStatus = value; OnPropertyChanged("EditerButtonStatus"); } }
-        private ICommand _creerClubCommand;
-        public ICommand CreerClubCommand
-        {
-            get
-            {
-                return _creerClubCommand ?? (_creerClubCommand = new RelayCommands(param => CreerClubCommand_Execute(),
-                           param => CreerClubCommand_CanExecute()));
-            }
-        }
-        private ICommand _sauverClubCommand;
-        public ICommand SauverClubCommand
-        {
-            get
-            {
-                return _sauverClubCommand ?? (_sauverClubCommand =
-                           new RelayCommands(param => SauverClubCommand_Execute(),
-                               param => SauverClubCommand_CanExecute()));
-            }
-        }
-        private ICommand _modifierClubCommand;
-        public ICommand ModifierClubCommand
-        {
-            get
-            {
-                return _modifierClubCommand ?? (_modifierClubCommand =
-                           new RelayCommands(param => ModifierClubCommand_Execute(),
-                               param => ModifierClubCommand_CanExecute()));
-            }
-        }
-        private ICommand _clubsSelectedCommand;
-        public ICommand ClubsSelectedCommand
-        {
-            get
-            {
-                return _clubsSelectedCommand ?? (_clubsSelectedCommand =
-                           new RelayCommands(param => ClubsSelectedCommand_Execute(),
-                               param => ClubsSelectedCommand_CanExecute()));
-            }
-        }
-        private ICommand _supprimerClubCommand;
-        public ICommand SupprimerClubCommand
-        {
-            get
-            {
-                return _supprimerClubCommand ?? (_supprimerClubCommand =
-                           new RelayCommands(param => SupprimerClubCommand_Execute(),
-                               param => SupprimerClubCommand_CanExecute()));
-            }
-        }
+        #region Propriétés
         private ObservableCollection<CClubs> _clubs;
         public ObservableCollection<CClubs> Clubs
         {
@@ -96,7 +23,6 @@ namespace TennisTableWPF.ViewModels
                 return _clubs;
             }
         }
-        private readonly IDialogService _dialogservice;
         public GClubs GClubs;
         private CClubs _clubSelected;
         public CClubs ClubSelected
@@ -108,51 +34,49 @@ namespace TennisTableWPF.ViewModels
                 OnPropertyChanged("ClubSelected");
             }
         }
+        #endregion
+        #region Constructeur
         public ClubsViewModel(IDialogService dialogservice)
         {
-            _dialogservice = dialogservice;
+            DialogService = dialogservice;
             GClubs = new GClubs();
-            TextBoxStatus = false;
-            SauverButtonStatus = false;
-            EditerButtonStatus = true;
-            SupprimerButtonStatus = false;
         }
-        private bool CreerClubCommand_CanExecute()
+        #endregion
+        #region Méthodes - Commandes
+        public override bool CreerCommand_CanExecute()
         {
-            CreerClubMessage = "Ajouter un nouveau club";
+            CreerMessage = "Ajouter un nouveau club";
             return true;
         }
-        private void CreerClubCommand_Execute()
+        public override void CreerCommand_Execute()
         {
             Clubs.Add(new CClubs());
             ClubSelected = Clubs[Clubs.Count - 1];
         }
-        private bool SauverClubCommand_CanExecute()
+        public override bool SauverCommand_CanExecute()
         {
             if (ClubSelected == null)
             {
-                SauverClubMessage = "Sauver les données du club sélectionné - Aucun club sélectionné";
+                SauverMessage = "Sauver les données du club sélectionné - Aucun club sélectionné";
             }
             else if (EditerButtonStatus)
             {
-                SauverClubMessage = "Sauver les données du club sélectionné - L'édition n'a pas été activée";
+                SauverMessage = "Sauver les données du club sélectionné - L'édition n'a pas été activée";
             }
-            else if (ClubSelected.Indice == null && ClubSelected.Nom == null && ClubSelected.NomCourt == null && ClubSelected.Adresse == null)
+            else if (ClubSelected.Nom == null && ClubSelected.Indice == null && ClubSelected.Nom == null && ClubSelected.NomCourt == null && ClubSelected.Adresse == null)
             {
-                SauverClubMessage = "Sauver les données du club sélectionné - Certains champs obligatoires sont vides";
+                SauverMessage = "Sauver les données du club sélectionné - Certains champs obligatoires sont vides";
             }
             else
             {
-                SauverClubMessage = "Sauver les données du club sélectionné";
+                SauverMessage = "Sauver les données du club sélectionné";
                 return true;
             }
             return false;
         }
-        private void SauverClubCommand_Execute()
+        public override void SauverCommand_Execute()
         {
-            TextBoxStatus = false;
-            SauverButtonStatus = false;
-            EditerButtonStatus = true;
+            base.SauverCommand_Execute();
             if (ClubSelected.ClubId == 0)
             {
                 GClubs.Ajouter(ClubSelected.Indice, ClubSelected.Nom, ClubSelected.NomCourt, ClubSelected.Adresse);
@@ -162,32 +86,21 @@ namespace TennisTableWPF.ViewModels
             {
                 GClubs.Modifier(ClubSelected.ClubId, ClubSelected.Indice, ClubSelected.Nom, ClubSelected.NomCourt, ClubSelected.Adresse);
             }
-
         }
-        private bool ModifierClubCommand_CanExecute()
+        public override bool ModifierCommand_CanExecute()
         {
             if (ClubSelected == null)
             {
-                _editerClubMessage = "Éditer les données du club sélectionné - Aucun club sélectionné";
+                EditerMessage = "Éditer les données du club sélectionné - Aucun club sélectionné";
             }
             else
             {
-                _editerClubMessage = "Éditer les données du club sélectionné";
+                EditerMessage = "Éditer les données du club sélectionné";
                 return true;
             }
             return false;
         }
-        private void ModifierClubCommand_Execute()
-        {
-            TextBoxStatus = true;
-            SauverButtonStatus = true;
-            EditerButtonStatus = false;
-        }
-        private bool ClubsSelectedCommand_CanExecute()
-        {
-            return true;
-        }
-        private void ClubsSelectedCommand_Execute()
+        public override void SelectedCommand_Execute()
         {
             if (ClubSelected != null)
             {
@@ -202,27 +115,33 @@ namespace TennisTableWPF.ViewModels
                 EditerButtonStatus = false;
             }
         }
-        private bool SupprimerClubCommand_CanExecute()
+        public override bool SupprimerCommand_CanExecute()
         {
             if (ClubSelected == null)
             {
-                SauverClubMessage = "Supprimer le club sélectionné - Aucun club sélectionné";
+                SupprimerMessage = "Supprimer le club sélectionné - Aucun club sélectionné";
             }
             else
             {
-                SauverClubMessage = "Sauver les données du club sélectionné";
+                SupprimerMessage = "Supprimer le club sélectionné";
                 return true;
             }
             return false;
         }
-        private void SupprimerClubCommand_Execute()
+        public override void SupprimerCommand_Execute()
         {
-            if (_dialogservice.ShowMessageBox("Êtes-vous sur de vouloir supprimer ce club ?", "Confirmation de suppresion", MessageBoxButton.YesNo, MessageBoxIcon.Exclamation) == MessageBoxResult.Yes)
-            {
-                GClubs.Supprimer(ClubSelected.ClubId);
-                ReloadClubs();
-            }
+            if (DialogService.ShowMessageBox("Êtes-vous sur de vouloir supprimer ce club ?",
+                    "Confirmation de suppresion", MessageBoxButton.YesNo, MessageBoxIcon.Exclamation) !=
+                MessageBoxResult.Yes) return;
+            GClubs.Supprimer(ClubSelected.ClubId);
+            ReloadClubs();
         }
+        public override void RefreshCommand_Execute()
+        {
+            ReloadClubs();
+        }
+        #endregion
+        #region Méthodes
         public void ListeClubs()
         {
             _clubs = new ObservableCollection<CClubs>(GClubs.Lire("ClubId"));
@@ -232,5 +151,6 @@ namespace TennisTableWPF.ViewModels
             _clubs.Clear();
             GClubs.Lire("ClubId").ToList().ForEach(_clubs.Add);
         }
+        #endregion
     }
 }

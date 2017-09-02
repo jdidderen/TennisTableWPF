@@ -86,7 +86,6 @@ namespace TennisTableWPF.ViewModels
                                param => AddToTabStaticDatasViewCommand_CanExecute()));
             }
         }
-
         private ICommand _addToTabClubsViewCommand;
         public ICommand AddToTabClubsViewCommand
         {
@@ -157,7 +156,6 @@ namespace TennisTableWPF.ViewModels
         {
             return true;
         }
-
         private void AddToTabStaticDatasViewCommand_Execute()
         {
             Tabs.Add(new TabsModel { CurrentMyTabContentViewModel = new StaticDatasTabContentViewModel(), Header = "Données statiques" });

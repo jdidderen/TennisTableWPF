@@ -8,100 +8,9 @@ using TennisTableWPF.Services;
 
 namespace TennisTableWPF.ViewModels
 {
-    public class JoueursViewModel : INotifyPropertyChanged
+    public class JoueursViewModel : ViewModelBase
     {
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        protected virtual void OnPropertyChanged(string propertyName)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
-        #region Status et messages des contrôles
-        private string _creerJoueurMessage;
-        public string CreerJoueurMessage { get => _creerJoueurMessage; set { _creerJoueurMessage = value; OnPropertyChanged("CreerJoueurMessage"); } }
-        private string _supprimerJoueurMessage;
-        public string SupprimerJoueurMessage { get => _supprimerJoueurMessage; set { _supprimerJoueurMessage = value; OnPropertyChanged("SupprimerJoueurMessage"); } }
-        private string _sauverJoueurMessage;
-        public string SauverJoueurMessage { get => _sauverJoueurMessage; set { _sauverJoueurMessage = value; OnPropertyChanged("SauverJoueurMessage"); } }
-        private string _modifierJoueurMessage;
-        public string ModifierJoueurMessage { get => _modifierJoueurMessage; set { _modifierJoueurMessage = value; OnPropertyChanged("ModifierJoueurMessage"); } }
-        private string _editerJoueurMessage;
-        public string EditerJoueurMessage { get => _editerJoueurMessage; set { _editerJoueurMessage = value; OnPropertyChanged("EditerJoueurMessage"); } }
-        private bool _textBoxStatus;
-        public bool TextBoxStatus { get => _textBoxStatus; set { _textBoxStatus = value; OnPropertyChanged("TextBoxStatus"); } }
-        private bool _sauverButtonStatus;
-        public bool SauverButtonStatus { get => _sauverButtonStatus; set { _sauverButtonStatus = value; OnPropertyChanged("SauverButtonStatus"); } }
-        private bool _supprimerButtonStatus;
-        public bool SupprimerButtonStatus { get => _supprimerButtonStatus; set { _supprimerButtonStatus = value; OnPropertyChanged("SupprimerButtonStatus"); } }
-        private bool _editerButtonStatus;
-        public bool EditerButtonStatus { get => _editerButtonStatus; set { _editerButtonStatus = value; OnPropertyChanged("EditerButtonStatus"); } }
-        #endregion
-        #region Commandes
-
-        private ICommand _creerJoueurCommand;
-        public ICommand CreerJoueurCommand
-        {
-            get
-            {
-                return _creerJoueurCommand ?? (_creerJoueurCommand =
-                           new RelayCommands(param => CreerJoueurCommand_Execute(),
-                               param => CreerJoueurCommand_CanExecute()));
-            }
-        }
-        private ICommand _sauverJoueurCommand;
-        public ICommand SauverJoueurCommand
-        {
-            get
-            {
-                return _sauverJoueurCommand ?? (_sauverJoueurCommand =
-                           new RelayCommands(param => SauverJoueurCommand_Execute(),
-                               param => SauverJoueurCommand_CanExecute()));
-            }
-        }
-        private ICommand _modifierJoueurCommand;
-        public ICommand ModifierJoueurCommand
-        {
-            get
-            {
-                return _modifierJoueurCommand ?? (_modifierJoueurCommand =
-                           new RelayCommands(param => ModifierJoueurCommand_Execute(),
-                               param => ModifierJoueurCommand_CanExecute()));
-            }
-        }
-        private ICommand _joueursSelectedCommand;
-        public ICommand JoueursSelectedCommand
-        {
-            get
-            {
-                return _joueursSelectedCommand ?? (_joueursSelectedCommand =
-                           new RelayCommands(param => JoueursSelectedCommand_Execute(),
-                               param => JoueursSelectedCommand_CanExecute()));
-            }
-        }
-        private ICommand _supprimerJoueurCommand;
-        public ICommand SupprimerJoueurCommand
-        {
-            get
-            {
-                return _supprimerJoueurCommand ?? (_supprimerJoueurCommand =
-                           new RelayCommands(param => SupprimerJoueurCommand_Execute(),
-                               param => SupprimerJoueurCommand_CanExecute()));
-            }
-        }
-        private ICommand _refreshJoueurCommand;
-        public ICommand RefreshJoueurCommand
-        {
-            get
-            {
-                return _refreshJoueurCommand ?? (_refreshJoueurCommand =
-                           new RelayCommands(param => RefreshJoueurCommand_Execute(),
-                               param => RefreshJoueurCommand_CanExecute()));
-            }
-        }
-
-        #endregion
         #region Propriétés
-
         private ObservableCollection<CJoueurs> _joueurs;
         public ObservableCollection<CJoueurs> Joueurs
         {
@@ -116,10 +25,6 @@ namespace TennisTableWPF.ViewModels
             set { _joueurs = value; OnPropertyChanged("Joueurs"); }
             
         }
-        private readonly IDialogService _dialogservice;
-        public ClassementsViewModel JClassements { get; set; }
-        public ClubsViewModel JClubs { get; set; }
-        public SexesViewModel JSexes { get; set; }
         public GJoueurs GJoueurs;
         private CJoueurs _joueurSelected;
         public CJoueurs JoueurSelected
@@ -131,62 +36,52 @@ namespace TennisTableWPF.ViewModels
                 OnPropertyChanged("JoueurSelected");
             }
         }
-
         #endregion
         #region Constructeur
-
         public JoueursViewModel(IDialogService dialogservice)
         {
-            _dialogservice = dialogservice;
-            JClassements = new ClassementsViewModel(dialogservice);
-            JClubs = new ClubsViewModel(dialogservice);
-            JSexes = new SexesViewModel(dialogservice);
+            DialogService = dialogservice;
+            ClassementsVm = new ClassementsViewModel(dialogservice);
+            ClubsVm = new ClubsViewModel(dialogservice);
+            SexesVm = new SexesViewModel(dialogservice);
             GJoueurs = new GJoueurs();
-            TextBoxStatus = false;
-            SauverButtonStatus = false;
-            EditerButtonStatus = true;
-            SupprimerButtonStatus = false;
         }
-
         #endregion
         #region Méthodes - Commandes
-
-        private bool CreerJoueurCommand_CanExecute()
+        public override bool CreerCommand_CanExecute()
         {
-            CreerJoueurMessage = "Ajouter un nouveau joueur";
+            CreerMessage = "Ajouter un nouveau joueur";
             return true;
         }
-        private void CreerJoueurCommand_Execute()
+        public override void CreerCommand_Execute()
         {
             Joueurs.Add(new CJoueurs());
             JoueurSelected = Joueurs[Joueurs.Count - 1];
         }
-        private bool SauverJoueurCommand_CanExecute()
+        public override bool SauverCommand_CanExecute()
         {
             if (JoueurSelected == null)
             {
-                SauverJoueurMessage = "Sauver les données du joueur sélectionné - Aucun joueur sélectionné";
+                SauverMessage = "Sauver les données du joueur sélectionné - Aucun joueur sélectionné";
             }
             else if (EditerButtonStatus)
             {
-                SauverJoueurMessage = "Sauver les données du joueur sélectionné - L'édition n'a pas été activée";
+                SauverMessage = "Sauver les données du joueur sélectionné - L'édition n'a pas été activée";
             }
             else if (JoueurSelected.Nom == null && JoueurSelected.Prenom == null && JoueurSelected.License == 0 && JoueurSelected.Classement == 0 && JoueurSelected.Mail == null && JoueurSelected.Sexe == 0)
             {
-                SauverJoueurMessage = "Sauver les données du joueur sélectionné - Certains champs obligatoires sont vides";
+                SauverMessage = "Sauver les données du joueur sélectionné - Certains champs obligatoires sont vides";
             }
             else
             {
-                SauverJoueurMessage = "Sauver les données du joueur sélectionné";
+                SauverMessage = "Sauver les données du joueur sélectionné";
                 return true;
             }
             return false;
         }
-        private void SauverJoueurCommand_Execute()
+        public override void SauverCommand_Execute()
         {
-            TextBoxStatus = false;
-            SauverButtonStatus = false;
-            EditerButtonStatus = true;
+            base.SauverCommand_Execute();
             if (JoueurSelected.JoueurId == 0)
             {
                 GJoueurs.Ajouter(JoueurSelected.License, JoueurSelected.Nom, JoueurSelected.Prenom, JoueurSelected.Classement, JoueurSelected.Mail, JoueurSelected.Sexe, JoueurSelected.Club);
@@ -196,32 +91,21 @@ namespace TennisTableWPF.ViewModels
             {
                 GJoueurs.Modifier(JoueurSelected.JoueurId, JoueurSelected.License, JoueurSelected.Nom, JoueurSelected.Prenom, JoueurSelected.Classement, JoueurSelected.Mail, JoueurSelected.Sexe, JoueurSelected.Club);
             }
-
         }
-        private bool ModifierJoueurCommand_CanExecute()
+        public override bool ModifierCommand_CanExecute()
         {
             if (JoueurSelected == null)
             {
-                _editerJoueurMessage = "Éditer les données du joueur sélectionné - Aucun joueur sélectionné";
+                EditerMessage = "Éditer les données du joueur sélectionné - Aucun joueur sélectionné";
             }
             else
             {
-                _editerJoueurMessage = "Éditer les données du joueur sélectionné";
+                EditerMessage = "Éditer les données du joueur sélectionné";
                 return true;
             }
             return false;
         }
-        private void ModifierJoueurCommand_Execute()
-        {
-            TextBoxStatus = true;
-            SauverButtonStatus = true;
-            EditerButtonStatus = false;
-        }
-        private bool JoueursSelectedCommand_CanExecute()
-        {
-            return true;
-        }
-        private void JoueursSelectedCommand_Execute()
+        public override void SelectedCommand_Execute()
         {
             if (JoueurSelected != null)
             {
@@ -236,39 +120,33 @@ namespace TennisTableWPF.ViewModels
                 EditerButtonStatus = false;
             }
         }
-        private bool SupprimerJoueurCommand_CanExecute()
+        public override bool SupprimerCommand_CanExecute()
         {
             if (JoueurSelected == null)
             {
-                SauverJoueurMessage = "Supprimer le joueur sélectionné - Aucun joueur sélectionné";
+                SupprimerMessage = "Supprimer le joueur sélectionné - Aucun joueur sélectionné";
             }
             else
             {
-                SauverJoueurMessage = "Sauver les données du joueur sélectionné";
+                SupprimerMessage = "Supprimer le joueur sélectionné";
                 return true;
             }
             return false;
         }
-        private void SupprimerJoueurCommand_Execute()
+        public override void SupprimerCommand_Execute()
         {
-            if (_dialogservice.ShowMessageBox("Êtes-vous sur de vouloir supprimer ce joueur ?", "Confirmation de suppresion", MessageBoxButton.YesNo, MessageBoxIcon.Exclamation) == MessageBoxResult.Yes)
-            {
-                GJoueurs.Supprimer(JoueurSelected.JoueurId);
-                ReloadJoueurs();
-            }
+            if (DialogService.ShowMessageBox("Êtes-vous sur de vouloir supprimer ce joueur ?",
+                    "Confirmation de suppresion", MessageBoxButton.YesNo, MessageBoxIcon.Exclamation) !=
+                MessageBoxResult.Yes) return;
+            GJoueurs.Supprimer(JoueurSelected.JoueurId);
+            ReloadJoueurs();
         }
-        private bool RefreshJoueurCommand_CanExecute()
-        {
-            return true;
-        }
-        private void RefreshJoueurCommand_Execute()
+        public override void RefreshCommand_Execute()
         {
             ReloadJoueurs();
         }
-
         #endregion
         #region Méthodes
-
         public void ListeJoueurs()
         {
             _joueurs = new ObservableCollection<CJoueurs>(GJoueurs.Lire("JoueurId"));
@@ -278,7 +156,6 @@ namespace TennisTableWPF.ViewModels
             _joueurs.Clear();
             GJoueurs.Lire("JoueurId").ToList().ForEach(_joueurs.Add);
         }
-
         #endregion
     }
 }

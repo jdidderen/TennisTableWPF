@@ -22,7 +22,7 @@
             </ListBox.ItemTemplate>
             <i:Interaction.Triggers>
                 <i:EventTrigger EventName="SelectionChanged">
-                    <i:InvokeCommandAction Command="{Binding JoueursSelectedCommand}" />
+                    <i:InvokeCommandAction Command="{Binding SelectedCommand}" />
                 </i:EventTrigger>
             </i:Interaction.Triggers>
         </ListBox>

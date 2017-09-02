@@ -37,13 +37,13 @@
             <Label x:Name="NomJoueurLabel" Content="Nom :" Foreground="Black" FontFamily="Arctic" FontSize="14" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="2" Grid.Column="0" />
             <TextBox x:Name="PrenomJoueur" IsEnabled="{Binding TextBoxStatus}" Text="{Binding JoueurSelected.Prenom,ValidatesOnDataErrors=True,NotifyOnValidationError=True,ValidatesOnExceptions=True}" Validation.ErrorTemplate="{StaticResource ErrorTemplate}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="3" Grid.Column="1" Margin="0,0,0,2"/>
             <Label x:Name="PrenomJoueurLabel" Content="Prénom :" Foreground="Black" FontFamily="Arctic" FontSize="14" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="3" Grid.Column="0" />
-            <ComboBox x:Name="ClassementJoueur" IsEnabled="{Binding TextBoxStatus}" ItemsSource="{Binding JClassements.Classements}" SelectedValue="{Binding JoueurSelected.Classement,ValidatesOnDataErrors=True,NotifyOnValidationError=True,ValidatesOnExceptions=True}" Validation.ErrorTemplate="{StaticResource ErrorTemplate}" SelectedValuePath="ClassementId" DisplayMemberPath="Classement" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="4" Grid.Column="1" Margin="0,0,0,2"/>
+            <ComboBox x:Name="ClassementJoueur" IsEnabled="{Binding TextBoxStatus}" ItemsSource="{Binding ClassementsVm.Classements}" SelectedValue="{Binding JoueurSelected.Classement,ValidatesOnDataErrors=True,NotifyOnValidationError=True,ValidatesOnExceptions=True}" Validation.ErrorTemplate="{StaticResource ErrorTemplate}" SelectedValuePath="ClassementId" DisplayMemberPath="Classement" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="4" Grid.Column="1" Margin="0,0,0,2"/>
             <Label x:Name="ClassementJoueurLabel" Content="Classement :" Foreground="Black" FontSize="14" FontFamily="Arctic" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="4" Grid.Column="0" />
             <TextBox x:Name="MailJoueur" IsEnabled="{Binding TextBoxStatus}" Text="{Binding JoueurSelected.Mail,ValidatesOnDataErrors=True,NotifyOnValidationError=True,ValidatesOnExceptions=True}" Validation.ErrorTemplate="{StaticResource ErrorTemplate}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="5" Grid.Column="1" Margin="0,0,0,2"/>
             <Label x:Name="MailJoueurLabel" Content="Mail :" Foreground="Black" FontFamily="Arctic" FontSize="14" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="5" Grid.Column="0" />
-            <ComboBox x:Name="SexeJoueur" IsEnabled="{Binding TextBoxStatus}" ItemsSource="{Binding JSexes.Sexes}" SelectedValue="{Binding JoueurSelected.Sexe,ValidatesOnDataErrors=True,NotifyOnValidationError=True,ValidatesOnExceptions=True}" Validation.ErrorTemplate="{StaticResource ErrorTemplate}" SelectedValuePath="SexeId" DisplayMemberPath="Denomination" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="6" Grid.Column="1" Margin="0,0,0,2"/>
+            <ComboBox x:Name="SexeJoueur" IsEnabled="{Binding TextBoxStatus}" ItemsSource="{Binding SexesVm.Sexes}" SelectedValue="{Binding JoueurSelected.Sexe,ValidatesOnDataErrors=True,NotifyOnValidationError=True,ValidatesOnExceptions=True}" Validation.ErrorTemplate="{StaticResource ErrorTemplate}" SelectedValuePath="SexeId" DisplayMemberPath="Denomination" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="6" Grid.Column="1" Margin="0,0,0,2"/>
             <Label x:Name="SexeLabel" Content="Sexe :" Foreground="Black" FontFamily="Arctic" FontSize="14" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="6" Grid.Column="0" />
-            <ComboBox x:Name="ClubJoueur" IsEnabled="{Binding TextBoxStatus}" ItemsSource="{Binding JClubs.Clubs}" SelectedValue="{Binding JoueurSelected.Club,ValidatesOnDataErrors=True,NotifyOnValidationError=True,ValidatesOnExceptions=True}" Validation.ErrorTemplate="{StaticResource ErrorTemplate}" SelectedValuePath="ClubId" DisplayMemberPath="Nom" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="7" Grid.Column="1" Margin="0,0,0,2"/>
+            <ComboBox x:Name="ClubJoueur" IsEnabled="{Binding TextBoxStatus}" ItemsSource="{Binding ClubsVm.Clubs}" SelectedValue="{Binding JoueurSelected.Club,ValidatesOnDataErrors=True,NotifyOnValidationError=True,ValidatesOnExceptions=True}" Validation.ErrorTemplate="{StaticResource ErrorTemplate}" SelectedValuePath="ClubId" DisplayMemberPath="Nom" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="7" Grid.Column="1" Margin="0,0,0,2"/>
             <Label x:Name="ClubLabel" Content="Club :" FontSize="14" FontFamily="Arctic" Foreground="Black" FontStretch="Normal" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="7" Grid.Column="0" />
         </Grid>
         <Grid Grid.Column="0" Grid.Row="1" VerticalAlignment="Top" HorizontalAlignment="Stretch" MinHeight="64">
@@ -54,27 +54,27 @@
                 <ColumnDefinition Width="*" MinWidth="64"></ColumnDefinition>
                 <ColumnDefinition Width="*" MinWidth="64"></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <Button x:Name="CreateJoueur" Command="{Binding CreerJoueurCommand}" Style="{StaticResource MyButton}" BorderBrush="{x:Null}" Foreground="{x:Null}" ToolTip="{Binding Path=CreerJoueurMessage}" ToolTipService.ShowDuration="10000" ToolTipService.ShowOnDisabled="true" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Column="0" Margin="5,5,5,5">
+            <Button x:Name="CreateJoueur" Command="{Binding CreerCommand}" Style="{StaticResource MyButton}" BorderBrush="{x:Null}" Foreground="{x:Null}" ToolTip="{Binding Path=CreerMessage}" ToolTipService.ShowDuration="10000" ToolTipService.ShowOnDisabled="true" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Column="0" Margin="5,5,5,5">
                 <Button.Background>
                     <ImageBrush ImageSource="/TennisTableWPF;component/Resources/Create.png" Stretch="Uniform"/>
                 </Button.Background>
             </Button>
-            <Button x:Name="EditJoueur" Style="{StaticResource MyButton}" Command="{Binding ModifierJoueurCommand}" BorderBrush="{x:Null}" Foreground="{x:Null}" ToolTip="Éditer le joueur sélectionné" ToolTipService.ShowDuration="10000" ToolTipService.ShowOnDisabled="true" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Column="1" Margin="5,5,5,5">
+            <Button x:Name="EditJoueur" Style="{StaticResource MyButton}" Command="{Binding ModifierCommand}" BorderBrush="{x:Null}" Foreground="{x:Null}" ToolTip="{Binding Path=EditerMessage}" ToolTipService.ShowDuration="10000" ToolTipService.ShowOnDisabled="true" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Column="1" Margin="5,5,5,5">
                 <Button.Background>
                     <ImageBrush ImageSource="/TennisTableWPF;component/Resources/Edit.png" Stretch="Uniform"/>
                 </Button.Background>
             </Button>
-            <Button x:Name="DeleteJoueur" Command="{Binding SupprimerJoueurCommand}" Style="{StaticResource MyButton}" BorderBrush="{x:Null}" Foreground="{x:Null}" ToolTip="Supprimer le joueur sélectionné" ToolTipService.ShowDuration="10000" RenderTransformOrigin="2.019,0.507" ToolTipService.ShowOnDisabled="true" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Column="2" Margin="5,5,5,5">
+            <Button x:Name="DeleteJoueur" Command="{Binding SupprimerCommand}" Style="{StaticResource MyButton}" BorderBrush="{x:Null}" Foreground="{x:Null}" ToolTip="{Binding Path=SupprimerMessage}" ToolTipService.ShowDuration="10000" RenderTransformOrigin="2.019,0.507" ToolTipService.ShowOnDisabled="true" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Column="2" Margin="5,5,5,5">
                 <Button.Background>
                     <ImageBrush ImageSource="/TennisTableWPF;component/Resources/Delete.png" Stretch="Uniform"/>
                 </Button.Background>
             </Button>
-            <Button x:Name="SaveJoueur" Style="{StaticResource MyButton}" Command="{Binding SauverJoueurCommand}" BorderBrush="{x:Null}" Foreground="{x:Null}" ToolTip="{Binding Path=SauverJoueurMessage}" ToolTipService.ShowDuration="10000" ToolTipService.ShowOnDisabled="true" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Column="3" Margin="5,5,5,5">
+            <Button x:Name="SaveJoueur" Style="{StaticResource MyButton}" Command="{Binding SauverCommand}" BorderBrush="{x:Null}" Foreground="{x:Null}" ToolTip="{Binding Path=SauverMessage}" ToolTipService.ShowDuration="10000" ToolTipService.ShowOnDisabled="true" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Column="3" Margin="5,5,5,5">
                 <Button.Background>
                     <ImageBrush ImageSource="/TennisTableWPF;component/Resources/Save.png" Stretch="Uniform"/>
                 </Button.Background>
             </Button>
-            <Button x:Name="RefreshJoueur" Style="{StaticResource MyButton}" Command="{Binding RefreshJoueurCommand}" BorderBrush="{x:Null}" Foreground="{x:Null}" ToolTip="{Binding Path=RefreshJoueurMessage}" ToolTipService.ShowDuration="10000" ToolTipService.ShowOnDisabled="true" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Column="4" Margin="5,5,5,5">
+            <Button x:Name="RefreshJoueur" Style="{StaticResource MyButton}" Command="{Binding RefreshCommand}" BorderBrush="{x:Null}" Foreground="{x:Null}" ToolTip="{Binding Path=RefreshMessage}" ToolTipService.ShowDuration="10000" ToolTipService.ShowOnDisabled="true" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Column="4" Margin="5,5,5,5">
                 <Button.Background>
                     <ImageBrush ImageSource="/TennisTableWPF;component/Resources/Refresh.png" Stretch="Uniform"/>
                 </Button.Background>
