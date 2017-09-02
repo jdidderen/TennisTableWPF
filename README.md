@@ -10,3 +10,5 @@ JoueurView : Rajout d'un datagrid avec les équipes et les matchs
 EquipeView : Rajout d'un datagrid avec les matchs
 Clubs View : Rajout d'un datagrid avec les joueurs et les équipes (A voir)
 Rajouter système de filtres et recherches
+EquipeView : ListBox JoueurSelected reflet du choix utilisateur
+Models : Rajouter conditions d'erreur

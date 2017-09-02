@@ -38,7 +38,7 @@
                 </i:Interaction.Triggers>
             </ComboBox>
             <Label x:Name="ClubLabel" Content="Club :" FontSize="14" FontFamily="Arctic" Foreground="Black" FontStretch="Normal" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="2" Grid.Column="0" />
-            <ListBox Grid.Column="1" Grid.Row="3" IsEnabled="{Binding ListeBoxStatus}" SelectedItem="{Binding JoueurSelected}" x:Name="ListeJoueurs" SelectionMode="Multiple" ItemsSource="{Binding JoueursFiltre}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0,0,0,2">
+            <ListBox Grid.Column="1" Grid.Row="3" IsEnabled="{Binding ListeBoxStatus}" SelectedItem="{Binding JoueurSelected}" x:Name="ListeJoueurs" SelectionMode="Multiple" ItemsSource="{Binding JoueursFiltre}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0,0,0,2" SelectionChanged="ListeJoueurs_SelectionChanged">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <TextBlock>
