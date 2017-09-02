@@ -1,0 +1,18 @@
+﻿<UserControl x:Class="TennisTableWPF.Views.Equipes.EquipesView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:TennisTableWPF.Views.Equipes">
+    <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" DataContext="{Binding EquipesViewModel, Source={StaticResource Locator}}" MaxHeight="600" MaxWidth="800">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" MinWidth="200"/>
+            <ColumnDefinition Width="*" MinWidth="320"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" MinHeight="300" />
+        </Grid.RowDefinitions>
+        <local:EquipesListeView Grid.Column="0"/>
+        <local:EquipesDetailsView Grid.Column="1"/>
+    </Grid>
+</UserControl>

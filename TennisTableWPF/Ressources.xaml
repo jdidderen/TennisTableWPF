@@ -3,7 +3,8 @@
                     xmlns:local="clr-namespace:TennisTableWPF"
                     xmlns:views="clr-namespace:TennisTableWPF.Views"
                     xmlns:services="clr-namespace:TennisTableWPF.Services"
-                    xmlns:tabs="clr-namespace:TennisTableWPF.Services.Tabs">
+                    xmlns:tabs="clr-namespace:TennisTableWPF.Services.Tabs"
+                    xmlns:equipes="clr-namespace:TennisTableWPF.Views.Equipes">
     <services:ViewModelLocator x:Key="Locator" />
     <DataTemplate x:Key="JoueursContentTemplate">
         <views:JoueursView DataContext="{Binding JoueursTabContentViewModel}"/>
@@ -12,7 +13,7 @@
         <views:ClubsView DataContext="{Binding ClubsTabContentViewModel}"/>
     </DataTemplate>
     <DataTemplate x:Key="EquipesContentTemplate">
-        <views:EquipesView DataContext="{Binding EquipesTabContentViewModel}"/>
+        <equipes:EquipesView DataContext="{Binding EquipesTabContentViewModel}"/>
     </DataTemplate>
     <DataTemplate x:Key="MatchsContentTemplate">
         <views:MatchsView DataContext="{Binding MatchsTabContentViewModel}"/>

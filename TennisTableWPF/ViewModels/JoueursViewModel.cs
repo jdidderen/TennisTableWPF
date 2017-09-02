@@ -113,6 +113,8 @@ namespace TennisTableWPF.ViewModels
                 }
                 return _joueurs;
             }
+            set { _joueurs = value; OnPropertyChanged("Joueurs"); }
+            
         }
         private readonly IDialogService _dialogservice;
         public ClassementsViewModel JClassements { get; set; }

@@ -83,11 +83,18 @@
     <Compile Include="Services\Tabs\ViewSelector.cs" />
     <Compile Include="ViewModels\ClassementsViewModel.cs" />
     <Compile Include="ViewModels\ClubsViewModel.cs" />
+    <Compile Include="ViewModels\EquipesViewModel.cs" />
     <Compile Include="ViewModels\JoueursViewModel.cs" />
     <Compile Include="ViewModels\SeriesViewModel.cs" />
     <Compile Include="ViewModels\SexesViewModel.cs" />
     <Compile Include="ViewModels\TabViewModel.cs" />
-    <Compile Include="Views\EquipesView.xaml.cs">
+    <Compile Include="Views\Equipes\EquipesDetailsView.xaml.cs">
+      <DependentUpon>EquipesDetailsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Equipes\EquipesListeView.xaml.cs">
+      <DependentUpon>EquipesListeView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Equipes\EquipesView.xaml.cs">
       <DependentUpon>EquipesView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\MatchsView.xaml.cs">
@@ -143,7 +150,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\EquipesView.xaml">
+    <Page Include="Views\Equipes\EquipesDetailsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Equipes\EquipesListeView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Equipes\EquipesView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -1,8 +1,10 @@
-﻿d:\documents\documents\visual studio 2017\Projects\TennisTableWPF\TennisTableWPF\obj\Debug\GeneratedInternalTypeHelper.g.cs
+﻿
 Fd:\documents\documents\visual studio 2017\Projects\TennisTableWPF\TennisTableWPF\App.xaml;;
 Fd:\documents\documents\visual studio 2017\Projects\TennisTableWPF\TennisTableWPF\MainWindow.xaml;;
 Fd:\documents\documents\visual studio 2017\Projects\TennisTableWPF\TennisTableWPF\Ressources.xaml;;
-Fd:\documents\documents\visual studio 2017\Projects\TennisTableWPF\TennisTableWPF\Views\EquipesView.xaml;;
+Fd:\documents\documents\visual studio 2017\Projects\TennisTableWPF\TennisTableWPF\Views\Equipes\EquipesDetailsView.xaml;;
+Fd:\documents\documents\visual studio 2017\Projects\TennisTableWPF\TennisTableWPF\Views\Equipes\EquipesListeView.xaml;;
+Fd:\documents\documents\visual studio 2017\Projects\TennisTableWPF\TennisTableWPF\Views\Equipes\EquipesView.xaml;;
 Fd:\documents\documents\visual studio 2017\Projects\TennisTableWPF\TennisTableWPF\Views\MatchsView.xaml;;
 Fd:\documents\documents\visual studio 2017\Projects\TennisTableWPF\TennisTableWPF\Views\StaticDatas\ClassementView.xaml;;
 Fd:\documents\documents\visual studio 2017\Projects\TennisTableWPF\TennisTableWPF\Views\Clubs\ClubsListeView.xaml;;

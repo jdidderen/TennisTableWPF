@@ -4,8 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:TennisTableWPF.Views.Joueurs"
-             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
-             mc:Ignorable="d" >
+             xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity">
     <Grid>
         <ListBox  x:Name="ListeJoueurs" SelectedItem="{Binding Path=JoueurSelected,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" ItemsSource="{Binding Joueurs}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="5,2,5,2">
             <ListBox.ItemTemplate>

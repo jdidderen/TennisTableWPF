@@ -32,7 +32,9 @@ d:\documents\documents\visual studio 2017\Projects\TennisTableWPF\TennisTableWPF
 d:\documents\documents\visual studio 2017\Projects\TennisTableWPF\TennisTableWPF\obj\Debug\Views\Clubs\ClubsDetailsView.baml
 d:\documents\documents\visual studio 2017\Projects\TennisTableWPF\TennisTableWPF\obj\Debug\Views\StaticDatas\SexesView.baml
 d:\documents\documents\visual studio 2017\Projects\TennisTableWPF\TennisTableWPF\obj\Debug\MainWindow.g.cs
-d:\documents\documents\visual studio 2017\Projects\TennisTableWPF\TennisTableWPF\obj\Debug\Views\EquipesView.g.cs
+d:\documents\documents\visual studio 2017\Projects\TennisTableWPF\TennisTableWPF\obj\Debug\Views\Equipes\EquipesDetailsView.g.cs
+d:\documents\documents\visual studio 2017\Projects\TennisTableWPF\TennisTableWPF\obj\Debug\Views\Equipes\EquipesListeView.g.cs
+d:\documents\documents\visual studio 2017\Projects\TennisTableWPF\TennisTableWPF\obj\Debug\Views\Equipes\EquipesView.g.cs
 d:\documents\documents\visual studio 2017\Projects\TennisTableWPF\TennisTableWPF\obj\Debug\Views\MatchsView.g.cs
 d:\documents\documents\visual studio 2017\Projects\TennisTableWPF\TennisTableWPF\obj\Debug\Views\StaticDatas\ClassementView.g.cs
 d:\documents\documents\visual studio 2017\Projects\TennisTableWPF\TennisTableWPF\obj\Debug\Views\Clubs\ClubsDetailsView.g.cs
@@ -52,7 +54,9 @@ d:\documents\documents\visual studio 2017\Projects\TennisTableWPF\TennisTableWPF
 d:\documents\documents\visual studio 2017\Projects\TennisTableWPF\TennisTableWPF\obj\Debug\App.baml
 d:\documents\documents\visual studio 2017\Projects\TennisTableWPF\TennisTableWPF\obj\Debug\MainWindow.baml
 d:\documents\documents\visual studio 2017\Projects\TennisTableWPF\TennisTableWPF\obj\Debug\Ressources.baml
-d:\documents\documents\visual studio 2017\Projects\TennisTableWPF\TennisTableWPF\obj\Debug\Views\EquipesView.baml
+d:\documents\documents\visual studio 2017\Projects\TennisTableWPF\TennisTableWPF\obj\Debug\Views\Equipes\EquipesDetailsView.baml
+d:\documents\documents\visual studio 2017\Projects\TennisTableWPF\TennisTableWPF\obj\Debug\Views\Equipes\EquipesListeView.baml
+d:\documents\documents\visual studio 2017\Projects\TennisTableWPF\TennisTableWPF\obj\Debug\Views\Equipes\EquipesView.baml
 d:\documents\documents\visual studio 2017\Projects\TennisTableWPF\TennisTableWPF\obj\Debug\Views\MatchsView.baml
 d:\documents\documents\visual studio 2017\Projects\TennisTableWPF\TennisTableWPF\obj\Debug\Views\StaticDatas\ClassementView.baml
 d:\documents\documents\visual studio 2017\Projects\TennisTableWPF\TennisTableWPF\obj\Debug\Views\Clubs\ClubsListeView.baml
@@ -65,5 +69,6 @@ d:\documents\documents\visual studio 2017\Projects\TennisTableWPF\TennisTableWPF
 d:\documents\documents\visual studio 2017\Projects\TennisTableWPF\TennisTableWPF\obj\Debug\TennisTableWPF.g.resources
 d:\documents\documents\visual studio 2017\Projects\TennisTableWPF\TennisTableWPF\obj\Debug\TennisTableWPF.Properties.Resources.resources
 d:\documents\documents\visual studio 2017\Projects\TennisTableWPF\TennisTableWPF\obj\Debug\TennisTableWPF.csproj.GenerateResource.Cache
+d:\documents\documents\visual studio 2017\Projects\TennisTableWPF\TennisTableWPF\obj\Debug\TennisTableWPF.csproj.CoreCompileInputs.cache
 d:\documents\documents\visual studio 2017\Projects\TennisTableWPF\TennisTableWPF\obj\Debug\TennisTableWPF.exe
 d:\documents\documents\visual studio 2017\Projects\TennisTableWPF\TennisTableWPF\obj\Debug\TennisTableWPF.pdb
