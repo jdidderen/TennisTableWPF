@@ -4,6 +4,7 @@ using TennisTable.Gestion;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
 using System.ComponentModel;
+using System.Windows.Controls;
 using TennisTableWPF.Services;
 
 namespace TennisTableWPF.ViewModels

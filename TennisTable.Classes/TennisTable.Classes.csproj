@@ -46,6 +46,7 @@
     <Compile Include="CClubs.cs" />
     <Compile Include="CJoueurs.cs" />
     <Compile Include="CMatchs.cs" />
+    <Compile Include="CMatchsView.cs" />
     <Compile Include="CSeries.cs" />
     <Compile Include="CSexes.cs" />
     <Compile Include="PropertiesChanges.cs" />

@@ -5,24 +5,26 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:TennisTableWPF.Views.Matchs"
              xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity">
-    <ListBox  x:Name="ListeMatchs" SelectedItem="{Binding Path=MatchSelected,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" ItemsSource="{Binding Matchs}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="5,2,5,2">
-        <ListBox.ItemTemplate>
-            <DataTemplate>
-                <TextBlock>
-                    <TextBlock.Text>
-                        <MultiBinding StringFormat="{}{0} vs {1} ({2})">
-                            <Binding Path="EquipeVisite" />
-                            <Binding Path="EquipeVisiteur" />
-                            <Binding Path="MatchId" />
-                        </MultiBinding>
-                    </TextBlock.Text>
-                </TextBlock>
-            </DataTemplate>
-        </ListBox.ItemTemplate>
-        <i:Interaction.Triggers>
-            <i:EventTrigger EventName="SelectionChanged">
-                <i:InvokeCommandAction Command="{Binding SelectedCommand}" />
-            </i:EventTrigger>
-        </i:Interaction.Triggers>
-    </ListBox>
+    <Grid>
+        <ListBox  x:Name="ListeMatchs" SelectedItem="{Binding Path=MatchViewSelected,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" ItemsSource="{Binding MatchsView}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="5,2,5,2">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock>
+                        <TextBlock.Text>
+                            <MultiBinding StringFormat="{}{0} vs {1} ({2})">
+                                <Binding Path="EquipeVisiteNom" />
+                                <Binding Path="EquipeVisiteurNom" />
+                                <Binding Path="NumMatch" />
+                            </MultiBinding>
+                        </TextBlock.Text>
+                    </TextBlock>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="SelectionChanged">
+                    <i:InvokeCommandAction Command="{Binding SelectedCommand}" />
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+        </ListBox>
+    </Grid>
 </UserControl>

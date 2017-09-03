@@ -55,6 +55,7 @@ namespace TennisTable.Acces
         public List<CMatchs> Lire(string index)
         {
             CreerCommande("SelectionnerMatchs");
+            Commande.Parameters.Add("Index", SqlDbType.VarChar);
             Commande.Parameters.AddWithValue("@Index", index);
             Commande.Connection.Open();
             SqlDataReader dr = Commande.ExecuteReader();

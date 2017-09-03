@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="GEquipes.cs" />
+    <Compile Include="GMatchsView.cs" />
     <Compile Include="G_Base.cs" />
     <Compile Include="G_Classements.cs" />
     <Compile Include="G_Clubs.cs" />

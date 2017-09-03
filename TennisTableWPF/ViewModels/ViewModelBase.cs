@@ -110,6 +110,7 @@ namespace TennisTableWPF.ViewModels
         public JoueursViewModel JoueursVm { get; set; }
         public SeriesViewModel SeriesVm { get; set; }
         public MatchsViewModel MatchsVm { get; set; }
+        public EquipesViewModel EquipesVm { get; set; }
         #endregion
         #region Constructeur
         public ViewModelBase()

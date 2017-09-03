@@ -1,3 +1,5 @@
+d:\documents\documents\visual studio 2017\Projects\TennisTableWPF\TennisTable.Gestion\obj\Debug\TennisTable.Gestion.csprojResolveAssemblyReference.cache
+d:\documents\documents\visual studio 2017\Projects\TennisTableWPF\TennisTable.Gestion\obj\Debug\TennisTable.Gestion.csproj.CoreCompileInputs.cache
 d:\documents\documents\visual studio 2017\Projects\TennisTableWPF\TennisTable.Gestion\bin\Debug\A_Base.cs
 d:\documents\documents\visual studio 2017\Projects\TennisTableWPF\TennisTable.Gestion\bin\Debug\A_Classements.cs
 d:\documents\documents\visual studio 2017\Projects\TennisTableWPF\TennisTable.Gestion\bin\Debug\A_Clubs.cs
@@ -11,7 +13,5 @@ d:\documents\documents\visual studio 2017\Projects\TennisTableWPF\TennisTable.Ge
 d:\documents\documents\visual studio 2017\Projects\TennisTableWPF\TennisTable.Gestion\bin\Debug\TennisTable.Classes.dll
 d:\documents\documents\visual studio 2017\Projects\TennisTableWPF\TennisTable.Gestion\bin\Debug\TennisTable.Acces.pdb
 d:\documents\documents\visual studio 2017\Projects\TennisTableWPF\TennisTable.Gestion\bin\Debug\TennisTable.Classes.pdb
-d:\documents\documents\visual studio 2017\Projects\TennisTableWPF\TennisTable.Gestion\obj\Debug\TennisTable.Gestion.csprojResolveAssemblyReference.cache
-d:\documents\documents\visual studio 2017\Projects\TennisTableWPF\TennisTable.Gestion\obj\Debug\TennisTable.Gestion.csproj.CoreCompileInputs.cache
 d:\documents\documents\visual studio 2017\Projects\TennisTableWPF\TennisTable.Gestion\obj\Debug\TennisTable.Gestion.dll
 d:\documents\documents\visual studio 2017\Projects\TennisTableWPF\TennisTable.Gestion\obj\Debug\TennisTable.Gestion.pdb

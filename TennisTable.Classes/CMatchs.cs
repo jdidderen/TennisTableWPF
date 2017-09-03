@@ -23,7 +23,6 @@ namespace TennisTable.Classes
         private string _score;
         #endregion
         public string Error => null;
-
         public string this[string columnName]
         {
             get
@@ -37,8 +36,6 @@ namespace TennisTable.Classes
                 return result;
             }
         }
-
-
         #region Constructeurs
         public CMatchs()
         { }

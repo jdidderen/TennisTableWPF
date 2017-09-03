@@ -90,6 +90,7 @@
     <Compile Include="ViewModels\SexesViewModel.cs" />
     <Compile Include="ViewModels\TabViewModel.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />
+    <Compile Include="Views\DateConverter.cs" />
     <Compile Include="Views\Equipes\EquipesDetailsView.xaml.cs">
       <DependentUpon>EquipesDetailsView.xaml</DependentUpon>
     </Compile>

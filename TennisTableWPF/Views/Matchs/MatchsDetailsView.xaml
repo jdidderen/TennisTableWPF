@@ -4,9 +4,88 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:TennisTableWPF.Views.Matchs"
-             mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
-    <Grid>
-            
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             xmlns:componentModel="clr-namespace:System.ComponentModel;assembly=System"
+             xmlns:views="clr-namespace:TennisTableWPF.Views">
+    <UserControl.Resources>
+        <views:DateConverter x:Key="DateConverter"/>
+    </UserControl.Resources>
+    <Grid DataContext="{Binding MatchsViewModel, Source={StaticResource Locator}}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" MinWidth="300"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" MinHeight="200" />
+            <RowDefinition Height="*" MinHeight="60" />
+        </Grid.RowDefinitions>
+        <Grid Grid.Column="0" Grid.Row="0" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" MinWidth="100"></ColumnDefinition>
+                <ColumnDefinition Width="*" MinWidth="150"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" MinHeight="25"></RowDefinition>
+                <RowDefinition Height="*" MinHeight="25"></RowDefinition>
+                <RowDefinition Height="*" MinHeight="25"></RowDefinition>
+                <RowDefinition Height="*" MinHeight="25"></RowDefinition>
+                <RowDefinition Height="*" MinHeight="25"></RowDefinition>
+                <RowDefinition Height="*" MinHeight="25"></RowDefinition>
+                <RowDefinition Height="*" MinHeight="25"></RowDefinition>
+                <RowDefinition Height="*" MinHeight="25"></RowDefinition>
+                <RowDefinition Height="*" MinHeight="25"></RowDefinition>
+            </Grid.RowDefinitions>
+            <TextBox x:Name="IdMatch" IsEnabled="{Binding TextBoxStatus}" Text="{Binding MatchViewSelected.MatchId}" IsReadOnly="True" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="0" Grid.Column="1" Margin="0,0,0,2"/>
+            <Label x:Name="IdMatchLabel"   Content="ID du match :" Foreground="Black" FontFamily="Arctic" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="0" Grid.Column="0" FontSize="14"/>
+            <TextBox x:Name="NumMatch" IsEnabled="{Binding TextBoxStatus}" Text="{Binding MatchViewSelected.NumMatch,ValidatesOnDataErrors=True,NotifyOnValidationError=True,ValidatesOnExceptions=True}" Validation.ErrorTemplate="{StaticResource ErrorTemplate}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="1" Grid.Column="1" Margin="0,0,0,2"/>
+            <Label x:Name="NumMatchLabel" Content="N° de match :" Foreground="Black" FontFamily="Arctic" FontSize="14" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="1" Grid.Column="0" />
+            <DatePicker x:Name="DateMatch" IsEnabled="{Binding TextBoxStatus}" SelectedDate="{Binding MatchViewSelected.Date,ValidatesOnDataErrors=True,NotifyOnValidationError=True,ValidatesOnExceptions=True,StringFormat='dd/MM/yyyy'}" Validation.ErrorTemplate="{StaticResource ErrorTemplate}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="2" Grid.Column="1" Margin="0,0,0,2"/>
+            <Label x:Name="DateMatchLabel" Content="Date du match :" Foreground="Black" FontFamily="Arctic" FontSize="14" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="2" Grid.Column="0" />
+            <TextBox x:Name="HeureMatch" IsEnabled="{Binding TextBoxStatus}" Text="{Binding MatchViewSelected.Heure,ValidatesOnDataErrors=True,NotifyOnValidationError=True,ValidatesOnExceptions=True, StringFormat='HH:mm:ss'}" Validation.ErrorTemplate="{StaticResource ErrorTemplate}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="3" Grid.Column="1" Margin="0,0,0,2"/>
+            <Label x:Name="HeureMatchLabel" Content="Heure du match :" Foreground="Black" FontFamily="Arctic" FontSize="14" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="3" Grid.Column="0" />
+            <ComboBox x:Name="SerieMatch" IsEnabled="{Binding TextBoxStatus}" ItemsSource="{Binding SeriesVm.Series}" SelectedValue="{Binding MatchViewSelected.SerieId,ValidatesOnDataErrors=True,NotifyOnValidationError=True,ValidatesOnExceptions=True}" Validation.ErrorTemplate="{StaticResource ErrorTemplate}" SelectedValuePath="SerieId" DisplayMemberPath="Denomination" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="4" Grid.Column="1" Margin="0,0,0,2"/>
+            <Label x:Name="SerieMatchLabel" Content="Série :" FontSize="14" FontFamily="Arctic" Foreground="Black" FontStretch="Normal" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="4" Grid.Column="0" />
+            <TextBox x:Name="DivisionMatch" IsEnabled="{Binding TextBoxStatus}" Text="{Binding MatchViewSelected.Division,ValidatesOnDataErrors=True,NotifyOnValidationError=True,ValidatesOnExceptions=True}" Validation.ErrorTemplate="{StaticResource ErrorTemplate}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="5" Grid.Column="1" Margin="0,0,0,2"/>
+            <Label x:Name="DivisionMatchLabel" Content="Division du match :" Foreground="Black" FontFamily="Arctic" FontSize="14" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="5" Grid.Column="0" />
+            <ComboBox x:Name="EquipeVisiteMatch" IsEnabled="{Binding TextBoxStatus}" ItemsSource="{Binding EquipesVm.Equipes}" SelectedValue="{Binding MatchViewSelected.EquipeVisiteId,ValidatesOnDataErrors=True,NotifyOnValidationError=True,ValidatesOnExceptions=True}" Validation.ErrorTemplate="{StaticResource ErrorTemplate}" SelectedValuePath="EquipeId" DisplayMemberPath="NomEquipe" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="6" Grid.Column="1" Margin="0,0,0,2"/>
+            <Label x:Name="EquipeVisiteMatchLabel" Content="Équipe visitée :" FontSize="14" FontFamily="Arctic" Foreground="Black" FontStretch="Normal" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="6" Grid.Column="0" />
+            <ComboBox x:Name="EquipeVisiteurMatch" IsEnabled="{Binding TextBoxStatus}" ItemsSource="{Binding EquipesVm.Equipes}" SelectedValue="{Binding MatchViewSelected.EquipeVisiteurId,ValidatesOnDataErrors=True,NotifyOnValidationError=True,ValidatesOnExceptions=True}" Validation.ErrorTemplate="{StaticResource ErrorTemplate}" SelectedValuePath="EquipeId" DisplayMemberPath="NomEquipe" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="7" Grid.Column="1" Margin="0,0,0,2"/>
+            <Label x:Name="EquipeVisiteurMatchLabel" Content="Équipe visiteur :" FontSize="14" FontFamily="Arctic" Foreground="Black" FontStretch="Normal" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="7" Grid.Column="0" />
+            <TextBox x:Name="ScoreMatch" IsEnabled="{Binding TextBoxStatus}" Text="{Binding MatchViewSelected.Score,ValidatesOnDataErrors=True,NotifyOnValidationError=True,ValidatesOnExceptions=True}" Validation.ErrorTemplate="{StaticResource ErrorTemplate}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="8" Grid.Column="1" Margin="0,0,0,2"/>
+            <Label x:Name="ScoreMatchLabel" Content="Score du match :" Foreground="Black" FontFamily="Arctic" FontSize="14" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="8" Grid.Column="0" />
+        </Grid>
+        <Grid Grid.Column="0" Grid.Row="1" VerticalAlignment="Top" HorizontalAlignment="Stretch" MinHeight="64">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" MinWidth="64"></ColumnDefinition>
+                <ColumnDefinition Width="*" MinWidth="64"></ColumnDefinition>
+                <ColumnDefinition Width="*" MinWidth="64"></ColumnDefinition>
+                <ColumnDefinition Width="*" MinWidth="64"></ColumnDefinition>
+                <ColumnDefinition Width="*" MinWidth="64"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Button x:Name="CreateMatchView" Command="{Binding CreerCommand}" Style="{StaticResource MyButton}" BorderBrush="{x:Null}" Foreground="{x:Null}" ToolTip="{Binding Path=CreerMessage}" ToolTipService.ShowDuration="10000" ToolTipService.ShowOnDisabled="true" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Column="0" Margin="5,5,5,5">
+                <Button.Background>
+                    <ImageBrush ImageSource="/TennisTableWPF;component/Resources/Create.png" Stretch="Uniform"/>
+                </Button.Background>
+            </Button>
+            <Button x:Name="EditMatchView" Style="{StaticResource MyButton}" Command="{Binding ModifierCommand}" BorderBrush="{x:Null}" Foreground="{x:Null}" ToolTip="{Binding Path=EditerMessage}" ToolTipService.ShowDuration="10000" ToolTipService.ShowOnDisabled="true" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Column="1" Margin="5,5,5,5">
+                <Button.Background>
+                    <ImageBrush ImageSource="/TennisTableWPF;component/Resources/Edit.png" Stretch="Uniform"/>
+                </Button.Background>
+            </Button>
+            <Button x:Name="DeleteMatchView" Command="{Binding SupprimerCommand}" Style="{StaticResource MyButton}" BorderBrush="{x:Null}" Foreground="{x:Null}" ToolTip="{Binding Path=SupprimerMessage}" ToolTipService.ShowDuration="10000" RenderTransformOrigin="2.019,0.507" ToolTipService.ShowOnDisabled="true" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Column="2" Margin="5,5,5,5">
+                <Button.Background>
+                    <ImageBrush ImageSource="/TennisTableWPF;component/Resources/Delete.png" Stretch="Uniform"/>
+                </Button.Background>
+            </Button>
+            <Button x:Name="SaveMatchView" Style="{StaticResource MyButton}" Command="{Binding SauverCommand}" BorderBrush="{x:Null}" Foreground="{x:Null}" ToolTip="{Binding Path=SauverMessage}" ToolTipService.ShowDuration="10000" ToolTipService.ShowOnDisabled="true" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Column="3" Margin="5,5,5,5">
+                <Button.Background>
+                    <ImageBrush ImageSource="/TennisTableWPF;component/Resources/Save.png" Stretch="Uniform"/>
+                </Button.Background>
+            </Button>
+            <Button x:Name="RefreshMatchView" Style="{StaticResource MyButton}" Command="{Binding RefreshCommand}" BorderBrush="{x:Null}" Foreground="{x:Null}" ToolTip="{Binding Path=RefreshMessage}" ToolTipService.ShowDuration="10000" ToolTipService.ShowOnDisabled="true" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Column="4" Margin="5,5,5,5">
+                <Button.Background>
+                    <ImageBrush ImageSource="/TennisTableWPF;component/Resources/Refresh.png" Stretch="Uniform"/>
+                </Button.Background>
+            </Button>
+        </Grid>
     </Grid>
 </UserControl>

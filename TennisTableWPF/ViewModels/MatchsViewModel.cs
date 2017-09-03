@@ -1,9 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Globalization;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Windows;
 using TennisTable.Classes;
 using TennisTable.Gestion;
 using TennisTableWPF.Services;
@@ -13,29 +12,30 @@ namespace TennisTableWPF.ViewModels
     public class MatchsViewModel : ViewModelBase
     {
         #region Propriétés
-        private ObservableCollection<CMatchs> _matchs;
-        public ObservableCollection<CMatchs> Matchs
+        private ObservableCollection<CMatchsView> _matchsView;
+        public ObservableCollection<CMatchsView> MatchsView
         {
             get
             {
-                if (_matchs == null)
+                if (_matchsView == null)
                 {
                     ListeMatchs();
                 }
-                return _matchs;
+                return _matchsView;
             }
-            set { _matchs = value; OnPropertyChanged("Matchs"); }
+            set { _matchsView = value; OnPropertyChanged("MatchsView"); }
 
         }
+        public GMatchsView GMatchsView;
         public GMatchs GMatchs;
-        private CMatchs _matchSelected;
-        public CMatchs MatchSelected
+        private CMatchsView _matchViewSelected;
+        public CMatchsView MatchViewSelected
         {
-            get => _matchSelected;
+            get => _matchViewSelected;
             set
             {
-                _matchSelected = value;
-                OnPropertyChanged("MatchSelected");
+                _matchViewSelected = value;
+                OnPropertyChanged("MatchViewSelected");
             }
         }
         #endregion
@@ -43,7 +43,10 @@ namespace TennisTableWPF.ViewModels
         public MatchsViewModel(IDialogService dialogservice)
         {
             DialogService = dialogservice;
+            GMatchsView = new GMatchsView();
             GMatchs = new GMatchs();
+            EquipesVm = new EquipesViewModel(DialogService);
+            SeriesVm = new SeriesViewModel(DialogService);
         }
         #endregion
         #region Méthodes - Commandes
@@ -54,12 +57,16 @@ namespace TennisTableWPF.ViewModels
         }
         public override void CreerCommand_Execute()
         {
-            Matchs.Add(new CMatchs());
-            MatchSelected = Matchs[Matchs.Count - 1];
+            MatchsView.Add(new CMatchsView());
+            MatchsView[MatchsView.Count - 1].Date = new DateTime();
+            MatchsView[MatchsView.Count - 1].Date = DateTime.Today;
+            MatchsView[MatchsView.Count - 1].Heure = new DateTime();
+            MatchsView[MatchsView.Count - 1].Heure = DateTime.Now;
+            MatchViewSelected = MatchsView[MatchsView.Count - 1];
         }
         public override bool SauverCommand_CanExecute()
         {
-            if (MatchSelected == null)
+            if (MatchViewSelected == null)
             {
                 SauverMessage = "Sauver les données du match sélectionné - Aucun match sélectionné";
             }
@@ -67,7 +74,7 @@ namespace TennisTableWPF.ViewModels
             {
                 SauverMessage = "Sauver les données du match sélectionné - L'édition n'a pas été activée";
             }
-            else if (MatchSelected.NumMatch == null && MatchSelected.Date == DateTime.MinValue && MatchSelected.Heure == DateTime.MinValue && MatchSelected.Division == null && MatchSelected.Serie == 0 && MatchSelected.EquipeVisiteur == 0 && MatchSelected.EquipeVisite == 0 && MatchSelected.Score == null)
+            else if (MatchViewSelected.NumMatch == null && MatchViewSelected.Date == DateTime.MinValue && MatchViewSelected.Heure == DateTime.MinValue && MatchViewSelected.Division == null && MatchViewSelected.Serie == null && MatchViewSelected.EquipeVisiteurId == 0 && MatchViewSelected.EquipeVisiteId == 0 && MatchViewSelected.Score == null)
             {
                 SauverMessage = "Sauver les données du match sélectionné - Certains champs obligatoires sont vides";
             }
@@ -81,19 +88,19 @@ namespace TennisTableWPF.ViewModels
         public override void SauverCommand_Execute()
         {
             base.SauverCommand_Execute();
-            if (MatchSelected.MatchId == 0)
+            if (MatchViewSelected.MatchId == 0)
             {
-                GMatchs.Ajouter(MatchSelected.NumMatch, MatchSelected.Date, MatchSelected.Heure, MatchSelected.Serie, MatchSelected.Division, MatchSelected.EquipeVisiteur, MatchSelected.EquipeVisite, MatchSelected.Score);
+                GMatchs.Ajouter(MatchViewSelected.NumMatch, MatchViewSelected.Date, MatchViewSelected.Heure, MatchViewSelected.SerieId, MatchViewSelected.Division, MatchViewSelected.EquipeVisiteurId, MatchViewSelected.EquipeVisiteId, MatchViewSelected.Score);
                 ReloadMatchs();
             }
             else
             {
-                GMatchs.Modifier(MatchSelected.MatchId, MatchSelected.NumMatch, MatchSelected.Date, MatchSelected.Heure, MatchSelected.Serie, MatchSelected.Division, MatchSelected.EquipeVisiteur, MatchSelected.EquipeVisite, MatchSelected.Score);
+                GMatchs.Modifier(MatchViewSelected.MatchId, MatchViewSelected.NumMatch, MatchViewSelected.Date, MatchViewSelected.Heure, MatchViewSelected.SerieId, MatchViewSelected.Division, MatchViewSelected.EquipeVisiteurId, MatchViewSelected.EquipeVisiteId, MatchViewSelected.Score);
             }
         }
         public override bool ModifierCommand_CanExecute()
         {
-            if (MatchSelected == null)
+            if (MatchViewSelected == null)
             {
                 EditerMessage = "Éditer les données du match sélectionné - Aucun match sélectionné";
             }
@@ -106,7 +113,7 @@ namespace TennisTableWPF.ViewModels
         }
         public override void SelectedCommand_Execute()
         {
-            if (MatchSelected != null)
+            if (MatchViewSelected != null)
             {
                 TextBoxStatus = false;
                 SauverButtonStatus = false;
@@ -121,7 +128,7 @@ namespace TennisTableWPF.ViewModels
         }
         public override bool SupprimerCommand_CanExecute()
         {
-            if (MatchSelected == null)
+            if (MatchViewSelected == null)
             {
                 SupprimerMessage = "Supprimer le match sélectionné - Aucun match sélectionné";
             }
@@ -135,9 +142,9 @@ namespace TennisTableWPF.ViewModels
         public override void SupprimerCommand_Execute()
         {
             if (DialogService.ShowMessageBox("Êtes-vous sur de vouloir supprimer ce match ?",
-                    "Confirmation de suppresion", MessageBoxButton.YesNo, MessageBoxIcon.Exclamation) !=
-                MessageBoxResult.Yes) return;
-            GMatchs.Supprimer(MatchSelected.MatchId);
+                    "Confirmation de suppresion", Services.MessageBoxButton.YesNo, MessageBoxIcon.Exclamation) !=
+                Services.MessageBoxResult.Yes) return;
+            GMatchs.Supprimer(MatchViewSelected.MatchId);
             ReloadMatchs();
         }
         public override void RefreshCommand_Execute()
@@ -148,12 +155,12 @@ namespace TennisTableWPF.ViewModels
         #region Méthodes
         public void ListeMatchs()
         {
-            _matchs = new ObservableCollection<CMatchs>(GMatchs.Lire("MatchId"));
+            MatchsView = new ObservableCollection<CMatchsView>(GMatchsView.Lire("MatchsView"));
         }
         public void ReloadMatchs()
         {
-            _matchs.Clear();
-            GMatchs.Lire("MatchId").ToList().ForEach(_matchs.Add);
+            MatchsView.Clear();
+            GMatchsView.Lire("MatchsView").ToList().ForEach(MatchsView.Add);
         }
         #endregion
     }
