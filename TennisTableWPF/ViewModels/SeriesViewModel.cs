@@ -15,19 +15,7 @@ namespace TennisTableWPF.ViewModels
     public class SeriesViewModel : ViewModelBase
     {
         #region Propriétés
-        private ObservableCollection<CSeries> _series;
-        public ObservableCollection<CSeries> Series
-        {
-            get
-            {
-                if (_series == null)
-                {
-                    ListeSeries();
-                }
-                return _series;
-            }
-        }
-        public GSeries GSeries;
+
         private CSeries _serieSelected;
         public CSeries SerieSelected
         {
@@ -38,14 +26,7 @@ namespace TennisTableWPF.ViewModels
                 OnPropertyChanged("SerieSelected");
             }
         }
-        #endregion
-        #region Constructeur
-        public SeriesViewModel(IDialogService dialogservice)
-        {
-            DialogService = dialogservice;
-            GSeries = new GSeries();
 
-        }
         #endregion
         #region Méthodes - Commandes
         public override bool CreerCommand_CanExecute()
@@ -146,17 +127,5 @@ namespace TennisTableWPF.ViewModels
             ReloadSeries();
         }
         #endregion
-        #region Méthodes
-        public void ListeSeries()
-        {
-            _series = new ObservableCollection<CSeries>(GSeries.Lire("SerieId"));
-        }
-        public void ReloadSeries()
-        {
-            _series.Clear();
-            GSeries.Lire("SerieId").ToList().ForEach(_series.Add);
-        }
-        #endregion
-
     }
 }

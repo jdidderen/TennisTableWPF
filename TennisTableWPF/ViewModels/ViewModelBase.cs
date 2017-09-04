@@ -1,11 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Data;
 using System.Windows.Input;
+using TennisTable.Classes;
+using TennisTable.Gestion;
 using TennisTableWPF.Services;
+using TennisTableWPF.Views.Matchs;
 
 namespace TennisTableWPF.ViewModels
 {
@@ -101,20 +106,123 @@ namespace TennisTableWPF.ViewModels
                                param => SelectedCommand_CanExecute()));
             }
         }
+
+        #endregion
+        #region Appel des modèles
+        public GSexes GSexes;
+        public GEquipes GEquipes;
+        public GClubs GClubs;
+        public GSeries GSeries;
+        public GClassements GClassements;
+        public GMatchs GMatchs;
+        public GJoueurs GJoueurs;
+        public GMatchsView GMatchsView;
+        #endregion
+        #region ObservableCollection
+        private ObservableCollection<CSexes> _sexes;
+        public ObservableCollection<CSexes> Sexes
+        {
+            get
+            {
+                if (_sexes == null)
+                {
+                    ListeSexes();
+                }
+                return _sexes;
+            }
+        }
+        private ObservableCollection<CEquipes> _equipes;
+        public ObservableCollection<CEquipes> Equipes
+        {
+            get
+            {
+                if (_equipes == null)
+                {
+                    ListeEquipes();
+                }
+                return _equipes;
+            }
+            set { _equipes = value; OnPropertyChanged("Joueurs"); }
+        }
+        private ObservableCollection<CClubs> _clubs;
+        public ObservableCollection<CClubs> Clubs
+        {
+            get
+            {
+                if (_clubs == null)
+                {
+                    ListeClubs();
+                }
+                return _clubs;
+            }
+        }
+        private ObservableCollection<CSeries> _series;
+        public ObservableCollection<CSeries> Series
+        {
+            get
+            {
+                if (_series == null)
+                {
+                    ListeSeries();
+                }
+                return _series;
+            }
+        }
+        private ObservableCollection<CClassements> _classements;
+        public ObservableCollection<CClassements> Classements
+        {
+            get
+            {
+                if (_classements == null)
+                {
+                    ListeClassements();
+                }
+                return _classements;
+            }
+        }
+        private ObservableCollection<CMatchsView> _matchsView;
+        public ObservableCollection<CMatchsView> MatchsView
+        {
+            get
+            {
+                if (_matchsView == null)
+                {
+                    ListeMatchs();
+                }
+                return _matchsView;
+            }
+            set { _matchsView = value; OnPropertyChanged("MatchsView"); }
+
+        }
+        private ObservableCollection<CJoueurs> _joueurs;
+        public ObservableCollection<CJoueurs> Joueurs
+        {
+            get
+            {
+                if (_joueurs == null)
+                {
+                    ListeJoueurs();
+                }
+                return _joueurs;
+            }
+            set { _joueurs = value; OnPropertyChanged("Joueurs"); }
+
+        }
         #endregion
         #region Propriétés
-        public IDialogService DialogService { get; set; }
-        public ClassementsViewModel ClassementsVm { get; set; }
-        public ClubsViewModel ClubsVm { get; set; }
-        public SexesViewModel SexesVm { get; set; }
-        public JoueursViewModel JoueursVm { get; set; }
-        public SeriesViewModel SeriesVm { get; set; }
-        public MatchsViewModel MatchsVm { get; set; }
-        public EquipesViewModel EquipesVm { get; set; }
+        public DialogService DialogService;
         #endregion
         #region Constructeur
         public ViewModelBase()
         {
+            GJoueurs = new GJoueurs();
+            GMatchsView = new GMatchsView();
+            GClassements = new GClassements();
+            GClubs = new GClubs();
+            GEquipes = new GEquipes();
+            GMatchs = new GMatchs();
+            GSeries = new GSeries();
+            GSexes = new GSexes();
             TextBoxStatus = false;
             SauverButtonStatus = false;
             EditerButtonStatus = true;
@@ -179,6 +287,71 @@ namespace TennisTableWPF.ViewModels
         }
         public virtual void ClubsSelectedCommand_Execute()
         {
+        }
+        #endregion
+        #region Méthodes
+        public void ListeMatchs()
+        {
+            MatchsView = new ObservableCollection<CMatchsView>(GMatchsView.Lire("MatchsView"));
+        }
+        public void ReloadMatchs()
+        {
+            MatchsView.Clear();
+            GMatchsView.Lire("MatchsView").ToList().ForEach(MatchsView.Add);
+        }
+        public void ListeJoueurs()
+        {
+            _joueurs = new ObservableCollection<CJoueurs>(GJoueurs.Lire("JoueurId"));
+        }
+        public void ReloadJoueurs()
+        {
+            _joueurs.Clear();
+            GJoueurs.Lire("JoueurId").ToList().ForEach(_joueurs.Add);
+        }
+        public void ListeClassements()
+        {
+            _classements = new ObservableCollection<CClassements>(GClassements.Lire("ClassementId"));
+        }
+        public void ReloadClassements()
+        {
+            _classements.Clear();
+            GClassements.Lire("ClassementId").ToList().ForEach(_classements.Add);
+        }
+        public void ListeSeries()
+        {
+            _series = new ObservableCollection<CSeries>(GSeries.Lire("SerieId"));
+        }
+        public void ReloadSeries()
+        {
+            _series.Clear();
+            GSeries.Lire("SerieId").ToList().ForEach(_series.Add);
+        }
+        public void ListeClubs()
+        {
+            _clubs = new ObservableCollection<CClubs>(GClubs.Lire("ClubId"));
+        }
+        public void ReloadClubs()
+        {
+            _clubs.Clear();
+            GClubs.Lire("ClubId").ToList().ForEach(_clubs.Add);
+        }
+        public void ListeEquipes()
+        {
+            _equipes = new ObservableCollection<CEquipes>(GEquipes.Lire("EquipeId"));
+        }
+        public void ReloadEquipes()
+        {
+            _equipes.Clear();
+            GEquipes.Lire("EquipeId").ToList().ForEach(_equipes.Add);
+        }
+        public void ListeSexes()
+        {
+            _sexes = new ObservableCollection<CSexes>(GSexes.Lire("SexeId"));
+        }
+        public void ReloadSexes()
+        {
+            _sexes.Clear();
+            GSexes.Lire("SexeId").ToList().ForEach(_sexes.Add);
         }
         #endregion
     }

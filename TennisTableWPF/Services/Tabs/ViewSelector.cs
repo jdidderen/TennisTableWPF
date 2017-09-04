@@ -20,6 +20,8 @@ namespace TennisTableWPF.Services.Tabs
                     return EquipesTemplate;
                 case StaticDatasTabContentViewModel _:
                     return StaticDatasTemplate;
+                case TableauTabContentViewModel _:
+                    return TableauTemplate;
             }
             return null;
         }
@@ -28,5 +30,6 @@ namespace TennisTableWPF.Services.Tabs
         public DataTemplate EquipesTemplate { get; set; }
         public DataTemplate MatchsTemplate { get; set; }
         public DataTemplate StaticDatasTemplate { get; set; }
+        public DataTemplate TableauTemplate { get; set; }
     }
 }

@@ -25,4 +25,7 @@ namespace TennisTableWPF.Services.Tabs
     public class StaticDatasTabContentViewModel : ITabsModel
     {
     }
+    public class TableauTabContentViewModel : ITabsModel
+    {
+    }
 }

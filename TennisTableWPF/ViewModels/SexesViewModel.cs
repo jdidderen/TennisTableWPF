@@ -11,19 +11,6 @@ namespace TennisTableWPF.ViewModels
     public class SexesViewModel : ViewModelBase
     {
         #region Propriétés
-        private ObservableCollection<CSexes> _sexes;
-        public ObservableCollection<CSexes> Sexes
-        {
-            get
-            {
-                if (_sexes == null)
-                {
-                    ListeSexes();
-                }
-                return _sexes;
-            }
-        }
-        public GSexes GSexes;
         private CSexes _sexeSelected;
         public CSexes SexeSelected
         {
@@ -33,13 +20,6 @@ namespace TennisTableWPF.ViewModels
                 _sexeSelected = value;
                 OnPropertyChanged("SexeSelected");
             }
-        }
-        #endregion
-        #region Constructeur
-        public SexesViewModel(IDialogService dialogservice)
-        {
-            DialogService = dialogservice;
-            GSexes = new GSexes();
         }
         #endregion
         #region Méthodes - Commandes
@@ -142,15 +122,7 @@ namespace TennisTableWPF.ViewModels
         }
         #endregion
         #region Méthodes
-        public void ListeSexes()
-        {
-            _sexes = new ObservableCollection<CSexes>(GSexes.Lire("SexeId"));
-        }
-        public void ReloadSexes()
-        {
-            _sexes.Clear();
-            GSexes.Lire("SexeId").ToList().ForEach(_sexes.Add);
-        }
+
         #endregion
     }
 }

@@ -8,9 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/background.jpg")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/closetab.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/refresh.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/tennistable.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/mail.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/print.png")]
 
 

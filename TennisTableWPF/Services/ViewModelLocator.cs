@@ -17,17 +17,18 @@ namespace TennisTableWPF.Services
         public ClassementsViewModel ClassementsViewModel { get; }
         public EquipesViewModel EquipesViewModel { get; }
         public MatchsViewModel MatchsViewModel { get; }
+        public TableauBordViewModel TableauBordViewModel { get; }
         public ViewModelLocator()
         {
-            IDialogService dialogservice = new DialogService();
-            JoueursViewModel = new JoueursViewModel(dialogservice);
-            ClubsViewModel = new ClubsViewModel(dialogservice);
-            SexesViewModel = new SexesViewModel(dialogservice);
-            TabViewModel = new TabViewModel(dialogservice);
-            SeriesViewModel = new SeriesViewModel(dialogservice);
-            ClassementsViewModel = new ClassementsViewModel(dialogservice);
-            EquipesViewModel = new EquipesViewModel(dialogservice);
-            MatchsViewModel = new MatchsViewModel(dialogservice);
+            JoueursViewModel = new JoueursViewModel();
+            ClubsViewModel = new ClubsViewModel();
+            SexesViewModel = new SexesViewModel();
+            TabViewModel = new TabViewModel();
+            SeriesViewModel = new SeriesViewModel();
+            ClassementsViewModel = new ClassementsViewModel();
+            EquipesViewModel = new EquipesViewModel();
+            MatchsViewModel = new MatchsViewModel();
+            TableauBordViewModel = new TableauBordViewModel();
         }
     }
 }

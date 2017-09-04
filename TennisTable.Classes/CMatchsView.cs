@@ -28,6 +28,14 @@ namespace TennisTable.Classes
         private string _capitaineVisiteurPrenom;
         private string _clubVisiteNom;
         private string _clubVisiteurNom;
+        private int _joueur1VisiteId;
+        private int _joueur2VisiteId;
+        private int _joueur3VisiteId;
+        private int _joueur4VisiteId;
+        private int _joueur1VisiteurId;
+        private int _joueur2VisiteurId;
+        private int _joueur3VisiteurId;
+        private int _joueur4VisiteurId;
         #endregion
         public string Error => null;
         public string this[string columnName]
@@ -46,8 +54,8 @@ namespace TennisTable.Classes
         #region Constructeurs
 
         public CMatchsView()
-        { }
-        public CMatchsView(string numMatch, DateTime date, DateTime heure, string serie, string division, int equipeVisiteurId, int equipeVisiteId, string score, string equipeVisiteNom, string equipeVisiteurNom, string capitaineVisiteNom, string capitaineVisitePrenom, string capitaineVisiteurNom, string capitaineVisiteurPrenom, string clubVisiteNom, string clubVisiteurNom, int serieId)
+        {}
+        public CMatchsView(string numMatch, DateTime date, DateTime heure, string serie, string division, int equipeVisiteurId, int equipeVisiteId, string score, string equipeVisiteNom, string equipeVisiteurNom, string capitaineVisiteNom, string capitaineVisitePrenom, string capitaineVisiteurNom, string capitaineVisiteurPrenom, string clubVisiteNom, string clubVisiteurNom, int serieId, int joueur1VisiteId, int joueur2VisiteId, int joueur3VisiteId, int joueur4VisiteId, int joueur1VisiteurId, int joueur2VisiteurId, int joueur3VisiteurId, int joueur4VisiteurId)
         {
             NumMatch = numMatch;
             Date = date;
@@ -66,9 +74,17 @@ namespace TennisTable.Classes
             ClubVisiteNom = clubVisiteNom;
             ClubVisiteurNom = clubVisiteurNom;
             SerieId = serieId;
+            Joueur1VisiteId = joueur1VisiteId;
+            Joueur2VisiteId = joueur2VisiteId;
+            Joueur3VisiteId = joueur3VisiteId;
+            Joueur4VisiteId = joueur4VisiteId;
+            Joueur1VisiteurId = joueur1VisiteurId;
+            Joueur2VisiteurId = joueur2VisiteurId;
+            Joueur3VisiteurId = joueur3VisiteurId;
+            Joueur4VisiteurId = joueur4VisiteurId;
         }
-        public CMatchsView(int matchId, string numMatch, DateTime date, DateTime heure, string serie, string division, int equipeVisiteur, int equipeVisite, string score, string equipeVisiteNom, string equipeVisiteurNom, string capitaineVisiteNom, string capitaineVisitePrenom, string capitaineVisiteurNom, string capitaineVisiteurPrenom, string clubVisiteNom, string clubVisiteurNom, int serieId)
-         : this(numMatch, date, heure, serie, division, equipeVisiteur, equipeVisite, score, equipeVisiteNom, equipeVisiteurNom, capitaineVisiteNom, capitaineVisitePrenom, capitaineVisiteurNom, capitaineVisiteurPrenom, clubVisiteNom, clubVisiteurNom, serieId)
+        public CMatchsView(int matchId, string numMatch, DateTime date, DateTime heure, string serie, string division, int equipeVisiteur, int equipeVisite, string score, string equipeVisiteNom, string equipeVisiteurNom, string capitaineVisiteNom, string capitaineVisitePrenom, string capitaineVisiteurNom, string capitaineVisiteurPrenom, string clubVisiteNom, string clubVisiteurNom, int serieId, int joueur1VisiteId, int joueur2VisiteId, int joueur3VisiteId, int joueur4VisiteId, int joueur1VisiteurId, int joueur2VisiteurId, int joueur3VisiteurId, int joueur4VisiteurId)
+         : this(numMatch, date, heure, serie, division, equipeVisiteur, equipeVisite, score, equipeVisiteNom, equipeVisiteurNom, capitaineVisiteNom, capitaineVisitePrenom, capitaineVisiteurNom, capitaineVisiteurPrenom, clubVisiteNom, clubVisiteurNom, serieId, joueur1VisiteId, joueur2VisiteId, joueur3VisiteId, joueur4VisiteId, joueur1VisiteurId, joueur2VisiteurId, joueur3VisiteurId, joueur4VisiteurId)
         {
             MatchId = matchId;
         }
@@ -180,6 +196,54 @@ namespace TennisTable.Classes
         {
             get => _serieId;
             set { _serieId = value; OnPropertyChanged("SerieId"); }
+        }
+
+        public int Joueur1VisiteId
+        {
+            get => _joueur1VisiteId;
+            set { _joueur1VisiteId = value; OnPropertyChanged("Joueur1VisiteId"); }
+        }
+
+        public int Joueur2VisiteId
+        {
+            get => _joueur2VisiteId;
+            set { _joueur2VisiteId = value; OnPropertyChanged("Joueur2VisiteId"); }
+        }
+
+        public int Joueur3VisiteId
+        {
+            get => _joueur3VisiteId;
+            set { _joueur3VisiteId = value; OnPropertyChanged("Joueur3VisiteId"); }
+        }
+
+        public int Joueur4VisiteId
+        {
+            get => _joueur4VisiteId;
+            set { _joueur4VisiteId = value; OnPropertyChanged("Joueur4VisiteId"); }
+        }
+
+        public int Joueur1VisiteurId
+        {
+            get => _joueur1VisiteurId;
+            set { _joueur1VisiteurId = value; OnPropertyChanged("Joueur1VisiteurId"); }
+        }
+
+        public int Joueur2VisiteurId
+        {
+            get => _joueur2VisiteurId;
+            set { _joueur2VisiteurId = value; OnPropertyChanged("Joueur2VisiteurId"); }
+        }
+
+        public int Joueur3VisiteurId
+        {
+            get => _joueur3VisiteurId;
+            set { _joueur3VisiteurId = value; OnPropertyChanged("Joueur3VisiteurId"); }
+        }
+
+        public int Joueur4VisiteurId
+        {
+            get => _joueur4VisiteurId;
+            set { _joueur4VisiteurId = value; OnPropertyChanged("Joueur4VisiteurId"); }
         }
 
         #endregion

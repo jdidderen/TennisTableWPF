@@ -39,7 +39,15 @@ namespace TennisTable.Acces
                     CapitaineVisiteurNom = dr["CapitaineVisiteurNom"].ToString(),
                     CapitaineVisiteurPrenom = dr["CapitaineVisiteurPrenom"].ToString(),
                     ClubVisiteNom = dr["ClubVisiteNom"].ToString(),
-                    ClubVisiteurNom = dr["ClubVisiteurNom"].ToString()
+                    ClubVisiteurNom = dr["ClubVisiteurNom"].ToString(),
+                    Joueur1VisiteId = int.Parse(dr["Joueur1VeId"].ToString()),
+                    Joueur2VisiteId = int.Parse(dr["Joueur2VeId"].ToString()),
+                    Joueur3VisiteId = int.Parse(dr["Joueur3VeId"].ToString()),
+                    Joueur4VisiteId = int.Parse(dr["Joueur4VeId"].ToString()),
+                    Joueur1VisiteurId = int.Parse(dr["Joueur1VeId"].ToString()),
+                    Joueur2VisiteurId = int.Parse(dr["Joueur2VeId"].ToString()),
+                    Joueur3VisiteurId = int.Parse(dr["Joueur3VeId"].ToString()),
+                    Joueur4VisiteurId = int.Parse(dr["Joueur4VeId"].ToString()),
                 };
                 res.Add(tmp);
             }

@@ -7,7 +7,7 @@
         xmlns:local1="clr-namespace:TennisTableWPF.Views"
         xmlns:services="clr-namespace:TennisTableWPF.Services"
         mc:Ignorable="d"
-        Title="Gestion de compétitions de Tennis de Table" Height="768" Width="1024" Icon="Resources/TennisTable.png">
+        Title="Gestion de compétitions de Tennis de Table" Height="800" Width="1280" Icon="Resources/TennisTable.png" Initialized="MetroWindow_Initialized">
     <controls:MetroWindow.Background>
         <ImageBrush ImageSource="Resources/background.jpg"/>
     </controls:MetroWindow.Background>
@@ -38,11 +38,12 @@
                 </Expander.Header>
                 <Expander.Content>
                     <Grid HorizontalAlignment="Stretch" Background="#D8808080" Width="168" >
-                        <Button x:Name="ShowJoueursButton" Command="{Binding AddToTabJoueursViewCommand}" Content="Afficher les joueurs" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="148" RenderTransformOrigin="0.716,0.5"/>
+                        <Button x:Name="ShowTableauButton" Command="{Binding AddToTabTableauViewCommand}" Content="Tableau de bord" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="148" RenderTransformOrigin="0.716,0.5"/>
                         <Button x:Name="ShowClubsButton" Command="{Binding AddToTabClubsViewCommand}" Content="Afficher les clubs" HorizontalAlignment="Left" Margin="10,42,0,0" VerticalAlignment="Top" Width="148" RenderTransformOrigin="0.716,0.5"/>
                         <Button x:Name="ShowEquipesButton" Command="{Binding AddToTabEquipesViewCommand}" Content="Afficher les équipes" HorizontalAlignment="Left" Margin="10,74,0,0" VerticalAlignment="Top" Width="148" RenderTransformOrigin="0.716,0.5"/>
                         <Button x:Name="ShowMatchsButton" Command="{Binding AddToTabMatchsViewCommand}" Content="Afficher les matchs" HorizontalAlignment="Left" Margin="10,106,0,0" VerticalAlignment="Top" Width="148" RenderTransformOrigin="0.716,0.5"/>
                         <Button x:Name="ShowStaticDatasButton" Command="{Binding AddToTabStaticDatasViewCommand}" Content="Données statiques"  HorizontalAlignment="Left" Margin="10,138,0,0" VerticalAlignment="Top" Width="148" RenderTransformOrigin="0.716,0.5" />
+                        <Button x:Name="ShowJoueursButton" Command="{Binding AddToTabJoueursViewCommand}" Content="Afficher les joueurs" HorizontalAlignment="Left" Margin="10,170,0,0" VerticalAlignment="Top" Width="148" RenderTransformOrigin="0.716,0.5"/>
                     </Grid>
                 </Expander.Content>
             </Expander>

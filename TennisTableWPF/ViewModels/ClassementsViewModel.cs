@@ -11,19 +11,7 @@ namespace TennisTableWPF.ViewModels
     public class ClassementsViewModel : ViewModelBase
     {
         #region Propriétés
-        private ObservableCollection<CClassements> _classements;
-        public ObservableCollection<CClassements> Classements
-        {
-            get
-            {
-                if (_classements == null)
-                {
-                    ListeClassements();
-                }
-                return _classements;
-            }
-        }
-        public GClassements GClassements;
+
         private CClassements _classementSelected;
         public CClassements ClassementSelected
         {
@@ -34,13 +22,7 @@ namespace TennisTableWPF.ViewModels
                 OnPropertyChanged("ClassementSelected");
             }
         }
-        #endregion
-        #region Constructeur
-        public ClassementsViewModel(IDialogService dialogservice)
-        {
-            DialogService = dialogservice;
-            GClassements = new GClassements();
-        }
+
         #endregion
         #region Méthodes - Commandes
         public override bool CreerCommand_CanExecute()
@@ -144,17 +126,6 @@ namespace TennisTableWPF.ViewModels
         public override void RefreshCommand_Execute()
         {
             ReloadClassements();
-        }
-        #endregion
-        #region Méthodes
-        public void ListeClassements()
-        {
-            _classements = new ObservableCollection<CClassements>(GClassements.Lire("ClassementId"));
-        }
-        public void ReloadClassements()
-        {
-            _classements.Clear();
-            GClassements.Lire("ClassementId").ToList().ForEach(_classements.Add);
         }
         #endregion
     }

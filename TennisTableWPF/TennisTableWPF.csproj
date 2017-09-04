@@ -88,9 +88,9 @@
     <Compile Include="ViewModels\MatchsViewModel.cs" />
     <Compile Include="ViewModels\SeriesViewModel.cs" />
     <Compile Include="ViewModels\SexesViewModel.cs" />
+    <Compile Include="ViewModels\TableauBordViewModel.cs" />
     <Compile Include="ViewModels\TabViewModel.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />
-    <Compile Include="Views\DateConverter.cs" />
     <Compile Include="Views\Equipes\EquipesDetailsView.xaml.cs">
       <DependentUpon>EquipesDetailsView.xaml</DependentUpon>
     </Compile>
@@ -100,8 +100,17 @@
     <Compile Include="Views\Equipes\EquipesView.xaml.cs">
       <DependentUpon>EquipesView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\MatchsGrid\MatchsGridBoutonsView.xaml.cs">
+      <DependentUpon>MatchsGridBoutonsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MatchsGrid\MatchsGridListeView.xaml.cs">
+      <DependentUpon>MatchsGridListeView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Matchs\MatchsDetailsView.xaml.cs">
       <DependentUpon>MatchsDetailsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MatchsGrid\MatchsGridView.xaml.cs">
+      <DependentUpon>MatchsGridView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Matchs\MatchsListeView.xaml.cs">
       <DependentUpon>MatchsListeView.xaml</DependentUpon>
@@ -139,6 +148,9 @@
     <Compile Include="Views\StaticDatas\StaticDataView.xaml.cs">
       <DependentUpon>StaticDataView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\TableauBordView.xaml.cs">
+      <DependentUpon>TableauBordView.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -171,7 +183,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\MatchsGrid\MatchsGridBoutonsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\MatchsGrid\MatchsGridListeView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\Matchs\MatchsDetailsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\MatchsGrid\MatchsGridView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -223,6 +247,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\TableauBordView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -271,21 +299,23 @@
     </Resource>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\PlayerIcon.png" />
+    <Resource Include="Resources\PlayerIcon.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Resources\background.jpg">
+    <Resource Include="Resources\background.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\CloseTab.png">
+    </Resource>
+    <Resource Include="Resources\CloseTab.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\Refresh.png">
+    </Resource>
+    <Resource Include="Resources\Refresh.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\TennisTable.png">
+    </Resource>
+    <Resource Include="Resources\TennisTable.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
+    </Resource>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\TennisTable.Acces\TennisTable.Acces.csproj">
@@ -301,7 +331,14 @@
       <Name>TennisTable.Gestion</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Resources\Mail.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Print.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

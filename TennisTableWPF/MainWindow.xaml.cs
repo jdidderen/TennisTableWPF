@@ -4,6 +4,7 @@ using System.Windows.Input;
 using System.Windows.Threading;
 using MahApps.Metro.Controls;
 using System.Windows.Forms;
+using TennisTableWPF.ViewModels;
 
 namespace TennisTableWPF
 {
@@ -16,5 +17,8 @@ namespace TennisTableWPF
         {
             InitializeComponent();
         }
+
+        private void MetroWindow_Initialized(object sender, System.EventArgs e)
+        {}
     }
 }

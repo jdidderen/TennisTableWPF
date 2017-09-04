@@ -6,17 +6,19 @@
              xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
              xmlns:views="clr-namespace:TennisTableWPF.Views"
              xmlns:joueurs="clr-namespace:TennisTableWPF.Views.Joueurs"
+             xmlns:matchsGrid="clr-namespace:TennisTableWPF.Views.MatchsGrid"
              mc:Ignorable="d">
-    <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" DataContext="{Binding JoueursViewModel, Source={StaticResource Locator}}" MaxHeight="600" MaxWidth="800">
+    <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" DataContext="{Binding JoueursViewModel, Source={StaticResource Locator}}" Margin="10" MaxHeight="768" MaxWidth="1024">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*" MinWidth="200"/>
+            <ColumnDefinition Width="*" MinWidth="300"/>
             <ColumnDefinition Width="*" MinWidth="320"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="*" MinHeight="200" />
-            <RowDefinition Height="*" MinHeight="60" />
+            <RowDefinition Height="*" MinHeight="300" />
         </Grid.RowDefinitions>
-        <joueurs:JoueursListeView Grid.Column="0" Grid.RowSpan="2"/>
+        <joueurs:JoueursListeView Grid.Column="0" Grid.Row="0"/>
         <joueurs:JoueursDetailsView Grid.Column="1" Grid.Row="0"/>
+        <matchsGrid:MatchsGridListeView Width="Auto" Height="Auto" Margin="0,10,0,0" Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="1" />
     </Grid>
 </UserControl>

@@ -18,28 +18,14 @@ namespace TennisTableWPF.ViewModels
     public class EquipesViewModel : ViewModelBase
     {
         #region Propriétés
-        private ObservableCollection<CEquipes> _equipes;
-        public ObservableCollection<CEquipes> Equipes
+        private List<CJoueurs> _joueurslistSelected;
+        public List<CJoueurs> JoueurlistSelected
         {
-            get
-            {
-                if (_equipes == null)
-                {
-                    ListeEquipes();
-                }
-                return _equipes;
-            }
-            set { _equipes = value; OnPropertyChanged("Joueurs"); }
-        }
-        public GEquipes GEquipes;
-        private CClubs _clubSelected;
-        public CClubs ClubSelected
-        {
-            get => _clubSelected;
+            get => _joueurslistSelected;
             set
             {
-                _clubSelected = value;
-                OnPropertyChanged("ClubSelected");
+                _joueurslistSelected = value;
+                OnPropertyChanged("JoueurlistSelected");
             }
         }
         private CEquipes _equipeSelected;
@@ -62,26 +48,22 @@ namespace TennisTableWPF.ViewModels
                 OnPropertyChanged("CapitaineSelected");
             }
         }
-        public ICollectionView JoueursFiltre => CollectionViewSource.GetDefaultView(JoueursVm.Joueurs);
-        private List<CJoueurs> _joueursSelected;
-        public List<CJoueurs> JoueurSelected
+        private CClubs _clubSelected;
+        public CClubs ClubSelected
         {
-            get => _joueursSelected;
+            get => _clubSelected;
             set
             {
-                _joueursSelected = value;
-                OnPropertyChanged("JoueurSelected");
+                _clubSelected = value;
+                OnPropertyChanged("ClubSelected");
             }
-}
+        }
+        public ICollectionView JoueursFiltre => CollectionViewSource.GetDefaultView(Joueurs);
         #endregion
         #region Constructeur
-        public EquipesViewModel(IDialogService dialogservice)
+        public EquipesViewModel()
         {
-            DialogService = dialogservice;
-            JoueursVm = new JoueursViewModel(dialogservice);
-            ClubsVm = new ClubsViewModel(dialogservice);
-            GEquipes = new GEquipes();
-            JoueurSelected = new List<CJoueurs>();
+            JoueurlistSelected = new List<CJoueurs>();
             JoueursFiltre.Filter = o =>
             {
                 var item = (CJoueurs)o;
@@ -168,6 +150,11 @@ namespace TennisTableWPF.ViewModels
         }
         public override void SelectedCommand_Execute()
         {
+            JoueursFiltre.Filter = o =>
+            {
+                var item = (CJoueurs)o;
+                return item.Club == ClubSelected?.ClubId;
+            };
             if (EquipeSelected != null)
             {
                 TextBoxStatus = false;
@@ -206,19 +193,6 @@ namespace TennisTableWPF.ViewModels
         {
             ReloadEquipes();
         }
-        #endregion
-        #region Méthodes
-
-        public void ListeEquipes()
-        {
-            _equipes = new ObservableCollection<CEquipes>(GEquipes.Lire("EquipeId"));
-        }
-        public void ReloadEquipes()
-        {
-            _equipes.Clear();
-            GEquipes.Lire("EquipeId").ToList().ForEach(_equipes.Add);
-        }
-
         #endregion
     }
 }

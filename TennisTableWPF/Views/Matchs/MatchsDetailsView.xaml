@@ -7,10 +7,7 @@
              xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
              xmlns:componentModel="clr-namespace:System.ComponentModel;assembly=System"
              xmlns:views="clr-namespace:TennisTableWPF.Views">
-    <UserControl.Resources>
-        <views:DateConverter x:Key="DateConverter"/>
-    </UserControl.Resources>
-    <Grid DataContext="{Binding MatchsViewModel, Source={StaticResource Locator}}">
+    <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" MinWidth="300"/>
         </Grid.ColumnDefinitions>
@@ -40,7 +37,7 @@
             <Label x:Name="NumMatchLabel" Content="N° de match :" Foreground="Black" FontFamily="Arctic" FontSize="14" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="1" Grid.Column="0" />
             <DatePicker x:Name="DateMatch" IsEnabled="{Binding TextBoxStatus}" SelectedDate="{Binding MatchViewSelected.Date,ValidatesOnDataErrors=True,NotifyOnValidationError=True,ValidatesOnExceptions=True,StringFormat='dd/MM/yyyy'}" Validation.ErrorTemplate="{StaticResource ErrorTemplate}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="2" Grid.Column="1" Margin="0,0,0,2"/>
             <Label x:Name="DateMatchLabel" Content="Date du match :" Foreground="Black" FontFamily="Arctic" FontSize="14" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="2" Grid.Column="0" />
-            <TextBox x:Name="HeureMatch" IsEnabled="{Binding TextBoxStatus}" Text="{Binding MatchViewSelected.Heure,ValidatesOnDataErrors=True,NotifyOnValidationError=True,ValidatesOnExceptions=True, StringFormat='HH:mm:ss'}" Validation.ErrorTemplate="{StaticResource ErrorTemplate}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="3" Grid.Column="1" Margin="0,0,0,2"/>
+            <TextBox x:Name="HeureMatch" IsEnabled="{Binding TextBoxStatus}" Text="{Binding MatchViewSelected.Heure,ValidatesOnDataErrors=True,NotifyOnValidationError=True,ValidatesOnExceptions=True, StringFormat='HH:mm'}" Validation.ErrorTemplate="{StaticResource ErrorTemplate}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="3" Grid.Column="1" Margin="0,0,0,2"/>
             <Label x:Name="HeureMatchLabel" Content="Heure du match :" Foreground="Black" FontFamily="Arctic" FontSize="14" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="3" Grid.Column="0" />
             <ComboBox x:Name="SerieMatch" IsEnabled="{Binding TextBoxStatus}" ItemsSource="{Binding SeriesVm.Series}" SelectedValue="{Binding MatchViewSelected.SerieId,ValidatesOnDataErrors=True,NotifyOnValidationError=True,ValidatesOnExceptions=True}" Validation.ErrorTemplate="{StaticResource ErrorTemplate}" SelectedValuePath="SerieId" DisplayMemberPath="Denomination" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="4" Grid.Column="1" Margin="0,0,0,2"/>
             <Label x:Name="SerieMatchLabel" Content="Série :" FontSize="14" FontFamily="Arctic" Foreground="Black" FontStretch="Normal" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="4" Grid.Column="0" />

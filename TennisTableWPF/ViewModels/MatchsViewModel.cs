@@ -1,33 +1,20 @@
 ﻿using System;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Globalization;
 using System.Linq;
 using System.Windows;
+using System.Windows.Data;
 using TennisTable.Classes;
 using TennisTable.Gestion;
 using TennisTableWPF.Services;
+using TennisTableWPF.Views.Matchs;
 
 namespace TennisTableWPF.ViewModels
 {
     public class MatchsViewModel : ViewModelBase
     {
         #region Propriétés
-        private ObservableCollection<CMatchsView> _matchsView;
-        public ObservableCollection<CMatchsView> MatchsView
-        {
-            get
-            {
-                if (_matchsView == null)
-                {
-                    ListeMatchs();
-                }
-                return _matchsView;
-            }
-            set { _matchsView = value; OnPropertyChanged("MatchsView"); }
-
-        }
-        public GMatchsView GMatchsView;
-        public GMatchs GMatchs;
         private CMatchsView _matchViewSelected;
         public CMatchsView MatchViewSelected
         {
@@ -38,15 +25,16 @@ namespace TennisTableWPF.ViewModels
                 OnPropertyChanged("MatchViewSelected");
             }
         }
+        public ICollectionView MatchViewFiltre => CollectionViewSource.GetDefaultView(MatchsView);
         #endregion
         #region Constructeur
-        public MatchsViewModel(IDialogService dialogservice)
+        public MatchsViewModel()
         {
-            DialogService = dialogservice;
-            GMatchsView = new GMatchsView();
-            GMatchs = new GMatchs();
-            EquipesVm = new EquipesViewModel(DialogService);
-            SeriesVm = new SeriesViewModel(DialogService);
+            MatchViewFiltre.Filter = o =>
+            {
+                var item = (CMatchsView)o;
+                return true;
+            };
         }
         #endregion
         #region Méthodes - Commandes
@@ -150,17 +138,6 @@ namespace TennisTableWPF.ViewModels
         public override void RefreshCommand_Execute()
         {
             ReloadMatchs();
-        }
-        #endregion
-        #region Méthodes
-        public void ListeMatchs()
-        {
-            MatchsView = new ObservableCollection<CMatchsView>(GMatchsView.Lire("MatchsView"));
-        }
-        public void ReloadMatchs()
-        {
-            MatchsView.Clear();
-            GMatchsView.Lire("MatchsView").ToList().ForEach(MatchsView.Add);
         }
         #endregion
     }

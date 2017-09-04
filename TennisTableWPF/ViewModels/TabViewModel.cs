@@ -40,11 +40,17 @@ namespace TennisTableWPF.ViewModels
                 OnPropertyChanged("TabsSelected");
             }
         }
-        private readonly IDialogService _dialogservice;
-        public TabViewModel(IDialogService dialogservice)
+        public TabViewModel()
         {
-            _dialogservice = dialogservice;
-            Tabs = new ObservableCollection<TabsModel>();
+            Tabs = new ObservableCollection<TabsModel>
+            {
+                new TabsModel
+                {
+                    CurrentMyTabContentViewModel = new TableauTabContentViewModel(),
+                    Header = "Tableau de bord"
+                }
+            };
+            TabsSelected = Tabs[Tabs.Count - 1];
         }
         private ICommand _addToTabJoueursViewCommand;
         public ICommand AddToTabJoueursViewCommand
@@ -96,6 +102,28 @@ namespace TennisTableWPF.ViewModels
                                param => AddToTabClubsViewCommand_CanExecute()));
             }
         }
+        private ICommand _addToTabTableauViewCommand;
+        public ICommand AddToTabTableauViewCommand
+        {
+            get
+            {
+                return _addToTabTableauViewCommand ?? (_addToTabTableauViewCommand =
+                           new RelayCommands(param => AddToTabTableauCommand_Execute(),
+                               param => AddToTabTableauCommand_CanExecute()));
+            }
+        }
+        private bool AddToTabTableauCommand_CanExecute()
+        {
+            return true;
+        }
+        private void AddToTabTableauCommand_Execute()
+        {
+            var search = Tabs.Any(x =>
+                x.CurrentMyTabContentViewModel.GetType() == typeof(TableauTabContentViewModel));
+            if (search) return;
+            Tabs.Add(new TabsModel { CurrentMyTabContentViewModel = new TableauTabContentViewModel(), Header = "Tableau de bord" });
+            TabsSelected = Tabs[Tabs.Count - 1];
+        }
         private ICommand _closeTabViewCommand;
         public ICommand CloseTabViewCommand
         {
@@ -122,6 +150,9 @@ namespace TennisTableWPF.ViewModels
         }
         private void AddToTabJoueursViewCommand_Execute()
         {
+            var search = Tabs.Any(x =>
+                x.CurrentMyTabContentViewModel.GetType() == typeof(JoueursTabContentViewModel));
+            if (search) return;
             Tabs.Add(new TabsModel {CurrentMyTabContentViewModel = new JoueursTabContentViewModel(),Header = "Liste des joueurs"});
             TabsSelected = Tabs[Tabs.Count - 1];
         }
@@ -131,6 +162,9 @@ namespace TennisTableWPF.ViewModels
         }
         private void AddToTabClubsViewCommand_Execute()
         {
+            var search = Tabs.Any(x =>
+                x.CurrentMyTabContentViewModel.GetType() == typeof(ClubsTabContentViewModel));
+            if (search) return;
             Tabs.Add(new TabsModel { CurrentMyTabContentViewModel = new ClubsTabContentViewModel(), Header = "Liste des clubs" });
             TabsSelected = Tabs[Tabs.Count - 1];
         }
@@ -140,6 +174,9 @@ namespace TennisTableWPF.ViewModels
         }
         private void AddToTabMatchsViewCommand_Execute()
         {
+            var search = Tabs.Any(x =>
+                x.CurrentMyTabContentViewModel.GetType() == typeof(MatchsTabContentViewModel));
+            if (search) return;
             Tabs.Add(new TabsModel { CurrentMyTabContentViewModel = new MatchsTabContentViewModel(), Header = "Liste des matchs" });
             TabsSelected = Tabs[Tabs.Count - 1];
         }
@@ -149,6 +186,9 @@ namespace TennisTableWPF.ViewModels
         }
         private void AddToTabEquipesViewCommand_Execute()
         {
+            var search = Tabs.Any(x =>
+                x.CurrentMyTabContentViewModel.GetType() == typeof(EquipesTabContentViewModel));
+            if (search) return;
             Tabs.Add(new TabsModel { CurrentMyTabContentViewModel = new EquipesTabContentViewModel(), Header = "Liste des équipes" });
             TabsSelected = Tabs[Tabs.Count - 1];
         }
@@ -158,6 +198,9 @@ namespace TennisTableWPF.ViewModels
         }
         private void AddToTabStaticDatasViewCommand_Execute()
         {
+            var search = Tabs.Any(x =>
+                x.CurrentMyTabContentViewModel.GetType() == typeof(StaticDatasTabContentViewModel));
+            if (search) return;
             Tabs.Add(new TabsModel { CurrentMyTabContentViewModel = new StaticDatasTabContentViewModel(), Header = "Données statiques" });
             TabsSelected = Tabs[Tabs.Count - 1];
         }

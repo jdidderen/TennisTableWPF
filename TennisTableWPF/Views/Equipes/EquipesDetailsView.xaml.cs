@@ -30,10 +30,11 @@ namespace TennisTableWPF.Views.Equipes
         private void ListeJoueurs_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (!(EquipeDetails.DataContext is EquipesViewModel dataContext)) return;
-            dataContext.JoueurSelected.Clear();
+            if (dataContext.JoueurlistSelected == null) return;
+            dataContext.JoueurlistSelected.Clear();
             foreach (var item in ListeJoueurs.SelectedItems)
             {
-                dataContext.JoueurSelected.Add((CJoueurs)item);
+                dataContext.JoueurlistSelected.Add((CJoueurs)item);
             }
         }
     }

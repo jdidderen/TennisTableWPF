@@ -5,28 +5,16 @@ using System.Collections.ObjectModel;
 using System.Windows.Input;
 using System.ComponentModel;
 using System.Windows.Controls;
+using System.Windows.Data;
 using TennisTableWPF.Services;
+using TennisTableWPF.Views.Matchs;
 
 namespace TennisTableWPF.ViewModels
 {
     public class JoueursViewModel : ViewModelBase
     {
         #region Propriétés
-        private ObservableCollection<CJoueurs> _joueurs;
-        public ObservableCollection<CJoueurs> Joueurs
-        {
-            get
-            {
-                if (_joueurs == null)
-                {
-                    ListeJoueurs();
-                }
-                return _joueurs;
-            }
-            set { _joueurs = value; OnPropertyChanged("Joueurs"); }
-            
-        }
-        public GJoueurs GJoueurs;
+
         private CJoueurs _joueurSelected;
         public CJoueurs JoueurSelected
         {
@@ -37,15 +25,16 @@ namespace TennisTableWPF.ViewModels
                 OnPropertyChanged("JoueurSelected");
             }
         }
+        public ICollectionView MatchViewFiltre => CollectionViewSource.GetDefaultView(MatchsView);
         #endregion
         #region Constructeur
-        public JoueursViewModel(IDialogService dialogservice)
+        public JoueursViewModel()
         {
-            DialogService = dialogservice;
-            ClassementsVm = new ClassementsViewModel(dialogservice);
-            ClubsVm = new ClubsViewModel(dialogservice);
-            SexesVm = new SexesViewModel(dialogservice);
-            GJoueurs = new GJoueurs();
+            MatchViewFiltre.Filter = o =>
+            {
+                var item = (CMatchsView)o;
+                return false;
+            };
         }
         #endregion
         #region Méthodes - Commandes
@@ -108,6 +97,21 @@ namespace TennisTableWPF.ViewModels
         }
         public override void SelectedCommand_Execute()
         {
+            MatchViewFiltre.Filter = o =>
+            {
+                var item = (CMatchsView)o;
+                if (JoueurSelected == null || item == null)
+                {
+                    return false;
+                }
+                return JoueurSelected.JoueurId == item.Joueur1VisiteId ||
+                       JoueurSelected.JoueurId == item.Joueur2VisiteId ||
+                       JoueurSelected.JoueurId == item.Joueur3VisiteId ||
+                       JoueurSelected.JoueurId == item.Joueur4VisiteId ||
+                       JoueurSelected.JoueurId == item.Joueur1VisiteurId ||
+                       JoueurSelected.JoueurId == item.Joueur2VisiteurId ||
+                       JoueurSelected.JoueurId == item.Joueur3VisiteurId || JoueurSelected.JoueurId == item.Joueur4VisiteurId;
+            };
             if (JoueurSelected != null)
             {
                 TextBoxStatus = false;
@@ -145,17 +149,6 @@ namespace TennisTableWPF.ViewModels
         public override void RefreshCommand_Execute()
         {
             ReloadJoueurs();
-        }
-        #endregion
-        #region Méthodes
-        public void ListeJoueurs()
-        {
-            _joueurs = new ObservableCollection<CJoueurs>(GJoueurs.Lire("JoueurId"));
-        }
-        public void ReloadJoueurs()
-        {
-            _joueurs.Clear();
-            GJoueurs.Lire("JoueurId").ToList().ForEach(_joueurs.Add);
         }
         #endregion
     }

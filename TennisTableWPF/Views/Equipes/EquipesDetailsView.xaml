@@ -30,7 +30,7 @@
             <Label x:Name="IdEquipeLabel"   Content="ID de l'équipe :" Foreground="Black" FontFamily="Arctic" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="0" Grid.Column="0" FontSize="14"/>
             <TextBox x:Name="NomEquipe" IsEnabled="{Binding TextBoxStatus}" Text="{Binding EquipeSelected.NomEquipe,ValidatesOnDataErrors=True,NotifyOnValidationError=True,ValidatesOnExceptions=True}" Validation.ErrorTemplate="{StaticResource ErrorTemplate}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="1" Grid.Column="1" Margin="0,0,0,2"/>
             <Label x:Name="NomEquipeLabel" Content="Nom de l'équipe :" Foreground="Black" FontFamily="Arctic" FontSize="14" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="1" Grid.Column="0" />
-            <ComboBox x:Name="ClubEquipe" IsEnabled="{Binding TextBoxStatus}" ItemsSource="{Binding ClubsVm.Clubs}" SelectedItem="{Binding Path=ClubSelected,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" SelectedValue="{Binding EquipeSelected.Club,ValidatesOnDataErrors=True,NotifyOnValidationError=True,ValidatesOnExceptions=True}" Validation.ErrorTemplate="{StaticResource ErrorTemplate}" SelectedValuePath="ClubId" DisplayMemberPath="Nom" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="2" Grid.Column="1" Margin="0,0,0,2">
+            <ComboBox x:Name="ClubEquipe" IsEnabled="{Binding TextBoxStatus}" ItemsSource="{Binding Clubs}" SelectedItem="{Binding Path=ClubSelected,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" SelectedValue="{Binding EquipeSelected.Club,ValidatesOnDataErrors=True,NotifyOnValidationError=True,ValidatesOnExceptions=True}" Validation.ErrorTemplate="{StaticResource ErrorTemplate}" SelectedValuePath="ClubId" DisplayMemberPath="Nom" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="2" Grid.Column="1" Margin="0,0,0,2">
                 <i:Interaction.Triggers>
                     <i:EventTrigger EventName="SelectionChanged">
                         <i:InvokeCommandAction Command="{Binding ClubsSelectedCommand}" />
@@ -38,7 +38,7 @@
                 </i:Interaction.Triggers>
             </ComboBox>
             <Label x:Name="ClubLabel" Content="Club :" FontSize="14" FontFamily="Arctic" Foreground="Black" FontStretch="Normal" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="2" Grid.Column="0" />
-            <ListBox Grid.Column="1" Grid.Row="3" IsEnabled="{Binding ListeBoxStatus}" SelectedItem="{Binding JoueurSelected}" x:Name="ListeJoueurs" SelectionMode="Multiple" ItemsSource="{Binding JoueursFiltre}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0,0,0,2" SelectionChanged="ListeJoueurs_SelectionChanged">
+            <ListBox Grid.Column="1" Grid.Row="3" IsEnabled="{Binding ListeBoxStatus}" SelectedItem="{Binding JoueurlistSelected,Mode=OneWay}" x:Name="ListeJoueurs" SelectionMode="Multiple" ItemsSource="{Binding JoueursFiltre}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0,0,0,2" SelectionChanged="ListeJoueurs_SelectionChanged">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <TextBlock>

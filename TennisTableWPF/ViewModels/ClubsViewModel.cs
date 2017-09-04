@@ -11,19 +11,6 @@ namespace TennisTableWPF.ViewModels
     public class ClubsViewModel : ViewModelBase
     {
         #region Propriétés
-        private ObservableCollection<CClubs> _clubs;
-        public ObservableCollection<CClubs> Clubs
-        {
-            get
-            {
-                if (_clubs == null)
-                {
-                    ListeClubs();
-                }
-                return _clubs;
-            }
-        }
-        public GClubs GClubs;
         private CClubs _clubSelected;
         public CClubs ClubSelected
         {
@@ -33,13 +20,6 @@ namespace TennisTableWPF.ViewModels
                 _clubSelected = value;
                 OnPropertyChanged("ClubSelected");
             }
-        }
-        #endregion
-        #region Constructeur
-        public ClubsViewModel(IDialogService dialogservice)
-        {
-            DialogService = dialogservice;
-            GClubs = new GClubs();
         }
         #endregion
         #region Méthodes - Commandes
@@ -139,17 +119,6 @@ namespace TennisTableWPF.ViewModels
         public override void RefreshCommand_Execute()
         {
             ReloadClubs();
-        }
-        #endregion
-        #region Méthodes
-        public void ListeClubs()
-        {
-            _clubs = new ObservableCollection<CClubs>(GClubs.Lire("ClubId"));
-        }
-        public void ReloadClubs()
-        {
-            _clubs.Clear();
-            GClubs.Lire("ClubId").ToList().ForEach(_clubs.Add);
         }
         #endregion
     }

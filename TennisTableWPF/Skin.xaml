@@ -53,4 +53,9 @@ Path=(Validation.Errors)[0].ErrorContent}"/>
             </Trigger>
         </Style.Triggers>
     </Style>
+    <DataTemplate x:Key="WrappingHeaderTemplate">
+        <Grid>
+            <TextBlock TextAlignment="Center" Text="{Binding}" TextWrapping="WrapWithOverflow" />
+        </Grid>
+    </DataTemplate>
 </ResourceDictionary>
