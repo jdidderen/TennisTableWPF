@@ -75,7 +75,7 @@ namespace TennisTableWPF.ViewModels
             if (JoueurSelected.JoueurId == 0)
             {
                 GJoueurs.Ajouter(JoueurSelected.License, JoueurSelected.Nom, JoueurSelected.Prenom, JoueurSelected.Classement, JoueurSelected.Mail, JoueurSelected.Sexe, JoueurSelected.Club);
-                ReloadJoueurs();
+                Reload();
             }
             else
             {
@@ -144,11 +144,11 @@ namespace TennisTableWPF.ViewModels
                     "Confirmation de suppresion", MessageBoxButton.YesNo, MessageBoxIcon.Exclamation) !=
                 MessageBoxResult.Yes) return;
             GJoueurs.Supprimer(JoueurSelected.JoueurId);
-            ReloadJoueurs();
+            Reload();
         }
         public override void RefreshCommand_Execute()
         {
-            ReloadJoueurs();
+            Reload();
         }
         #endregion
     }

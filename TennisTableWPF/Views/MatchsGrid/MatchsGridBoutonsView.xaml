@@ -16,9 +16,10 @@
             <ColumnDefinition MinWidth="240" Width="Auto"/>
             <ColumnDefinition MinWidth="60" Width="Auto"/>
             <ColumnDefinition MinWidth="60" Width="Auto"/>
+            <ColumnDefinition MinWidth="60" Width="Auto"/>
         </Grid.ColumnDefinitions>
         <Label HorizontalAlignment="Left" Content="Filtre club" VerticalAlignment="Stretch" Grid.Row="0" Grid.Column="0" Margin="2,2,2,2" Foreground="Black" FontFamily="Arctic" FontSize="14" />
-        <ComboBox x:Name="ClubMatchGrid"  IsEnabled="{Binding TextBoxStatus}" ItemsSource="{Binding Clubs}" SelectedItem="{Binding Path=ClubSelected,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" SelectedValue="{Binding EquipeSelected.Club,ValidatesOnDataErrors=True,NotifyOnValidationError=True,ValidatesOnExceptions=True}" Validation.ErrorTemplate="{StaticResource ErrorTemplate}" SelectedValuePath="ClubId" DisplayMemberPath="Nom" HorizontalAlignment="Right" MinWidth="130" VerticalAlignment="Stretch" Grid.Row="0" Grid.Column="0" Margin="2,2,2,2">
+        <ComboBox x:Name="ClubMatchGrid" ItemsSource="{Binding Clubs}" SelectedItem="{Binding Path=ClubSelected,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" SelectedValuePath="ClubId" DisplayMemberPath="Nom" HorizontalAlignment="Right" MinWidth="130" VerticalAlignment="Stretch" Grid.Row="0" Grid.Column="0" Margin="2,2,2,2">
             <i:Interaction.Triggers>
                 <i:EventTrigger EventName="SelectionChanged">
                     <i:InvokeCommandAction Command="{Binding ClubsSelectedCommand}" />
@@ -26,15 +27,34 @@
             </i:Interaction.Triggers>
         </ComboBox>
         <Label HorizontalAlignment="Left" Content="Filtre équipe" VerticalAlignment="Stretch" Grid.Row="0" Grid.Column="1" Margin="2,2,2,2" Foreground="Black" FontFamily="Arctic" FontSize="14" />
-        <ComboBox x:Name="EquipeMatchGrid"  IsEnabled="{Binding TextBoxStatus}" ItemsSource="{Binding Clubs}" SelectedItem="{Binding Path=ClubSelected,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" SelectedValue="{Binding EquipeSelected.Club,ValidatesOnDataErrors=True,NotifyOnValidationError=True,ValidatesOnExceptions=True}" Validation.ErrorTemplate="{StaticResource ErrorTemplate}" SelectedValuePath="ClubId" DisplayMemberPath="Nom" HorizontalAlignment="Right" MinWidth="130" VerticalAlignment="Stretch" Grid.Row="0" Grid.Column="1" Margin="2,2,2,2">
+        <ComboBox x:Name="EquipeMatchGrid" SelectedItem="{Binding EquipeSelected}" ItemsSource="{Binding EquipesFiltre}" SelectedValuePath="EquipeId" DisplayMemberPath="NomEquipe" HorizontalAlignment="Right" MinWidth="130" VerticalAlignment="Stretch" Grid.Row="0" Grid.Column="1" Margin="2,2,2,2">
             <i:Interaction.Triggers>
                 <i:EventTrigger EventName="SelectionChanged">
-                    <i:InvokeCommandAction Command="{Binding ClubsSelectedCommand}" />
+                    <i:InvokeCommandAction Command="{Binding EquipesSelectedCommand}" />
                 </i:EventTrigger>
             </i:Interaction.Triggers>
         </ComboBox>
-        <controls:ToggleSwitch x:Name="MatchFuturToggle" Content="Programme de la semaine" Grid.Column="0" Grid.Row="1" VerticalAlignment="Center"/>
-        <controls:ToggleSwitch x:Name="MatchPasseToggle" Content="Résultats de la semaine" Grid.Column="1" Grid.Row="1" VerticalAlignment="Center"/>
+        <controls:ToggleSwitch IsChecked="{Binding ToggleProgrChecked}"  x:Name="MatchFuturToggle" Content="Programme de la semaine" Grid.Column="0" Grid.Row="1" VerticalAlignment="Center">
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="Checked">
+                    <i:InvokeCommandAction Command="{Binding ToggleChangedCommand}"/>
+                </i:EventTrigger>
+                <i:EventTrigger EventName="Unchecked">
+                    <i:InvokeCommandAction Command="{Binding ToggleChangedCommand}"/>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+            
+        </controls:ToggleSwitch>
+        <controls:ToggleSwitch IsChecked="{Binding ToggleResultChecked}" x:Name="MatchPasseToggle" Content="Résultats de la semaine" Grid.Column="1" Grid.Row="1" VerticalAlignment="Center">
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="Checked">
+                    <i:InvokeCommandAction Command="{Binding ToggleChangedCommand}"/>
+                </i:EventTrigger>
+                <i:EventTrigger EventName="Unchecked">
+                    <i:InvokeCommandAction Command="{Binding ToggleChangedCommand}"/>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+        </controls:ToggleSwitch>
         <Button x:Name="MailGrid" Grid.Column="2" Grid.Row="0" Grid.RowSpan="2" Command="{Binding MailCommand}" Style="{StaticResource MyButton}" BorderBrush="{x:Null}" Foreground="{x:Null}" ToolTip="{Binding Path=MailMessage}" ToolTipService.ShowDuration="10000" ToolTipService.ShowOnDisabled="true" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="5,5,5,5">
             <Button.Background>
                 <ImageBrush ImageSource="/TennisTableWPF;component/Resources/Mail.png" Stretch="Uniform"/>
@@ -43,6 +63,11 @@
         <Button x:Name="PrintGrid" Grid.Column="3" Grid.Row="0" Grid.RowSpan="2" Command="{Binding PrintCommand}" Style="{StaticResource MyButton}" BorderBrush="{x:Null}" Foreground="{x:Null}" ToolTip="{Binding Path=PrintMessage}" ToolTipService.ShowDuration="10000" ToolTipService.ShowOnDisabled="true" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="5,5,5,5">
             <Button.Background>
                 <ImageBrush ImageSource="/TennisTableWPF;component/Resources/Print.png" Stretch="Uniform"/>
+            </Button.Background>
+        </Button>
+        <Button x:Name="ResetGrid" Grid.Column="4" Grid.Row="0" Grid.RowSpan="2" Command="{Binding RefreshCommand}" Style="{StaticResource MyButton}" BorderBrush="{x:Null}" Foreground="{x:Null}" ToolTip="{Binding Path=PrintMessage}" ToolTipService.ShowDuration="10000" ToolTipService.ShowOnDisabled="true" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="5,5,5,5">
+            <Button.Background>
+                <ImageBrush ImageSource="/TennisTableWPF;component/Resources/Refresh.png" Stretch="Uniform"/>
             </Button.Background>
         </Button>
     </Grid>

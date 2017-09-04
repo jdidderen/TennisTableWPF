@@ -79,7 +79,7 @@ namespace TennisTableWPF.ViewModels
             if (MatchViewSelected.MatchId == 0)
             {
                 GMatchs.Ajouter(MatchViewSelected.NumMatch, MatchViewSelected.Date, MatchViewSelected.Heure, MatchViewSelected.SerieId, MatchViewSelected.Division, MatchViewSelected.EquipeVisiteurId, MatchViewSelected.EquipeVisiteId, MatchViewSelected.Score);
-                ReloadMatchs();
+                Reload();
             }
             else
             {
@@ -133,11 +133,11 @@ namespace TennisTableWPF.ViewModels
                     "Confirmation de suppresion", Services.MessageBoxButton.YesNo, MessageBoxIcon.Exclamation) !=
                 Services.MessageBoxResult.Yes) return;
             GMatchs.Supprimer(MatchViewSelected.MatchId);
-            ReloadMatchs();
+            Reload();
         }
         public override void RefreshCommand_Execute()
         {
-            ReloadMatchs();
+            Reload();
         }
         #endregion
     }

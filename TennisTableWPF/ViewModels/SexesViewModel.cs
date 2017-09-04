@@ -60,7 +60,7 @@ namespace TennisTableWPF.ViewModels
             if (SexeSelected.SexeId == 0)
             {
                 GSexes.Ajouter(SexeSelected.Denomination);
-                ReloadSexes();
+                Reload();
             }
             else
             {
@@ -114,11 +114,11 @@ namespace TennisTableWPF.ViewModels
                     "Confirmation de suppresion", MessageBoxButton.YesNo, MessageBoxIcon.Exclamation) !=
                 MessageBoxResult.Yes) return;
             GSexes.Supprimer(SexeSelected.SexeId);
-            ReloadSexes();
+            Reload();
         }
         public override void RefreshCommand_Execute()
         {
-            ReloadSexes();
+            Reload();
         }
         #endregion
         #region Méthodes

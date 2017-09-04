@@ -66,7 +66,7 @@ namespace TennisTableWPF.ViewModels
             if (SerieSelected.SerieId == 0)
             {
                 GSeries.Ajouter(SerieSelected.Denomination);
-                ReloadSeries();
+                Reload();
             }
             else
             {
@@ -120,11 +120,11 @@ namespace TennisTableWPF.ViewModels
                     "Confirmation de suppresion", MessageBoxButton.YesNo, MessageBoxIcon.Exclamation) !=
                 MessageBoxResult.Yes) return;
             GSeries.Supprimer(SerieSelected.SerieId);
-            ReloadSeries();
+            Reload();
         }
         public override void RefreshCommand_Execute()
         {
-            ReloadSeries();
+            Reload();
         }
         #endregion
     }

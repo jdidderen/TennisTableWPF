@@ -27,7 +27,7 @@ namespace TennisTable.Acces
             Commande.Parameters.AddWithValue("@Division", division);
             Commande.Parameters.AddWithValue("@equipeVisiteur", equipeVisiteur);
             Commande.Parameters.AddWithValue("@equipeVisite", equipeVisite);
-            Commande.Parameters.AddWithValue("@Score", score);
+            Commande.Parameters.AddWithValue("@Score", score ?? Convert.DBNull.ToString());
             Commande.Connection.Open();
             Commande.ExecuteNonQuery();
             var res = int.Parse(LireParametre("MatchId"));
@@ -46,7 +46,7 @@ namespace TennisTable.Acces
             Commande.Parameters.AddWithValue("@Division", division);
             Commande.Parameters.AddWithValue("@equipeVisiteur", equipeVisiteur);
             Commande.Parameters.AddWithValue("@equipeVisite", equipeVisite);
-            Commande.Parameters.AddWithValue("@Score", score);
+            Commande.Parameters.AddWithValue("@Score", score ?? Convert.DBNull.ToString());
             Commande.Connection.Open();
             Commande.ExecuteNonQuery();
             Commande.Connection.Close();
@@ -72,8 +72,8 @@ namespace TennisTable.Acces
                     Division = dr["Division"].ToString(),
                     EquipeVisiteur = int.Parse(dr["EquipeVisiteur"].ToString()),
                     EquipeVisite = int.Parse(dr["EquipeVisite"].ToString()),
-                    Score = dr["Score"].ToString()
                 };
+                if (dr["Score"] != DBNull.Value) tmp.Score = dr["Score"].ToString();
                 res.Add(tmp);
             }
             dr.Close();
@@ -97,8 +97,8 @@ namespace TennisTable.Acces
                 res.Division = dr["Division"].ToString();
                 res.EquipeVisiteur = int.Parse(dr["EquipeVisiteur"].ToString());
                 res.EquipeVisite = int.Parse(dr["EquipeVisite"].ToString());
-                res.Score = dr["Score"].ToString();
             }
+            if (dr["Score"] != DBNull.Value) res.Score = dr["Score"].ToString();
             dr.Close();
             Commande.Connection.Close();
             return res;

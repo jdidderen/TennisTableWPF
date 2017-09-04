@@ -36,6 +36,9 @@ namespace TennisTable.Classes
         private int _joueur2VisiteurId;
         private int _joueur3VisiteurId;
         private int _joueur4VisiteurId;
+        private int _clubVisiteId;
+        private int _clubVisiteurId;
+
         #endregion
         public string Error => null;
         public string this[string columnName]
@@ -54,8 +57,9 @@ namespace TennisTable.Classes
         #region Constructeurs
 
         public CMatchsView()
-        {}
-        public CMatchsView(string numMatch, DateTime date, DateTime heure, string serie, string division, int equipeVisiteurId, int equipeVisiteId, string score, string equipeVisiteNom, string equipeVisiteurNom, string capitaineVisiteNom, string capitaineVisitePrenom, string capitaineVisiteurNom, string capitaineVisiteurPrenom, string clubVisiteNom, string clubVisiteurNom, int serieId, int joueur1VisiteId, int joueur2VisiteId, int joueur3VisiteId, int joueur4VisiteId, int joueur1VisiteurId, int joueur2VisiteurId, int joueur3VisiteurId, int joueur4VisiteurId)
+        {
+        }
+        public CMatchsView(string numMatch, DateTime date, DateTime heure, string serie, string division, int equipeVisiteurId, int equipeVisiteId, string score, string equipeVisiteNom, string equipeVisiteurNom, string capitaineVisiteNom, string capitaineVisitePrenom, string capitaineVisiteurNom, string capitaineVisiteurPrenom, string clubVisiteNom, string clubVisiteurNom, int serieId, int joueur1VisiteId, int joueur2VisiteId, int joueur3VisiteId, int joueur4VisiteId, int joueur1VisiteurId, int joueur2VisiteurId, int joueur3VisiteurId, int joueur4VisiteurId, int clubVisiteId, int clubVisiteurId)
         {
             NumMatch = numMatch;
             Date = date;
@@ -82,9 +86,11 @@ namespace TennisTable.Classes
             Joueur2VisiteurId = joueur2VisiteurId;
             Joueur3VisiteurId = joueur3VisiteurId;
             Joueur4VisiteurId = joueur4VisiteurId;
+            ClubVisiteId = clubVisiteId;
+            ClubVisiteurId = clubVisiteurId;
         }
-        public CMatchsView(int matchId, string numMatch, DateTime date, DateTime heure, string serie, string division, int equipeVisiteur, int equipeVisite, string score, string equipeVisiteNom, string equipeVisiteurNom, string capitaineVisiteNom, string capitaineVisitePrenom, string capitaineVisiteurNom, string capitaineVisiteurPrenom, string clubVisiteNom, string clubVisiteurNom, int serieId, int joueur1VisiteId, int joueur2VisiteId, int joueur3VisiteId, int joueur4VisiteId, int joueur1VisiteurId, int joueur2VisiteurId, int joueur3VisiteurId, int joueur4VisiteurId)
-         : this(numMatch, date, heure, serie, division, equipeVisiteur, equipeVisite, score, equipeVisiteNom, equipeVisiteurNom, capitaineVisiteNom, capitaineVisitePrenom, capitaineVisiteurNom, capitaineVisiteurPrenom, clubVisiteNom, clubVisiteurNom, serieId, joueur1VisiteId, joueur2VisiteId, joueur3VisiteId, joueur4VisiteId, joueur1VisiteurId, joueur2VisiteurId, joueur3VisiteurId, joueur4VisiteurId)
+        public CMatchsView(int matchId, string numMatch, DateTime date, DateTime heure, string serie, string division, int equipeVisiteur, int equipeVisite, string score, string equipeVisiteNom, string equipeVisiteurNom, string capitaineVisiteNom, string capitaineVisitePrenom, string capitaineVisiteurNom, string capitaineVisiteurPrenom, string clubVisiteNom, string clubVisiteurNom, int serieId, int joueur1VisiteId, int joueur2VisiteId, int joueur3VisiteId, int joueur4VisiteId, int joueur1VisiteurId, int joueur2VisiteurId, int joueur3VisiteurId, int joueur4VisiteurId, int clubVisiteId, int clubVisiteurId)
+         : this(numMatch, date, heure, serie, division, equipeVisiteur, equipeVisite, score, equipeVisiteNom, equipeVisiteurNom, capitaineVisiteNom, capitaineVisitePrenom, capitaineVisiteurNom, capitaineVisiteurPrenom, clubVisiteNom, clubVisiteurNom, serieId, joueur1VisiteId, joueur2VisiteId, joueur3VisiteId, joueur4VisiteId, joueur1VisiteurId, joueur2VisiteurId, joueur3VisiteurId, joueur4VisiteurId, clubVisiteId, clubVisiteurId)
         {
             MatchId = matchId;
         }
@@ -244,6 +250,18 @@ namespace TennisTable.Classes
         {
             get => _joueur4VisiteurId;
             set { _joueur4VisiteurId = value; OnPropertyChanged("Joueur4VisiteurId"); }
+        }
+
+        public int ClubVisiteId
+        {
+            get { return _clubVisiteId; }
+            set { _clubVisiteId = value; OnPropertyChanged("ClubVisiteId"); }
+        }
+
+        public int ClubVisiteurId
+        {
+            get { return _clubVisiteurId; }
+            set { _clubVisiteurId = value; OnPropertyChanged("ClubVisiteurId"); }
         }
 
         #endregion

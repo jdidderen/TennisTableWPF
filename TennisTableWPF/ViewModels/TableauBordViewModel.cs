@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Data;
@@ -14,16 +15,47 @@ namespace TennisTableWPF.ViewModels
     {
         #region Propriétés
 
-        private CJoueurs _joueurSelected;
-        public CJoueurs JoueurSelected
+        private CClubs _clubSelected;
+        public CClubs ClubSelected
         {
-            get => _joueurSelected;
+            get => _clubSelected;
             set
             {
-                _joueurSelected = value;
-                OnPropertyChanged("JoueurSelected");
+                _clubSelected = value;
+                OnPropertyChanged("ClubSelected");
             }
         }
+        private CEquipes _equipeSelected;
+        public CEquipes EquipeSelected
+        {
+            get => _equipeSelected;
+            set
+            {
+                _equipeSelected = value;
+                OnPropertyChanged("EquipeSelected");
+            }
+        }
+        private bool _toggleResultChecked;
+        public bool ToggleResultChecked
+        {
+            get => _toggleResultChecked;
+            set
+            {
+                _toggleResultChecked = value;
+                OnPropertyChanged("ToggleResultChecked");
+            }
+        }
+        private bool _toggleProgrChecked;
+        public bool ToggleProgrChecked
+        {
+            get => _toggleProgrChecked;
+            set
+            {
+                _toggleProgrChecked = value;
+                OnPropertyChanged("ToggleProgrChecked");
+            }
+        }
+        public ICollectionView EquipesFiltre => CollectionViewSource.GetDefaultView(Equipes);
         public ICollectionView MatchViewFiltre => CollectionViewSource.GetDefaultView(MatchsView);
         #endregion
         #region Constructeur
@@ -32,123 +64,130 @@ namespace TennisTableWPF.ViewModels
             MatchViewFiltre.Filter = o =>
             {
                 var item = (CMatchsView)o;
-                return false;
+                return true;
             };
+            EquipesFiltre.Filter = o => false;
         }
         #endregion
         #region Méthodes - Commandes
-        public override bool CreerCommand_CanExecute()
+        public override bool ClubsSelectedCommand_CanExecute()
         {
-            CreerMessage = "Ajouter un nouveau joueur";
             return true;
         }
-        public override void CreerCommand_Execute()
+        public override void ClubsSelectedCommand_Execute()
         {
-            Joueurs.Add(new CJoueurs());
-            JoueurSelected = Joueurs[Joueurs.Count - 1];
+            EquipesFiltre.Filter = o =>
+            {
+                var item = (CEquipes)o;
+                return item.Club == ClubSelected?.ClubId;
+            };
+            FilterGrid();
         }
-        public override bool SauverCommand_CanExecute()
+
+        public override bool EquipesSelectedCommand_CanExecute()
         {
-            if (JoueurSelected == null)
+            return true;
+        }
+        public override void EquipesSelectedCommand_Execute()
+        {
+            FilterGrid();
+        }
+
+        public override void RefreshCommand_Execute()
+        {
+            EquipeSelected = null;
+            ClubSelected = null;
+            MatchViewFiltre.Filter = o =>
             {
-                SauverMessage = "Sauver les données du joueur sélectionné - Aucun joueur sélectionné";
-            }
-            else if (EditerButtonStatus)
-            {
-                SauverMessage = "Sauver les données du joueur sélectionné - L'édition n'a pas été activée";
-            }
-            else if (JoueurSelected.Nom == null && JoueurSelected.Prenom == null && JoueurSelected.License == 0 && JoueurSelected.Classement == 0 && JoueurSelected.Mail == null && JoueurSelected.Sexe == 0)
-            {
-                SauverMessage = "Sauver les données du joueur sélectionné - Certains champs obligatoires sont vides";
-            }
-            else
-            {
-                SauverMessage = "Sauver les données du joueur sélectionné";
+                var item = (CMatchsView)o;
                 return true;
-            }
-            return false;
+            };
         }
-        public override void SauverCommand_Execute()
+
+        public override void ToggleChangedCommand_Execute()
         {
-            base.SauverCommand_Execute();
-            if (JoueurSelected.JoueurId == 0)
-            {
-                GJoueurs.Ajouter(JoueurSelected.License, JoueurSelected.Nom, JoueurSelected.Prenom, JoueurSelected.Classement, JoueurSelected.Mail, JoueurSelected.Sexe, JoueurSelected.Club);
-                ReloadJoueurs();
-            }
-            else
-            {
-                GJoueurs.Modifier(JoueurSelected.JoueurId, JoueurSelected.License, JoueurSelected.Nom, JoueurSelected.Prenom, JoueurSelected.Classement, JoueurSelected.Mail, JoueurSelected.Sexe, JoueurSelected.Club);
-            }
+            FilterGrid();
         }
-        public override bool ModifierCommand_CanExecute()
-        {
-            if (JoueurSelected == null)
-            {
-                EditerMessage = "Éditer les données du joueur sélectionné - Aucun joueur sélectionné";
-            }
-            else
-            {
-                EditerMessage = "Éditer les données du joueur sélectionné";
-                return true;
-            }
-            return false;
-        }
-        public override void SelectedCommand_Execute()
+
+        public void FilterGrid()
         {
             MatchViewFiltre.Filter = o =>
             {
                 var item = (CMatchsView)o;
-                if (JoueurSelected == null || item == null)
+                if (ToggleResultChecked && item.Date < DateTime.Today)
                 {
-                    return false;
+                    if (ClubSelected != null)
+                    {
+                        if (item.ClubVisiteId == ClubSelected?.ClubId || item.ClubVisiteurId == ClubSelected?.ClubId)
+                        {
+                            if (EquipeSelected != null)
+                            {
+                                return item.EquipeVisiteId == EquipeSelected.EquipeId ||
+                                       item.EquipeVisiteurId == EquipeSelected.EquipeId;
+                            }
+                        }
+                        else
+                        {
+                            return false;
+                        }
+                    }
+                    else
+                    {
+                        return true;
+                    }      
                 }
-                return JoueurSelected.JoueurId == item.Joueur1VisiteId ||
-                       JoueurSelected.JoueurId == item.Joueur2VisiteId ||
-                       JoueurSelected.JoueurId == item.Joueur3VisiteId ||
-                       JoueurSelected.JoueurId == item.Joueur4VisiteId ||
-                       JoueurSelected.JoueurId == item.Joueur1VisiteurId ||
-                       JoueurSelected.JoueurId == item.Joueur2VisiteurId ||
-                       JoueurSelected.JoueurId == item.Joueur3VisiteurId || JoueurSelected.JoueurId == item.Joueur4VisiteurId;
+                else if (ToggleProgrChecked && item.Date > DateTime.Today)
+                {
+                    if (ClubSelected != null)
+                    {
+                        if (item.ClubVisiteId == ClubSelected?.ClubId || item.ClubVisiteurId == ClubSelected?.ClubId)
+                        {
+                            if (EquipeSelected != null)
+                            {
+                                return item.EquipeVisiteId == EquipeSelected.EquipeId ||
+                                       item.EquipeVisiteurId == EquipeSelected.EquipeId;
+                            }
+                        }
+                        else
+                        {
+                            return false;
+                        }
+                    }
+                    else
+                    {
+                        return true;
+                    }
+                }
+                else
+                {
+                    if (ClubSelected != null)
+                    {
+                        if (item.ClubVisiteId == ClubSelected?.ClubId || item.ClubVisiteurId == ClubSelected?.ClubId)
+                        {
+                            if (EquipeSelected != null)
+                            {
+                                return item.EquipeVisiteId == EquipeSelected.EquipeId ||
+                                       item.EquipeVisiteurId == EquipeSelected.EquipeId;
+                            }
+                            else
+                            {
+                                return true;
+                            }
+                        }
+                        else
+                        {
+                            return false;
+                        }
+                    }
+                    else
+                    {
+                        return true;
+                    }
+                }
+                return false;
             };
-            if (JoueurSelected != null)
-            {
-                TextBoxStatus = false;
-                SauverButtonStatus = false;
-                EditerButtonStatus = true;
-            }
-            else
-            {
-                TextBoxStatus = false;
-                SauverButtonStatus = false;
-                EditerButtonStatus = false;
-            }
         }
-        public override bool SupprimerCommand_CanExecute()
-        {
-            if (JoueurSelected == null)
-            {
-                SupprimerMessage = "Supprimer le joueur sélectionné - Aucun joueur sélectionné";
-            }
-            else
-            {
-                SupprimerMessage = "Supprimer le joueur sélectionné";
-                return true;
-            }
-            return false;
-        }
-        public override void SupprimerCommand_Execute()
-        {
-            if (DialogService.ShowMessageBox("Êtes-vous sur de vouloir supprimer ce joueur ?",
-                    "Confirmation de suppresion", MessageBoxButton.YesNo, MessageBoxIcon.Exclamation) !=
-                MessageBoxResult.Yes) return;
-            GJoueurs.Supprimer(JoueurSelected.JoueurId);
-            ReloadJoueurs();
-        }
-        public override void RefreshCommand_Execute()
-        {
-            ReloadJoueurs();
-        }
+
         #endregion
     }
 }

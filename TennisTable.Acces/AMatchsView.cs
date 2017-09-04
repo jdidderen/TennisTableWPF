@@ -48,6 +48,8 @@ namespace TennisTable.Acces
                     Joueur2VisiteurId = int.Parse(dr["Joueur2VeId"].ToString()),
                     Joueur3VisiteurId = int.Parse(dr["Joueur3VeId"].ToString()),
                     Joueur4VisiteurId = int.Parse(dr["Joueur4VeId"].ToString()),
+                    ClubVisiteId = int.Parse(dr["ClubVisiteId"].ToString()),
+                    ClubVisiteurId = int.Parse(dr["ClubVisiteurId"].ToString())
                 };
                 res.Add(tmp);
             }

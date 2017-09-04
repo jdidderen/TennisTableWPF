@@ -62,7 +62,7 @@ namespace TennisTableWPF.ViewModels
             if (ClassementSelected.ClassementId == 0)
             {
                 GClassements.Ajouter(ClassementSelected.Classement);
-                ReloadClassements();
+                Reload();
             }
             else
             {
@@ -116,7 +116,7 @@ namespace TennisTableWPF.ViewModels
                     "Confirmation de suppresion", MessageBoxButton.YesNo, MessageBoxIcon.Exclamation) !=
                 MessageBoxResult.Yes) return;
             GClassements.Supprimer(ClassementSelected.ClassementId);
-            ReloadClassements();
+            Reload();
         }
         public override bool RefreshCommand_CanExecute()
         {
@@ -125,7 +125,7 @@ namespace TennisTableWPF.ViewModels
         }
         public override void RefreshCommand_Execute()
         {
-            ReloadClassements();
+            Reload();
         }
         #endregion
     }

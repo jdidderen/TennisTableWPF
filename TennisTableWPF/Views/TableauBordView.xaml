@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:TennisTableWPF.Views"
              xmlns:matchsGrid="clr-namespace:TennisTableWPF.Views.MatchsGrid">
     <Grid>
-        <Grid DataContext="">
+        <Grid DataContext="{Binding TableauBordViewModel, Source={StaticResource Locator}}">
             <matchsGrid:MatchsGridView />
         </Grid>
     </Grid>

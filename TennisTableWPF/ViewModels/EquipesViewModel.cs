@@ -127,12 +127,12 @@ namespace TennisTableWPF.ViewModels
             base.SauverCommand_Execute();
             if (EquipeSelected.EquipeId == 0)
             {
-                GEquipes.Ajouter(EquipeSelected.NomEquipe, EquipeSelected.Joueur1, EquipeSelected.Joueur2, EquipeSelected.Joueur3, EquipeSelected.Joueur4, EquipeSelected.Capitaine, EquipeSelected.Club);
-                ReloadEquipes();
+                GEquipes.Ajouter(EquipeSelected.NomEquipe, JoueurlistSelected[0].JoueurId, JoueurlistSelected[1].JoueurId, JoueurlistSelected[2].JoueurId, JoueurlistSelected[3].JoueurId, EquipeSelected.Capitaine, EquipeSelected.Club);
+                Reload();
             }
             else
             {
-                GEquipes.Modifier(EquipeSelected.EquipeId, EquipeSelected.NomEquipe, EquipeSelected.Joueur1, EquipeSelected.Joueur2, EquipeSelected.Joueur3, EquipeSelected.Joueur4, EquipeSelected.Capitaine, EquipeSelected.Club);
+                GEquipes.Modifier(EquipeSelected.EquipeId, EquipeSelected.NomEquipe, JoueurlistSelected[0].JoueurId, JoueurlistSelected[1].JoueurId, JoueurlistSelected[2].JoueurId, JoueurlistSelected[3].JoueurId, EquipeSelected.Capitaine, EquipeSelected.Club);
             }
         }
         public override bool ModifierCommand_CanExecute()
@@ -187,11 +187,11 @@ namespace TennisTableWPF.ViewModels
                     "Confirmation de suppresion", MessageBoxButton.YesNo, MessageBoxIcon.Exclamation) !=
                 MessageBoxResult.Yes) return;
             GEquipes.Supprimer(EquipeSelected.EquipeId);
-            ReloadEquipes();
+            Reload();
         }
         public override void RefreshCommand_Execute()
         {
-            ReloadEquipes();
+            Reload();
         }
         #endregion
     }

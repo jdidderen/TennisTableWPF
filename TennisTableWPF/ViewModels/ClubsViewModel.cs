@@ -60,7 +60,7 @@ namespace TennisTableWPF.ViewModels
             if (ClubSelected.ClubId == 0)
             {
                 GClubs.Ajouter(ClubSelected.Indice, ClubSelected.Nom, ClubSelected.NomCourt, ClubSelected.Adresse);
-                ReloadClubs();
+                Reload();
             }
             else
             {
@@ -114,11 +114,11 @@ namespace TennisTableWPF.ViewModels
                     "Confirmation de suppresion", MessageBoxButton.YesNo, MessageBoxIcon.Exclamation) !=
                 MessageBoxResult.Yes) return;
             GClubs.Supprimer(ClubSelected.ClubId);
-            ReloadClubs();
+            Reload();
         }
         public override void RefreshCommand_Execute()
         {
-            ReloadClubs();
+            Reload();
         }
         #endregion
     }
