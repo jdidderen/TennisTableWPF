@@ -158,7 +158,7 @@ namespace TennisTableWPF.ViewModels
                         return true;
                     }
                 }
-                else
+                else if(!ToggleProgrChecked && !ToggleResultChecked)
                 {
                     if (ClubSelected != null)
                     {
@@ -185,6 +185,7 @@ namespace TennisTableWPF.ViewModels
                     }
                 }
                 return false;
+
             };
         }
 
